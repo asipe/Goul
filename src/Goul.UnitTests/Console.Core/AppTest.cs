@@ -1,5 +1,6 @@
 ﻿using System;
 using Goul.Console.Core;
+using Goul.Core;
 using Moq;
 using NUnit.Framework;
 using SupaCharge.Testing;
@@ -20,19 +21,39 @@ namespace Goul.UnitTests.Console.Core {
     }
 
     [Test]
-    public void TestExecuteAuthCommandDelegatestoInterface() {
-      var args = new [] {"genauth"};
-      mAuthHandler.Setup(h => h.Execute());
+    public void TestExecuteGetAuthCommandDelegatestoInterface() {
+      var args = new[] { "getauth" };
+      mGetAuthHandler.Setup(h => h.GetUrl());
+      mApp.Execute(args);
+    }
+
+    [Test]
+    public void TestExecuteAuthorizesDelegatesToInterface() {
+      var args = new[] { "authorize", "authcode" };
+      mAuthorizerHandler.Setup(h => h.Authorize());
+      mApp.Execute(args);
+    }
+
+    [Test]
+    public void TestExecuteUploadDelegatesToInterface() {
+      var args = new[] { "upload", "filePath" };
+      mUploadHandler.Setup(h => h.Upload());
       mApp.Execute(args);
     }
 
     [SetUp]
     public void DoSetup() {
-      mAuthHandler = Mok<IGenerateAuthorizationHandler>();
-      mApp = new App(mAuthHandler.Object);
+      mGetAuthHandler = Mok<IGetAuthUrlHandler>();
+      mAuthorizerHandler = Mok<IAuthorizerHandler>();
+      mUploadHandler = Mok<IUploadHandler>();
+      mApp = new App(mGetAuthHandler.Object, mAuthorizerHandler.Object, mUploadHandler.Object);
     }
 
     private App mApp;
-    private Mock<IGenerateAuthorizationHandler> mAuthHandler;
+    private Mock<IGetAuthUrlHandler> mGetAuthHandler;
+    private Mock<IAuthorizerHandler> mAuthorizerHandler;
+    private Mock<IUploadHandler> mUploadHandler;
   }
+
+
 }

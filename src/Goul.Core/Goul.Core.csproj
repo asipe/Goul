@@ -39,6 +39,10 @@
     <Compile Include="..\properties\AssemblyInfo.cs">
       <Link>AssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="GetAuthUrlHandlerHandler.cs" />
+    <Compile Include="IAuthorizerHandler.cs" />
+    <Compile Include="IGetAuthUrlHandler.cs" />
+    <Compile Include="IUploadHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
