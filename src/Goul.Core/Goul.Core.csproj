@@ -39,7 +39,6 @@
     <Compile Include="..\properties\AssemblyInfo.cs">
       <Link>AssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="Uploader.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
