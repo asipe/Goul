@@ -47,9 +47,11 @@
     <Compile Include="..\properties\AssemblyInfo.cs">
       <Link>AssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="Class1.cs" />
+    <Compile Include="AuthorizationTest.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Console.Core\" />
+    <Folder Include="Core\" />
     <Folder Include="Properties\" />
   </ItemGroup>
   <ItemGroup>

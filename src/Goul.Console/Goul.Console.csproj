@@ -50,6 +50,12 @@
   <ItemGroup>
     <Folder Include="Properties\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Goul.Console.Core\Goul.Console.Core.csproj">
+      <Project>{DEC58AF0-3D98-445A-8D54-31AEE7879941}</Project>
+      <Name>Goul.Console.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
