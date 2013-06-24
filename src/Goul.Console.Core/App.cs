@@ -15,7 +15,7 @@ namespace Goul.Console.Core {
 
       switch (args[0]) {
         case "getauth":
-          mGetAuthUrlHandler.GetUrl();
+          System.Console.WriteLine(mGetAuthUrlHandler.GetUrl());
           break;
         
         case "authorize":

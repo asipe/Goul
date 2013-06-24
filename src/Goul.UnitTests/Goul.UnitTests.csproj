@@ -58,9 +58,9 @@
       <Link>AssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="Console.Core\AppTest.cs" />
+    <Compile Include="Core\GetAuthUrlHandlerTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Core\" />
     <Folder Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
