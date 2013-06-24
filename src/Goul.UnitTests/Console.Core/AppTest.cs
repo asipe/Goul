@@ -54,6 +54,4 @@ namespace Goul.UnitTests.Console.Core {
     private Mock<IAuthorizerHandler> mAuthorizerHandler;
     private Mock<IUploadHandler> mUploadHandler;
   }
-
-
 }

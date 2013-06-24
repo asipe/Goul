@@ -10,9 +10,8 @@ namespace Goul.Console.Core {
     }
 
     public void Execute(params string[] args) {
-      if (args.Length == 0) {
+      if (args.Length == 0)
         throw new Exception("Unknown Command");
-      }
 
       switch (args[0]) {
         case "getauth":
