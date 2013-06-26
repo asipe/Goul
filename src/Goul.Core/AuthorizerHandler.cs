@@ -6,7 +6,7 @@ using Google.Apis.Authentication.OAuth2.DotNetOpenAuth;
 namespace Goul.Core {
   public class AuthorizerHandler : IAuthorizerHandler {
     public string Authorize(string code) {
-      var provider = new NativeApplicationClient(GoogleAuthenticationServer.Description, "672441525251.apps.googleusercontent.com", "qqMMwnGP_w29U-Mr5mzAEaGu");
+      var provider = new NativeApplicationClient(GoogleAuthenticationServer.Description, "", "");
       return GetAuthorization(provider, code);
     }
 
