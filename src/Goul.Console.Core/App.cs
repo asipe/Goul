@@ -17,13 +17,13 @@ namespace Goul.Console.Core {
         case "getauth":
           System.Console.WriteLine(mGetAuthUrlHandler.GetUrl());
           break;
-        
+
         case "authorize":
-          mAuthHandler.Authorize();
+          mAuthHandler.Authorize(args[1]);
           break;
 
         case "upload":
-          mUploadHandler.Upload();
+          mUploadHandler.Upload(args[1], args[2]);
           break;
 
         default:
@@ -31,8 +31,8 @@ namespace Goul.Console.Core {
       }
     }
 
-    private readonly IGetAuthUrlHandler mGetAuthUrlHandler;
     private readonly IAuthorizerHandler mAuthHandler;
+    private readonly IGetAuthUrlHandler mGetAuthUrlHandler;
     private readonly IUploadHandler mUploadHandler;
   }
 }

@@ -49,6 +49,9 @@
     <Reference Include="Google.Apis.Oauth2.v2">
       <HintPath>..\lib\googleApi\Google.Apis.Oauth2.v2.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json.Net35, Version=4.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>C:\mjsdata\GoogleAPISpike\apiSrc\driveV2Rev76\drive\Lib\Newtonsoft.Json.Net35.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="Microsoft.CSharp" />
@@ -57,13 +60,21 @@
     <Compile Include="..\properties\AssemblyInfo.cs">
       <Link>AssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="AuthorizerHandler.cs" />
+    <Compile Include="GetAuthorizedState.cs" />
     <Compile Include="GetAuthUrlHandler.cs" />
     <Compile Include="IAuthorizerHandler.cs" />
     <Compile Include="IGetAuthUrlHandler.cs" />
     <Compile Include="IUploadHandler.cs" />
+    <Compile Include="RefreshTokenHandler.cs" />
+    <Compile Include="Setup.cs" />
+    <Compile Include="UploaderHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="refreshtoken.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

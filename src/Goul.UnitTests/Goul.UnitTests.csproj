@@ -33,6 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DotNetOpenAuth, Version=4.0.0.11165, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL" />
     <Reference Include="Moq">
       <HintPath>..\packages\Moq.3.1.416.3\lib\Moq.dll</HintPath>
     </Reference>
@@ -58,9 +59,9 @@
       <Link>AssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="Console.Core\AppTest.cs" />
-    <Compile Include="Core\GetAuthUrlHandlerTest.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Core\" />
     <Folder Include="Properties\" />
   </ItemGroup>
   <ItemGroup>

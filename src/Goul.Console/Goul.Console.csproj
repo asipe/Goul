@@ -53,6 +53,9 @@
     <Reference Include="Goul.Core">
       <HintPath>..\Goul.Core\bin\Debug\Goul.Core.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json.Net35">
+      <HintPath>C:\mjsdata\GoogleAPISpike\apiSrc\driveV2Rev76\drive\Lib\Newtonsoft.Json.Net35.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="Microsoft.CSharp" />

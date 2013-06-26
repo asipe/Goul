@@ -22,22 +22,22 @@ namespace Goul.UnitTests.Console.Core {
 
     [Test]
     public void TestExecuteGetAuthCommandDelegatestoInterface() {
-      var args = new[] { "getauth" };
+      var args = new[] {"getauth"};
       mGetAuthHandler.Setup(h => h.GetUrl()).Returns("test");
       mApp.Execute(args);
     }
 
     [Test]
     public void TestExecuteAuthorizesDelegatesToInterface() {
-      var args = new[] { "authorize", "authcode" };
-      mAuthorizerHandler.Setup(h => h.Authorize());
+      var args = new[] {"authorize", "authcode"};
+      mAuthorizerHandler.Setup(h => h.Authorize(args[1])).Returns("refreshToken");
       mApp.Execute(args);
     }
 
     [Test]
     public void TestExecuteUploadDelegatesToInterface() {
-      var args = new[] { "upload", "filePath" };
-      mUploadHandler.Setup(h => h.Upload());
+      var args = new[] {"upload", "filePath", "newFileName"};
+      mUploadHandler.Setup(h => h.Upload("filePath", "newFileName"));
       mApp.Execute(args);
     }
 

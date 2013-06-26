@@ -1,5 +1,5 @@
 ﻿namespace Goul.Core {
   public interface IAuthorizerHandler {
-    void Authorize();
+    string Authorize(string authCode);
   }
 }
