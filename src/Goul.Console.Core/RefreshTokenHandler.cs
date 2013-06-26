@@ -3,7 +3,6 @@ using System.IO;
 namespace Goul.Console.Core {
   internal class RefreshTokenHandler {
     public string GetRefreshToken() {
-      System.Console.WriteLine("hello");
       return File.Exists("refreshToken.txt")
                ? File.ReadAllText("refreshToken.txt")
                : "";

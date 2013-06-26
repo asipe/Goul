@@ -5,15 +5,15 @@ using Google.Apis.Authentication.OAuth2.DotNetOpenAuth;
 
 namespace Goul.Console.Core {
   public class Setup {
-    public IGetAuthUrlHandler SetupGetAuthUrl() {
+    public ICommandHandler SetupGetAuthUrl() {
       return new GetAuthUrlHandler(GetProvider(), GetState());
     }
 
-    public IAuthorizerHandler SetupAuthorizerHandler() {
+    public ICommandHandler SetupAuthorizerHandler() {
       return new AuthorizerHandler();
     }
 
-    public IUploadHandler SetupUploadHandler() {
+    public ICommandHandler SetupUploadHandler() {
       return new UploaderHandler(GetProvider());
     }
 

@@ -3,14 +3,14 @@ using DotNetOpenAuth.OAuth2;
 using Google.Apis.Authentication.OAuth2.DotNetOpenAuth;
 
 namespace Goul.Console.Core {
-  public class GetAuthUrlHandler : IGetAuthUrlHandler {
+  public class GetAuthUrlHandler : ICommandHandler {
     public GetAuthUrlHandler(NativeApplicationClient provider, IAuthorizationState state) {
       mProvider = provider;
       mState = state;
     }
 
-    public string GetUrl() {
-      return GetAuthorization(mProvider).ToString();
+    public void Execute(params string[] args) {
+     System.Console.WriteLine(GetAuthorization(mProvider));
     }
 
     private Uri GetAuthorization(UserAgentClient appClient) {

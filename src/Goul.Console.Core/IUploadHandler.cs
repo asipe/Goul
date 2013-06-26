@@ -1,5 +1,5 @@
 namespace Goul.Console.Core {
   public interface IUploadHandler {
-    void Upload(string fileToUpload, string fileName);
+    void Execute(string fileToUpload, string fileName);
   }
 }

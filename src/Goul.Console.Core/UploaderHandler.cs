@@ -8,12 +8,12 @@ using Google.Apis.Services;
 using File = Google.Apis.Drive.v2.Data.File;
 
 namespace Goul.Console.Core {
-  public class UploaderHandler : IUploadHandler {
+  public class UploaderHandler : ICommandHandler {
     public UploaderHandler(NativeApplicationClient provider) {
       mProvider = provider;
     }
 
-    public void Upload(string fileToUpload, string fileName) {
+    public void Execute(params string[] args) {
       var provider = new NativeApplicationClient(GoogleAuthenticationServer.Description, "", "");
 
       var auth = new OAuth2Authenticator<NativeApplicationClient>(provider, GetAuthorization);
@@ -21,12 +21,9 @@ namespace Goul.Console.Core {
         Authenticator = auth
       });
 
-      var body = new File();
+      var body = new File {Title = args[1], Description = "A test document"};
 
-      body.Title = fileName;
-      body.Description = "A test document";
-
-      var byteArray = System.IO.File.ReadAllBytes(fileToUpload);
+      var byteArray = System.IO.File.ReadAllBytes(args[0]);
       var stream = new MemoryStream(byteArray);
 
       var request = service.Files.Insert(body, stream, "text/plain");
