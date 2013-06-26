@@ -60,15 +60,6 @@
     <Compile Include="..\properties\AssemblyInfo.cs">
       <Link>AssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="AuthorizerHandler.cs" />
-    <Compile Include="GetAuthorizedState.cs" />
-    <Compile Include="GetAuthUrlHandler.cs" />
-    <Compile Include="IAuthorizerHandler.cs" />
-    <Compile Include="IGetAuthUrlHandler.cs" />
-    <Compile Include="IUploadHandler.cs" />
-    <Compile Include="RefreshTokenHandler.cs" />
-    <Compile Include="Setup.cs" />
-    <Compile Include="UploaderHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />

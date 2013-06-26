@@ -1,5 +1,4 @@
 ﻿using System;
-using Goul.Core;
 
 namespace Goul.Console.Core {
   public class App {

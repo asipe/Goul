@@ -1,6 +1,5 @@
 ﻿using System;
 using Goul.Console.Core;
-using Goul.Core;
 using Moq;
 using NUnit.Framework;
 using SupaCharge.Testing;

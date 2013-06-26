@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 using DotNetOpenAuth.OAuth2;
 using Google.Apis.Authentication.OAuth2.DotNetOpenAuth;
 
-namespace Goul.Core {
+namespace Goul.Console.Core {
   public class GetAuthUrlHandler : IGetAuthUrlHandler {
     public GetAuthUrlHandler(NativeApplicationClient provider, IAuthorizationState state) {
       mProvider = provider;

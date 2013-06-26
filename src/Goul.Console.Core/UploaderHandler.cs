@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using DotNetOpenAuth.OAuth2;
 using Google.Apis.Authentication.OAuth2;
@@ -7,7 +7,7 @@ using Google.Apis.Drive.v2;
 using Google.Apis.Services;
 using File = Google.Apis.Drive.v2.Data.File;
 
-namespace Goul.Core {
+namespace Goul.Console.Core {
   public class UploaderHandler : IUploadHandler {
     public UploaderHandler(NativeApplicationClient provider) {
       mProvider = provider;
@@ -38,7 +38,7 @@ namespace Goul.Core {
     private IAuthorizationState GetAuthorization(NativeApplicationClient appClient) {
       var tokenHandler = new RefreshTokenHandler();
       var code = tokenHandler.GetRefreshToken();
-      Console.WriteLine(code);
+      System.Console.WriteLine(code);
       var state = new AuthorizationState(new[] {"https://www.googleapis.com/auth/drive", "https://docs.google.com/feeds"});
       state.Callback = new Uri(NativeApplicationClient.OutOfBandCallbackUrl);
       state.RefreshToken = code;

@@ -1,6 +1,5 @@
 ﻿using System;
 using Goul.Console.Core;
-using Goul.Core;
 
 namespace Goul.Console {
   internal class Program {

@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 using DotNetOpenAuth.OAuth2;
 using Google.Apis.Authentication.OAuth2;
 using Google.Apis.Authentication.OAuth2.DotNetOpenAuth;
 
-namespace Goul.Core {
+namespace Goul.Console.Core {
   public class AuthorizerHandler : IAuthorizerHandler {
     public string Authorize(string code) {
       var provider = new NativeApplicationClient(GoogleAuthenticationServer.Description, "", "");

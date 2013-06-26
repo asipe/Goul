@@ -1,4 +1,4 @@
-﻿namespace Goul.Core {
+namespace Goul.Console.Core {
   public interface IGetAuthUrlHandler {
     string GetUrl();
   }

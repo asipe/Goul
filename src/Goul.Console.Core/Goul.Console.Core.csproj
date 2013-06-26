@@ -32,6 +32,18 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DotNetOpenAuth, Version=4.0.0.11165, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL" />
+    <Reference Include="Google.Apis, Version=1.3.0.15233, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\lib\Google.Apis.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Authentication.OAuth2, Version=1.3.0.15231, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\lib\Google.Apis.Authentication.OAuth2.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Drive.v2, Version=1.3.0.15233, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\lib\Google.Apis.Drive.v2.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Oauth2.v2">
+      <HintPath>..\lib\Google.Apis.Oauth2.v2.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="Microsoft.CSharp" />
@@ -47,6 +59,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
+    <Compile Include="AuthorizerHandler.cs" />
+    <Compile Include="GetAuthorizedState.cs" />
+    <Compile Include="GetAuthUrlHandler.cs" />
+    <Compile Include="IAuthorizerHandler.cs" />
+    <Compile Include="IGetAuthUrlHandler.cs" />
+    <Compile Include="IUploadHandler.cs" />
+    <Compile Include="RefreshTokenHandler.cs" />
+    <Compile Include="Setup.cs" />
+    <Compile Include="UploaderHandler.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
