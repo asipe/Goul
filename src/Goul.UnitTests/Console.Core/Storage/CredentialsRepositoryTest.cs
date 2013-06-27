@@ -1,4 +1,6 @@
-﻿using System;
+﻿// Copyright (c) Andy Sipe and Morgan Sipe. All rights reserved. Licensed under the MIT License (MIT). See License.txt in the project root for license information.
+
+using System;
 using System.IO;
 using Goul.Console.Core.Storage;
 using Goul.Core;
@@ -32,9 +34,8 @@ namespace Goul.UnitTests.Console.Core.Storage {
     [Test]
     public void TestSettingClientDetailsWorks() {
       var formattedString = string.Format("{0}{1}{2}", "1", Environment.NewLine, "2");
-      mFile.Setup(f => f.ReadAllLines("test.txt")).Returns(new[] {"1", "2"});
       mFile.Setup(f => f.WriteAllText("test.txt", formattedString));
-      
+
       var cred = new Credentials {ClientId = "1", ClientSecret = "2"};
 
       mCredentialsRepository.Set(cred);

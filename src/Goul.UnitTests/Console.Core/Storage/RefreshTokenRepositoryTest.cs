@@ -1,4 +1,6 @@
-﻿using System.IO;
+﻿// Copyright (c) Andy Sipe and Morgan Sipe. All rights reserved. Licensed under the MIT License (MIT). See License.txt in the project root for license information.
+
+using System.IO;
 using Goul.Console.Core.Storage;
 using Moq;
 using NUnit.Framework;
