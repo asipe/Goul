@@ -44,6 +44,9 @@
     <Reference Include="Google.Apis.Oauth2.v2">
       <HintPath>..\lib\Google.Apis.Oauth2.v2.dll</HintPath>
     </Reference>
+    <Reference Include="SupaCharge.Core">
+      <HintPath>..\lib\SupaCharge.Core.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="Microsoft.CSharp" />
@@ -60,10 +63,10 @@
   <ItemGroup>
     <Compile Include="App.cs" />
     <Compile Include="AuthorizerHandler.cs" />
+    <Compile Include="RefreshTokenRepository.cs" />
     <Compile Include="GetAuthorizedState.cs" />
     <Compile Include="GetAuthUrlHandler.cs" />
     <Compile Include="ICommandHandler.cs" />
-    <Compile Include="RefreshTokenHandler.cs" />
     <Compile Include="Setup.cs" />
     <Compile Include="UploaderHandler.cs" />
   </ItemGroup>

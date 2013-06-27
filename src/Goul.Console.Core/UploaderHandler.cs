@@ -5,6 +5,7 @@ using Google.Apis.Authentication.OAuth2;
 using Google.Apis.Authentication.OAuth2.DotNetOpenAuth;
 using Google.Apis.Drive.v2;
 using Google.Apis.Services;
+using SupaCharge.Core.IOAbstractions;
 using File = Google.Apis.Drive.v2.Data.File;
 
 namespace Goul.Console.Core {
@@ -33,8 +34,8 @@ namespace Goul.Console.Core {
     }
 
     private IAuthorizationState GetAuthorization(NativeApplicationClient appClient) {
-      var tokenHandler = new RefreshTokenHandler();
-      var code = tokenHandler.GetRefreshToken();
+      var tokenRepository = new RefreshTokenRepository(new DotNetFile(), "refreshToken.txt");
+      var code = tokenRepository.Load()[0];
       System.Console.WriteLine(code);
       var state = new AuthorizationState(new[] {"https://www.googleapis.com/auth/drive", "https://docs.google.com/feeds"});
       state.Callback = new Uri(NativeApplicationClient.OutOfBandCallbackUrl);

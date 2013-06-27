@@ -59,6 +59,7 @@
       <Link>AssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="Console.Core\AppTest.cs" />
+    <Compile Include="Console.Core\RefreshTokenRepositoryTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Core\" />
