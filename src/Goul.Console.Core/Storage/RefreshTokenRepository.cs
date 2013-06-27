@@ -1,12 +1,12 @@
-using System.IO;
 using SupaCharge.Core.IOAbstractions;
 
-namespace Goul.Console.Core {
-  public class RefreshTokenRepository {
+namespace Goul.Console.Core.Storage {
+  public class RefreshTokenRepository:IRefreshTokenRepository {
     public RefreshTokenRepository(IFile file, string filePath) {
       mFile = file;
       mPath = filePath;
     }
+
     public string[] Load() {
       return mFile.ReadAllLines(mPath);
     }
@@ -19,7 +19,7 @@ namespace Goul.Console.Core {
       mFile.WriteAllText("refreshToken.txt", newToken);
     }
 
-    private string mPath;
-    private IFile mFile;
+    private readonly IFile mFile;
+    private readonly string mPath;
   }
 }

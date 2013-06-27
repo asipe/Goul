@@ -1,17 +1,16 @@
-﻿using System;
-using System.IO;
-using Goul.Console.Core;
+﻿using System.IO;
+using Goul.Console.Core.Storage;
 using Moq;
 using NUnit.Framework;
 using SupaCharge.Core.IOAbstractions;
 using SupaCharge.Testing;
 
-namespace Goul.UnitTests.Console.Core {
+namespace Goul.UnitTests.Console.Core.Storage {
   [TestFixture]
   public class RefreshTokenRepositoryTest : BaseTestCase {
     [Test]
-    public void TestLoadingABasicTextFile() {
-      mFile.Setup(f => f.ReadAllLines("testFile.txt")).Returns(new[] { "1", "2" });
+    public void TestLoadingWorks() {
+      mFile.Setup(f => f.ReadAllLines("testFile.txt")).Returns(new[] {"1", "2"});
       Assert.That(mRRepo.Load(), Is.EqualTo(new[] {"1", "2"}));
     }
 
@@ -36,7 +35,7 @@ namespace Goul.UnitTests.Console.Core {
     [Test]
     public void TestLoadingANonexistantFileThrows() {
       mFile.Setup(f => f.ReadAllLines("testFile.txt")).Throws(new FileNotFoundException());
-      Assert.Throws(typeof(FileNotFoundException), ()=> mRRepo.Load());    
+      Assert.Throws(typeof(FileNotFoundException), () => mRRepo.Load());
     }
 
     [SetUp]
@@ -46,6 +45,6 @@ namespace Goul.UnitTests.Console.Core {
     }
 
     private Mock<IFile> mFile;
-    private RefreshTokenRepository mRRepo;
+    private IRefreshTokenRepository mRRepo;
   }
 }

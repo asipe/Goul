@@ -1,4 +1,5 @@
 ﻿using System;
+using Goul.Console.Core.CommandHandlers;
 
 namespace Goul.Console.Core {
   public class App {
@@ -22,7 +23,7 @@ namespace Goul.Console.Core {
           break;
 
         case "upload":
-          mUploadHandler.Execute(new[] { args[1], args[2] });
+          mUploadHandler.Execute(new[] {args[1], args[2]});
           break;
 
         default:

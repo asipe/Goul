@@ -52,6 +52,9 @@
     <Reference Include="Newtonsoft.Json.Net35, Version=4.0.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>C:\mjsdata\GoogleAPISpike\apiSrc\driveV2Rev76\drive\Lib\Newtonsoft.Json.Net35.dll</HintPath>
     </Reference>
+    <Reference Include="SupaCharge.Core">
+      <HintPath>..\lib\SupaCharge.Core.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="Microsoft.CSharp" />
@@ -60,6 +63,7 @@
     <Compile Include="..\properties\AssemblyInfo.cs">
       <Link>AssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Credentials.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />

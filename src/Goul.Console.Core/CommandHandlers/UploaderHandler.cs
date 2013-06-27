@@ -5,10 +5,11 @@ using Google.Apis.Authentication.OAuth2;
 using Google.Apis.Authentication.OAuth2.DotNetOpenAuth;
 using Google.Apis.Drive.v2;
 using Google.Apis.Services;
+using Goul.Console.Core.Storage;
 using SupaCharge.Core.IOAbstractions;
 using File = Google.Apis.Drive.v2.Data.File;
 
-namespace Goul.Console.Core {
+namespace Goul.Console.Core.CommandHandlers {
   public class UploaderHandler : ICommandHandler {
     public UploaderHandler(NativeApplicationClient provider) {
       mProvider = provider;

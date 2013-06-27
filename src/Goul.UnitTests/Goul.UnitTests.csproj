@@ -59,7 +59,8 @@
       <Link>AssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="Console.Core\AppTest.cs" />
-    <Compile Include="Console.Core\RefreshTokenRepositoryTest.cs" />
+    <Compile Include="Console.Core\Storage\RefreshTokenRepositoryTest.cs" />
+    <Compile Include="Console.Core\Storage\CredentialsRepositoryTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Core\" />
@@ -72,6 +73,10 @@
     <ProjectReference Include="..\Goul.Console.Core\Goul.Console.Core.csproj">
       <Project>{DEC58AF0-3D98-445A-8D54-31AEE7879941}</Project>
       <Name>Goul.Console.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Goul.Core\Goul.Core.csproj">
+      <Project>{1D9BDE30-80F6-4EE5-9195-63B1B4B1F23A}</Project>
+      <Name>Goul.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

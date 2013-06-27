@@ -2,6 +2,7 @@ using System;
 using DotNetOpenAuth.OAuth2;
 using Google.Apis.Authentication.OAuth2;
 using Google.Apis.Authentication.OAuth2.DotNetOpenAuth;
+using Goul.Console.Core.CommandHandlers;
 
 namespace Goul.Console.Core {
   public class Setup {

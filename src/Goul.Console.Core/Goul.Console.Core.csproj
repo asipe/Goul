@@ -62,13 +62,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
-    <Compile Include="AuthorizerHandler.cs" />
-    <Compile Include="RefreshTokenRepository.cs" />
-    <Compile Include="GetAuthorizedState.cs" />
-    <Compile Include="GetAuthUrlHandler.cs" />
-    <Compile Include="ICommandHandler.cs" />
+    <Compile Include="CommandHandlers\AuthorizerHandler.cs" />
+    <Compile Include="Storage\CredentialsRepository.cs" />
+    <Compile Include="Storage\ICredentialsRepository.cs" />
+    <Compile Include="Storage\IRefreshTokenRepository.cs" />
+    <Compile Include="Storage\RefreshTokenRepository.cs" />
+    <Compile Include="CommandHandlers\GetAuthorizedState.cs" />
+    <Compile Include="CommandHandlers\GetAuthUrlHandler.cs" />
+    <Compile Include="CommandHandlers\ICommandHandler.cs" />
     <Compile Include="Setup.cs" />
-    <Compile Include="UploaderHandler.cs" />
+    <Compile Include="CommandHandlers\UploaderHandler.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
