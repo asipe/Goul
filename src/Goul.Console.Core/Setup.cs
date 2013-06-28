@@ -36,7 +36,6 @@ namespace Goul.Console.Core {
     }
 
     private NativeApplicationClient GetProvider() {
-      //return new NativeApplicationClient(GoogleAuthenticationServer.Description, "", "");
       return Constants.GetAppClient();
     }
 

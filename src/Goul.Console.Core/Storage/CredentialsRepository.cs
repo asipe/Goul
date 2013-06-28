@@ -19,7 +19,7 @@ namespace Goul.Console.Core.Storage {
       };
     }
 
-    public void Set(Credentials credentials) {
+    public void Update(Credentials credentials) {
       mFile.WriteAllText(mPath, string.Format("{0}{1}{2}", credentials.ClientId, Environment.NewLine, credentials.ClientSecret));
     }
 

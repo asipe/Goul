@@ -24,7 +24,7 @@ namespace Goul.UnitTests.Console.Core {
 
     [Test]
     public void TestExecuteGetAuthCommandDelegatestoInterface() {
-      var args = new[] {"getauth"};
+      var args = new[] {"getauthurl"};
       mGetAuthHandler.Setup(h => h.Execute());
       mApp.RunCommand(args);
     }

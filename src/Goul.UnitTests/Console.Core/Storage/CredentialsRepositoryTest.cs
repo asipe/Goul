@@ -38,7 +38,7 @@ namespace Goul.UnitTests.Console.Core.Storage {
 
       var cred = new Credentials {ClientId = "1", ClientSecret = "2"};
 
-      mCredentialsRepository.Set(cred);
+      mCredentialsRepository.Update(cred);
       mFile.Verify(f => f.WriteAllText("test.txt", formattedString));
     }
 
