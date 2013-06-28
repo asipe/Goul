@@ -24,10 +24,21 @@ namespace Goul.Console.Core.CommandHandlers {
       var body = new File {Title = args[1], Description = "A test document"};
       var stream = new MemoryStream(System.IO.File.ReadAllBytes(args[0]));
 
-      var request = service.Files.Insert(body, stream, "text/plain");
+      var request = service.Files.Insert(body, stream, DetermineContentType(args[0]));
       request.Convert = true;
 
       request.Upload();
+    }
+
+    private string DetermineContentType(string filePath) {
+      var fileType = new FileInfo(filePath).Extension;
+      var contentType = "text/plain";
+
+      if (fileType == ".csv") {
+        contentType = "text/csv";
+      }
+
+      return contentType;
     }
 
     private IAuthorizationState GetAuthorization(NativeApplicationClient appClient) {
