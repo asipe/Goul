@@ -1,29 +1,32 @@
-***Work in progress***
+***This is all a work in progress***
 
 ##How to run Goul.Console
 
-Goul.Console allows you to setup an app which will upload a given file:
+Goul.Console is a sample app which loads a file up to a Google Drive Account.
 
-    Goul.Console.exe setcredentials xMyClientIdx xMyClientSecretX
+    Goul.Console.exe setcredentials xMyClientIdx xMyClientSecretx
     
-Sets the client id and the client secret to a local text file (https://developers.google.com/drive/quickstart-cs).
+Sets the given client id and the client secret to a local text file.
 
     Goul.Console.exe getauthurl
 
-Returns a url to a Google process to get an authorization code
+Returns a url to a Google process which you can follow to retrieve an authorization code.
 
     Goul.Console.exe authorize xCodeGivenInThePreviousSetpx
 
 Pass in the code from the previous step and this will grant temporary access based on that code and creates a refresh token which grants long-term access.
 
-    Goul.Console.exe upload xPathOfTheFileToUploadx xNameOfTheFileForGoogleDocsx
+    Goul.Console.exe upload xPathOfTheFileToUploadx xNameOfTheFileForGoogleDrivex
     
-Uploads a file with those two paramters.
+Uploads the file at the given path and gives it the specefied name on Google.
+
+
+**Goul.Console stores the client id, client secret and refresh token in an unencrypted text file.**
 
 
 
-
-###License
+License
+---
 
 Goul is licensed under the MIT License
 

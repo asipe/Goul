@@ -17,7 +17,7 @@ namespace Goul.Console.Core {
         throw new Exception("Unknown Command");
 
       switch (args[0]) {
-        case "getauthurl":
+        case "getauthorizationurl":
           mGetAuthUrlHandler.Execute();
           break;
 
