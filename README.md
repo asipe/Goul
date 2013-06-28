@@ -1,5 +1,29 @@
-License
-=====
+***Work in progress***
+
+##How to run Goul.Console
+
+Goul.Console allows you to setup an app which will upload a given file:
+
+    Goul.Console.exe setcredentials xMyClientIdx xMyClientSecretX
+    
+Sets the client id and the client secret to a local text file (https://developers.google.com/drive/quickstart-cs).
+
+    Goul.Console.exe getauthurl
+
+Returns a url to a Google process to get an authorization code
+
+    Goul.Console.exe authorize xCodeGivenInThePreviousSetpx
+
+Pass in the code from the previous step and this will grant temporary access based on that code and creates a refresh token which grants long-term access.
+
+    Goul.Console.exe upload xPathOfTheFileToUploadx xNameOfTheFileForGoogleDocsx
+    
+Uploads a file with those two paramters.
+
+
+
+
+###License
 
 Goul is licensed under the MIT License
 
