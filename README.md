@@ -1,4 +1,4 @@
-***Work in progress***
+***This is all a work in progress***
 
 ##How to run Goul.Console
 
