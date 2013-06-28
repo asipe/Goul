@@ -47,6 +47,5 @@ namespace Goul.Console.Core {
 
     private OAuth2Authenticator<NativeApplicationClient> mAuth;
     private IAuthorizationState mAuthState;
-//    private readonly CredentialsRepository mCredRepository = new CredentialsRepository(new DotNetFile(), "credentials.txt");
   }
 }

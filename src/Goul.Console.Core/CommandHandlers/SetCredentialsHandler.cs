@@ -11,7 +11,6 @@ namespace Goul.Console.Core.CommandHandlers {
       var credentials = new Credentials {ClientId = (args[0]), ClientSecret = (args[1])};
       
       mCredentialsRepository.Update(credentials);
-      System.Console.WriteLine("UPDATED");
     }
 
     private readonly ICredentialsRepository mCredentialsRepository;

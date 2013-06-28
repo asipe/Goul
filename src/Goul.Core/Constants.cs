@@ -8,7 +8,7 @@ namespace Goul.Core {
     }
 
     public static string[] GetScopes() {
-      return new[] {"https://www.googleapis.com/auth/drive", "https://docs.google.com/feeds"};
+      return new[] {"https://www.googleapis.com/auth/drive"};
     }
   }
 }
