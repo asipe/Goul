@@ -1,3 +1,5 @@
+// Copyright (c) Andy Sipe and Morgan Sipe. All rights reserved. Licensed under the MIT License (MIT). See License.txt in the project root for license information.
+
 using System;
 using System.IO;
 using DotNetOpenAuth.OAuth2;
@@ -5,9 +7,11 @@ using Google.Apis.Authentication.OAuth2;
 using Google.Apis.Authentication.OAuth2.DotNetOpenAuth;
 using Google.Apis.Drive.v2;
 using Google.Apis.Services;
+using Goul.Console.Core.Storage;
+using SupaCharge.Core.IOAbstractions;
 using File = Google.Apis.Drive.v2.Data.File;
 
-namespace Goul.Console.Core {
+namespace Goul.Console.Core.CommandHandlers {
   public class UploaderHandler : ICommandHandler {
     public UploaderHandler(NativeApplicationClient provider) {
       mProvider = provider;
@@ -33,12 +37,13 @@ namespace Goul.Console.Core {
     }
 
     private IAuthorizationState GetAuthorization(NativeApplicationClient appClient) {
-      var tokenHandler = new RefreshTokenHandler();
-      var code = tokenHandler.GetRefreshToken();
-      System.Console.WriteLine(code);
-      var state = new AuthorizationState(new[] {"https://www.googleapis.com/auth/drive", "https://docs.google.com/feeds"});
-      state.Callback = new Uri(NativeApplicationClient.OutOfBandCallbackUrl);
-      state.RefreshToken = code;
+      var tokenRepository = new RefreshTokenRepository(new DotNetFile(), "refreshToken.txt");
+      var code = tokenRepository.Load()[0];
+
+      var state = new AuthorizationState(
+        new[] {"https://www.googleapis.com/auth/drive",
+               "https://docs.google.com/feeds"})
+               {Callback = new Uri(NativeApplicationClient.OutOfBandCallbackUrl), RefreshToken = code};
       mProvider.RefreshToken(state);
       return state;
     }

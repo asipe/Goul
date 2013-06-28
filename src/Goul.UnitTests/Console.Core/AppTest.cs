@@ -1,5 +1,8 @@
-﻿using System;
+﻿// Copyright (c) Andy Sipe and Morgan Sipe. All rights reserved. Licensed under the MIT License (MIT). See License.txt in the project root for license information.
+
+using System;
 using Goul.Console.Core;
+using Goul.Console.Core.CommandHandlers;
 using Moq;
 using NUnit.Framework;
 using SupaCharge.Testing;
@@ -36,7 +39,7 @@ namespace Goul.UnitTests.Console.Core {
     [Test]
     public void TestExecuteUploadDelegatesToInterface() {
       var args = new[] {"upload", "filePath", "newFileName"};
-      var cmdArgs = new[] { "filePath", "newFileName" };
+      var cmdArgs = new[] {"filePath", "newFileName"};
       mUploadHandler.Setup(h => h.Execute(cmdArgs));
       mApp.RunCommand(args);
     }
