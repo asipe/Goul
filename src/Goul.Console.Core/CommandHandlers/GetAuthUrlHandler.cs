@@ -15,6 +15,7 @@ namespace Goul.Console.Core.CommandHandlers {
 
     public void Execute(params string[] args) {
       mProvider = Constants.GetAppClient(new CredentialsRepository(new DotNetFile(), "credentials.txt").Load());
+      System.Console.WriteLine();
       System.Console.WriteLine(GetAuthorization(mProvider));
     }
 

@@ -28,9 +28,10 @@ namespace Goul.Console.Core.CommandHandlers {
       request.Convert = true;
 
       request.Upload();
+      System.Console.WriteLine("File Uploaded");
     }
 
-    private string DetermineContentType(string filePath) {
+    private static string DetermineContentType(string filePath) {
       var fileType = new FileInfo(filePath).Extension;
       var contentType = "text/plain";
 
@@ -41,7 +42,7 @@ namespace Goul.Console.Core.CommandHandlers {
       return contentType;
     }
 
-    private IAuthorizationState GetAuthorization(NativeApplicationClient appClient) {
+    private static IAuthorizationState GetAuthorization(NativeApplicationClient appClient) {
       var tokenRepository = new RefreshTokenRepository(new DotNetFile(), "refreshToken.txt");
       var code = tokenRepository.Load()[0];
 

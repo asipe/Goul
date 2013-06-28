@@ -13,6 +13,7 @@ namespace Goul.Console.Core.CommandHandlers {
       var credRepo = new CredentialsRepository(new DotNetFile(), "credentials.txt");
       var provider = Constants.GetAppClient(credRepo.Load());
       GetAuthorization(provider, args[0]);
+      System.Console.WriteLine("Access Authorized and Refresh Token Created");
     }
 
     private void GetAuthorization(NativeApplicationClient appClient, string code) {
