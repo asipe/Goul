@@ -17,7 +17,6 @@ namespace Goul.Console.Core.CommandHandlers {
 
     private void GetAuthorization(NativeApplicationClient appClient, string code) {
       var tokenRepository = new RefreshTokenRepository(new DotNetFile(), "refreshToken.txt");
-      System.Console.WriteLine(tokenRepository.Load()[0]);
       var state = new AuthorizationState(Constants.GetScopes())
       {Callback = new Uri(NativeApplicationClient.OutOfBandCallbackUrl)};
 
