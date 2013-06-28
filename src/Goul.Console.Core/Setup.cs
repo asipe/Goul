@@ -27,7 +27,7 @@ namespace Goul.Console.Core {
       return new SetCredentialsHandler(GetCredentialsRepository());
     }
 
-    public void setAuthState(IAuthorizationState auth) {
+    public void SetAuthState(IAuthorizationState auth) {
       mAuthState = auth;
     }
 
@@ -47,6 +47,6 @@ namespace Goul.Console.Core {
 
     private OAuth2Authenticator<NativeApplicationClient> mAuth;
     private IAuthorizationState mAuthState;
-    private readonly CredentialsRepository mCredRepository = new CredentialsRepository(new DotNetFile(), "credentials.txt");
+//    private readonly CredentialsRepository mCredRepository = new CredentialsRepository(new DotNetFile(), "credentials.txt");
   }
 }
