@@ -34,6 +34,12 @@
     <Reference Include="Accessibility">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
+    <Reference Include="DotNetOpenAuth">
+      <HintPath>..\lib\DotNetOpenAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Authentication.OAuth2">
+      <HintPath>..\lib\Google.Apis.Authentication.OAuth2.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json.Net35">
       <HintPath>..\lib\Newtonsoft.Json.Net35.dll</HintPath>
     </Reference>
@@ -45,6 +51,7 @@
     <Compile Include="..\properties\AssemblyInfo.cs">
       <Link>AssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Constants.cs" />
     <Compile Include="Credentials.cs" />
   </ItemGroup>
   <ItemGroup>

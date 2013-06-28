@@ -8,6 +8,7 @@ using Google.Apis.Authentication.OAuth2.DotNetOpenAuth;
 using Google.Apis.Drive.v2;
 using Google.Apis.Services;
 using Goul.Console.Core.Storage;
+using Goul.Core;
 using SupaCharge.Core.IOAbstractions;
 using File = Google.Apis.Drive.v2.Data.File;
 
@@ -18,17 +19,13 @@ namespace Goul.Console.Core.CommandHandlers {
     }
 
     public void Execute(params string[] args) {
-      var provider = new NativeApplicationClient(GoogleAuthenticationServer.Description, "", "");
-
-      var auth = new OAuth2Authenticator<NativeApplicationClient>(provider, GetAuthorization);
+      var auth = new OAuth2Authenticator<NativeApplicationClient>(mProvider, GetAuthorization);
       var service = new DriveService(new BaseClientService.Initializer {
         Authenticator = auth
       });
 
       var body = new File {Title = args[1], Description = "A test document"};
-
-      var byteArray = System.IO.File.ReadAllBytes(args[0]);
-      var stream = new MemoryStream(byteArray);
+      var stream = new MemoryStream(System.IO.File.ReadAllBytes(args[0]));
 
       var request = service.Files.Insert(body, stream, "text/plain");
       request.Convert = true;
@@ -41,8 +38,7 @@ namespace Goul.Console.Core.CommandHandlers {
       var code = tokenRepository.Load()[0];
 
       var state = new AuthorizationState(
-        new[] {"https://www.googleapis.com/auth/drive",
-               "https://docs.google.com/feeds"})
+       Constants.GetScopes())
                {Callback = new Uri(NativeApplicationClient.OutOfBandCallbackUrl), RefreshToken = code};
       mProvider.RefreshToken(state);
       return state;

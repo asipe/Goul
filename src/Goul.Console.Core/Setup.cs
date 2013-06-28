@@ -5,6 +5,7 @@ using DotNetOpenAuth.OAuth2;
 using Google.Apis.Authentication.OAuth2;
 using Google.Apis.Authentication.OAuth2.DotNetOpenAuth;
 using Goul.Console.Core.CommandHandlers;
+using Goul.Core;
 
 namespace Goul.Console.Core {
   public class Setup {
@@ -29,13 +30,14 @@ namespace Goul.Console.Core {
     }
 
     private IAuthorizationState GetState() {
-      var state = new AuthorizationState(new[] {"https://www.googleapis.com/auth/drive", "https://docs.google.com/feeds"});
+      var state = new AuthorizationState(Constants.GetScopes());
       state.Callback = new Uri(NativeApplicationClient.OutOfBandCallbackUrl);
       return state;
     }
 
     private NativeApplicationClient GetProvider() {
-      return new NativeApplicationClient(GoogleAuthenticationServer.Description, "", "");
+      //return new NativeApplicationClient(GoogleAuthenticationServer.Description, "", "");
+      return Constants.GetAppClient();
     }
 
     private OAuth2Authenticator<NativeApplicationClient> mAuth;
