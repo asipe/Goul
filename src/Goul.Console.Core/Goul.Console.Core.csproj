@@ -65,6 +65,7 @@
   <ItemGroup>
     <Compile Include="App.cs" />
     <Compile Include="CommandHandlers\AuthorizerHandler.cs" />
+    <Compile Include="CommandHandlers\SetCredentialsHandler.cs" />
     <Compile Include="Storage\CredentialsRepository.cs" />
     <Compile Include="Storage\ICredentialsRepository.cs" />
     <Compile Include="Storage\IRefreshTokenRepository.cs" />

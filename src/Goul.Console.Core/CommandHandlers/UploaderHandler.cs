@@ -38,8 +38,8 @@ namespace Goul.Console.Core.CommandHandlers {
       var code = tokenRepository.Load()[0];
 
       var state = new AuthorizationState(
-       Constants.GetScopes())
-               {Callback = new Uri(NativeApplicationClient.OutOfBandCallbackUrl), RefreshToken = code};
+        Constants.GetScopes())
+      {Callback = new Uri(NativeApplicationClient.OutOfBandCallbackUrl), RefreshToken = code};
       mProvider.RefreshToken(state);
       return state;
     }

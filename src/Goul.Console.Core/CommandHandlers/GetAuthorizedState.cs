@@ -11,9 +11,11 @@ namespace Goul.Console.Core.CommandHandlers {
     public static IAuthorizationState GetAuthState(NativeApplicationClient provider) {
       var token = new RefreshTokenRepository(new DotNetFile(), "refreshToken.txt").Load()[0];
       var state = new AuthorizationState(
-        new[] {"https://www.googleapis.com/auth/drive",
-               "https://docs.google.com/feeds"}) 
-               {Callback = new Uri(NativeApplicationClient.OutOfBandCallbackUrl), RefreshToken = token};
+        new[] {
+          "https://www.googleapis.com/auth/drive",
+          "https://docs.google.com/feeds"
+        })
+      {Callback = new Uri(NativeApplicationClient.OutOfBandCallbackUrl), RefreshToken = token};
       provider.RefreshToken(state);
       return state;
     }

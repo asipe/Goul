@@ -44,17 +44,27 @@ namespace Goul.UnitTests.Console.Core {
       mApp.RunCommand(args);
     }
 
+    [Test]
+    public void TestExecuteSetCredentialsDelegatesToInterface() {
+      var args = new[] {"setcredentials", "clientid", "clientsecret"};
+      var cmdArgs = new[] {"clientid", "clientsecret"};
+      mSetCredentialsHandler.Setup(c => c.Execute(cmdArgs));
+      mApp.RunCommand(args);
+    }
+
     [SetUp]
     public void DoSetup() {
       mGetAuthHandler = Mok<ICommandHandler>();
       mAuthorizerHandler = Mok<ICommandHandler>();
       mUploadHandler = Mok<ICommandHandler>();
-      mApp = new App(mGetAuthHandler.Object, mAuthorizerHandler.Object, mUploadHandler.Object);
+      mSetCredentialsHandler = Mok<ICommandHandler>();
+      mApp = new App(mGetAuthHandler.Object, mAuthorizerHandler.Object, mUploadHandler.Object, mSetCredentialsHandler.Object);
     }
 
     private App mApp;
     private Mock<ICommandHandler> mGetAuthHandler;
     private Mock<ICommandHandler> mAuthorizerHandler;
     private Mock<ICommandHandler> mUploadHandler;
+    private Mock<ICommandHandler> mSetCredentialsHandler;
   }
 }
