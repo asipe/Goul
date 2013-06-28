@@ -10,7 +10,8 @@ using SupaCharge.Core.IOAbstractions;
 namespace Goul.Console.Core.CommandHandlers {
   public class AuthorizerHandler : ICommandHandler {
     public void Execute(params string[] args) {
-      var provider = Constants.GetAppClient();
+      var credRepo = new CredentialsRepository(new DotNetFile(), "credentials.txt");
+      var provider = Constants.GetAppClient(credRepo.Load());
       GetAuthorization(provider, args[0]);
     }
 

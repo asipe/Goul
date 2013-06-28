@@ -14,12 +14,9 @@ using File = Google.Apis.Drive.v2.Data.File;
 
 namespace Goul.Console.Core.CommandHandlers {
   public class UploaderHandler : ICommandHandler {
-    public UploaderHandler(NativeApplicationClient provider) {
-      mProvider = provider;
-    }
-
     public void Execute(params string[] args) {
-      var auth = new OAuth2Authenticator<NativeApplicationClient>(mProvider, GetAuthorization);
+      var provider = Constants.GetAppClient(new Setup().GetCredentialsRepository().Load());
+      var auth = new OAuth2Authenticator<NativeApplicationClient>(provider, GetAuthorization);
       var service = new DriveService(new BaseClientService.Initializer {
         Authenticator = auth
       });
@@ -40,10 +37,8 @@ namespace Goul.Console.Core.CommandHandlers {
       var state = new AuthorizationState(
         Constants.GetScopes())
       {Callback = new Uri(NativeApplicationClient.OutOfBandCallbackUrl), RefreshToken = code};
-      mProvider.RefreshToken(state);
+      appClient.RefreshToken(state);
       return state;
     }
-
-    private readonly NativeApplicationClient mProvider;
   }
 }

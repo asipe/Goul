@@ -12,7 +12,7 @@ using SupaCharge.Core.IOAbstractions;
 namespace Goul.Console.Core {
   public class Setup {
     public ICommandHandler SetupGetAuthUrl() {
-      return new GetAuthUrlHandler(GetProvider(), GetState());
+      return new GetAuthUrlHandler(GetState());
     }
 
     public ICommandHandler SetupAuthorizerHandler() {
@@ -20,11 +20,11 @@ namespace Goul.Console.Core {
     }
 
     public ICommandHandler SetupUploadHandler() {
-      return new UploaderHandler(GetProvider());
+      return new UploaderHandler();
     }
 
     public SetCredentialsHandler SetupCredentialsHandler() {
-      return new SetCredentialsHandler(new CredentialsRepository(new DotNetFile(), "credentials.txt"));
+      return new SetCredentialsHandler(GetCredentialsRepository());
     }
 
     public void setAuthState(IAuthorizationState auth) {
@@ -41,11 +41,12 @@ namespace Goul.Console.Core {
       return state;
     }
 
-    private NativeApplicationClient GetProvider() {
-      return Constants.GetAppClient();
+    public ICredentialsRepository GetCredentialsRepository() {
+      return new CredentialsRepository(new DotNetFile(), "credentials.txt");
     }
 
     private OAuth2Authenticator<NativeApplicationClient> mAuth;
     private IAuthorizationState mAuthState;
+    private readonly CredentialsRepository mCredRepository = new CredentialsRepository(new DotNetFile(), "credentials.txt");
   }
 }
