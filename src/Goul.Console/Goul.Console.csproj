@@ -35,27 +35,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DotNetOpenAuth, Version=4.0.0.11165, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
-      <HintPath>..\lib\googleApi\DotNetOpenAuth.dll</HintPath>
-    </Reference>
-    <Reference Include="Google.Apis">
-      <HintPath>..\lib\googleApi\Google.Apis.dll</HintPath>
-    </Reference>
-    <Reference Include="Google.Apis.Authentication.OAuth2, Version=1.3.0.15231, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\lib\googleApi\Google.Apis.Authentication.OAuth2.dll</HintPath>
-    </Reference>
-    <Reference Include="Google.Apis.Drive.v2">
-      <HintPath>..\lib\googleApi\Google.Apis.Drive.v2.dll</HintPath>
-    </Reference>
-    <Reference Include="Google.Apis.Oauth2.v2">
-      <HintPath>..\lib\googleApi\Google.Apis.Oauth2.v2.dll</HintPath>
-    </Reference>
-    <Reference Include="Goul.Core">
-      <HintPath>..\Goul.Core\bin\Debug\Goul.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json.Net35">
-      <HintPath>C:\mjsdata\GoogleAPISpike\apiSrc\driveV2Rev76\drive\Lib\Newtonsoft.Json.Net35.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="Microsoft.CSharp" />

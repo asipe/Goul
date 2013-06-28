@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Goul.UnitTests", "Goul.UnitTests\Goul.UnitTests.csproj", "{7CD88305-0C63-4C60-A89E-C47EB8942411}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Goul.Console", "Goul.Console\Goul.Console.csproj", "{16833F9D-3814-4906-8EFD-44C003BB8281}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1D9BDE30-80F6-4EE5-9195-63B1B4B1F23A} = {1D9BDE30-80F6-4EE5-9195-63B1B4B1F23A}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Goul.Core", "Goul.Core\Goul.Core.csproj", "{1D9BDE30-80F6-4EE5-9195-63B1B4B1F23A}"
 EndProject

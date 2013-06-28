@@ -5,10 +5,11 @@ using Goul.Console.Core.CommandHandlers;
 
 namespace Goul.Console.Core {
   public class App {
-    public App(ICommandHandler getAuthUrlHandler, ICommandHandler authHandler, ICommandHandler uploadHandler) {
+    public App(ICommandHandler getAuthUrlHandler, ICommandHandler authHandler, ICommandHandler uploadHandler, ICommandHandler setCredentialsHandler) {
       mGetAuthUrlHandler = getAuthUrlHandler;
       mAuthHandler = authHandler;
       mUploadHandler = uploadHandler;
+      mSetCredentialsHandler = setCredentialsHandler;
     }
 
     public void RunCommand(params string[] args) {
@@ -16,7 +17,7 @@ namespace Goul.Console.Core {
         throw new Exception("Unknown Command");
 
       switch (args[0]) {
-        case "getauth":
+        case "getauthurl":
           mGetAuthUrlHandler.Execute();
           break;
 
@@ -28,6 +29,10 @@ namespace Goul.Console.Core {
           mUploadHandler.Execute(new[] {args[1], args[2]});
           break;
 
+        case "setcredentials":
+          mSetCredentialsHandler.Execute(new[] {args[1], args[2]});
+          break;
+
         default:
           throw new Exception("Unknown Command");
       }
@@ -35,6 +40,7 @@ namespace Goul.Console.Core {
 
     private readonly ICommandHandler mAuthHandler;
     private readonly ICommandHandler mGetAuthUrlHandler;
+    private readonly ICommandHandler mSetCredentialsHandler;
     private readonly ICommandHandler mUploadHandler;
   }
 }

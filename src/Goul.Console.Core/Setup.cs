@@ -5,11 +5,14 @@ using DotNetOpenAuth.OAuth2;
 using Google.Apis.Authentication.OAuth2;
 using Google.Apis.Authentication.OAuth2.DotNetOpenAuth;
 using Goul.Console.Core.CommandHandlers;
+using Goul.Console.Core.Storage;
+using Goul.Core;
+using SupaCharge.Core.IOAbstractions;
 
 namespace Goul.Console.Core {
   public class Setup {
     public ICommandHandler SetupGetAuthUrl() {
-      return new GetAuthUrlHandler(GetProvider(), GetState());
+      return new GetAuthUrlHandler(GetState());
     }
 
     public ICommandHandler SetupAuthorizerHandler() {
@@ -17,7 +20,11 @@ namespace Goul.Console.Core {
     }
 
     public ICommandHandler SetupUploadHandler() {
-      return new UploaderHandler(GetProvider());
+      return new UploaderHandler();
+    }
+
+    public SetCredentialsHandler SetupCredentialsHandler() {
+      return new SetCredentialsHandler(GetCredentialsRepository());
     }
 
     public void setAuthState(IAuthorizationState auth) {
@@ -29,16 +36,17 @@ namespace Goul.Console.Core {
     }
 
     private IAuthorizationState GetState() {
-      var state = new AuthorizationState(new[] {"https://www.googleapis.com/auth/drive", "https://docs.google.com/feeds"});
+      var state = new AuthorizationState(Constants.GetScopes());
       state.Callback = new Uri(NativeApplicationClient.OutOfBandCallbackUrl);
       return state;
     }
 
-    private NativeApplicationClient GetProvider() {
-      return new NativeApplicationClient(GoogleAuthenticationServer.Description, "", "");
+    public ICredentialsRepository GetCredentialsRepository() {
+      return new CredentialsRepository(new DotNetFile(), "credentials.txt");
     }
 
     private OAuth2Authenticator<NativeApplicationClient> mAuth;
     private IAuthorizationState mAuthState;
+    private readonly CredentialsRepository mCredRepository = new CredentialsRepository(new DotNetFile(), "credentials.txt");
   }
 }
