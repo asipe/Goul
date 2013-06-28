@@ -33,7 +33,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DotNetOpenAuth, Version=4.0.0.11165, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL" />
     <Reference Include="Moq">
       <HintPath>..\packages\Moq.3.1.416.3\lib\Moq.dll</HintPath>
     </Reference>
@@ -44,11 +43,11 @@
     <Reference Include="Ploeh.AutoFixture">
       <HintPath>..\packages\AutoFixture.2.11.0\lib\Ploeh.AutoFixture.dll</HintPath>
     </Reference>
-    <Reference Include="SupaCharge.Core">
-      <HintPath>..\lib\supacharge\SupaCharge.Core.dll</HintPath>
+    <Reference Include="SupaCharge.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\lib\SupaCharge.Core.dll</HintPath>
     </Reference>
-    <Reference Include="SupaCharge.Testing">
-      <HintPath>..\lib\supacharge\SupaCharge.Testing.dll</HintPath>
+    <Reference Include="SupaCharge.Testing, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\lib\SupaCharge.Testing.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
