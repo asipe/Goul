@@ -10,13 +10,12 @@ using SupaCharge.Core.IOAbstractions;
 namespace Goul.Console.Core.CommandHandlers {
   public class AuthorizerHandler : ICommandHandler {
     public void Execute(params string[] args) {
-      var credRepo = new CredentialsRepository(new DotNetFile(), "credentials.txt");
-      var provider = Constants.GetAppClient(credRepo.Load());
+      var provider = Constants.GetAppClient(new Setup().GetCredentialsRepository().Load());
       GetAuthorization(provider, args[0]);
       System.Console.WriteLine("Access Authorized and Refresh Token Created");
     }
 
-    private void GetAuthorization(NativeApplicationClient appClient, string code) {
+    private static void GetAuthorization(NativeApplicationClient appClient, string code) {
       var tokenRepository = new RefreshTokenRepository(new DotNetFile(), "refreshToken.txt");
       var state = new AuthorizationState(Constants.GetScopes())
       {Callback = new Uri(NativeApplicationClient.OutOfBandCallbackUrl)};

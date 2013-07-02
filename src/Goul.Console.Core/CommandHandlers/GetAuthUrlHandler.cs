@@ -3,9 +3,7 @@
 using System;
 using DotNetOpenAuth.OAuth2;
 using Google.Apis.Authentication.OAuth2.DotNetOpenAuth;
-using Goul.Console.Core.Storage;
 using Goul.Core;
-using SupaCharge.Core.IOAbstractions;
 
 namespace Goul.Console.Core.CommandHandlers {
   public class GetAuthUrlHandler : ICommandHandler {
@@ -14,7 +12,7 @@ namespace Goul.Console.Core.CommandHandlers {
     }
 
     public void Execute(params string[] args) {
-      mProvider = Constants.GetAppClient(new CredentialsRepository(new DotNetFile(), "credentials.txt").Load());
+      mProvider = Constants.GetAppClient(new Setup().GetCredentialsRepository().Load());
       System.Console.WriteLine();
       System.Console.WriteLine(GetAuthorization(mProvider));
     }
@@ -23,6 +21,7 @@ namespace Goul.Console.Core.CommandHandlers {
       return appClient.RequestUserAuthorization(mState);
     }
 
+    
     private NativeApplicationClient mProvider;
     private readonly IAuthorizationState mState;
   }
