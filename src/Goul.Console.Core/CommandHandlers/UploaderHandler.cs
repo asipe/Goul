@@ -15,11 +15,13 @@ using File = Google.Apis.Drive.v2.Data.File;
 namespace Goul.Console.Core.CommandHandlers {
   public class UploaderHandler : ICommandHandler {
     public void Execute(params string[] args) {
-      var provider = Constants.GetAppClient(new Setup().GetCredentialsRepository().Load());
-      var auth = new OAuth2Authenticator<NativeApplicationClient>(provider, GetAuthorization);
-      var service = new DriveService(new BaseClientService.Initializer {
-        Authenticator = auth
-      });
+      /* var provider = Constants.GetAppClient(new Setup().GetCredentialsRepository().Load());
+       var auth = new OAuth2Authenticator<NativeApplicationClient>(provider, GetAuthorization);
+       var service = new DriveService(new BaseClientService.Initializer {
+         Authenticator = auth
+       });*/
+
+      var service = GetDriveService.GetService();
 
       var body = new File {Title = args[1], Description = "A test document"};
       var stream = new MemoryStream(System.IO.File.ReadAllBytes(args[0]));
@@ -42,7 +44,7 @@ namespace Goul.Console.Core.CommandHandlers {
       return contentType;
     }
 
-    private static IAuthorizationState GetAuthorization(NativeApplicationClient appClient) {
+ /*   private static IAuthorizationState GetAuthorization(NativeApplicationClient appClient) {
       var tokenRepository = new RefreshTokenRepository(new DotNetFile(), "refreshToken.txt");
       var code = tokenRepository.Load()[0];
 
@@ -51,7 +53,7 @@ namespace Goul.Console.Core.CommandHandlers {
       {Callback = new Uri(NativeApplicationClient.OutOfBandCallbackUrl), RefreshToken = code};
       appClient.RefreshToken(state);
       return state;
-    }
+    }*/
   }
 }
 
