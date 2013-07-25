@@ -66,6 +66,8 @@
     <Compile Include="App.cs" />
     <Compile Include="CommandHandlers\AuthorizerHandler.cs" />
     <Compile Include="CommandHandlers\SetCredentialsHandler.cs" />
+    <Compile Include="GDriveFileRetriever.cs" />
+    <Compile Include="IFileRetriever.cs" />
     <Compile Include="Storage\CredentialsRepository.cs" />
     <Compile Include="Storage\ICredentialsRepository.cs" />
     <Compile Include="Storage\IRefreshTokenRepository.cs" />
@@ -75,6 +77,7 @@
     <Compile Include="CommandHandlers\ICommandHandler.cs" />
     <Compile Include="Setup.cs" />
     <Compile Include="CommandHandlers\UploaderHandler.cs" />
+    <Compile Include="IsUpdateRequired.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

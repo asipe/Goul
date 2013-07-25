@@ -58,6 +58,7 @@
       <Link>AssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="Console.Core\AppTest.cs" />
+    <Compile Include="Console.Core\IsUpdateRequiredTest.cs" />
     <Compile Include="Console.Core\Storage\RefreshTokenRepositoryTest.cs" />
     <Compile Include="Console.Core\Storage\CredentialsRepositoryTest.cs" />
   </ItemGroup>

@@ -54,3 +54,8 @@ namespace Goul.Console.Core.CommandHandlers {
     }
   }
 }
+
+
+//Update
+//Upload branches of folders
+//Update based on these branches
