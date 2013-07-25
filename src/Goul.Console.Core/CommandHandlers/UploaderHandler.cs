@@ -37,6 +37,10 @@ namespace Goul.Console.Core.CommandHandlers {
 
       return contentType;
     }
+
+    private void ListTestFileIDs() {
+
+    }
   }
 }
 

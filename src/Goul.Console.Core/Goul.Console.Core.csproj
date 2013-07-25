@@ -69,6 +69,7 @@
     <Compile Include="CommandHandlers\SetCredentialsHandler.cs" />
     <Compile Include="GDriveFileRetriever.cs" />
     <Compile Include="GDriveIdRetrieval.cs" />
+    <Compile Include="GDriveTestingHelper.cs" />
     <Compile Include="IFileRetriever.cs" />
     <Compile Include="Storage\CredentialsRepository.cs" />
     <Compile Include="Storage\ICredentialsRepository.cs" />
