@@ -1,5 +1,4 @@
 ﻿using Goul.Console.Core;
-using Moq;
 using NUnit.Framework;
 using SupaCharge.Testing;
 
@@ -7,17 +6,22 @@ namespace Goul.UnitTests {
   [TestFixture]
   public class UpdaterTest:BaseTestCase {
     [Test]
-    public void UpdateASingleFileOnRoot() {
-      //mIsUpdateRequired.Setup(u => u.CheckDirectoryForUpdate(new[] { "file1" }, "file1")).Returns(true);
+    public void TestUpdateASingleFileOnRoot() {
+      var fileId = mIdRetriever.GetFileId("testFile 1 DO NOT DELETE");
+      mUpdater.UpdateFile(fileId, "testFile.txt" ,"updatedFile DO NOT DELETE");
+      Assert.That(mHelper.GetTitleOfFileOnRoot("updatedFile DO NOT DELETE"), Is.Not.EqualTo("testFile 1 DO NOT DELETE"));
     }
 
     [SetUp]
     public void DoSetup() {
+      mHelper = new GDriveTestingHelper();
+      mHelper.SetupTestingFilesOnRoot();
       mUpdater = new Updater();
-      mIsUpdateRequired = Mok<IsUpdateRequired>();
+      mIdRetriever = new GDriveIdRetrieval();
     }
 
     private Updater mUpdater;
-    private Mock<IsUpdateRequired> mIsUpdateRequired;
+    private GDriveTestingHelper mHelper;
+    private GDriveIdRetrieval mIdRetriever;
   }
 }

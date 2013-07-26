@@ -10,7 +10,7 @@ namespace Goul.Console.Core {
       mService = GetDriveService.GetService(); 
     }
 
-    public void SetUpGDriveIdRetrievalTestEnv() {
+    public void SetupTestingFilesOnRoot() {
       var files = CreateTestFiles();
       for (var x = 0; x < files.Length; x++) {
         var request = mService.Files.Insert(files[x]);
@@ -32,12 +32,31 @@ namespace Goul.Console.Core {
       return request.Fetch().Items.Select(s => s.Id).ToArray();
     }
 
+    public string GetTitleOfFileOnRoot(string title) {
+      var request = mService.Files.List();
+      request.Q = String.Format("title = '{0}'", title);
+      System.Console.WriteLine("request.Fetch().Items.Count: {0}", request.Fetch().Items.Count);
+      
+      return request.Fetch().Items.Select(s => s.Title).ToArray()[0];
+    }
+
     public void DeleteTestFiles() {
       var ids = GetIdsOfTestFiles();
       Array.ForEach(ids, id => mService.Files.Delete(id).Fetch());
     }
 
+    public string GetLastModifiedTime(string fileTitleToGet) {
+      var request = mService.Files.List();
+      request.Q = String.Format("title = '{0}'", fileTitleToGet);
+      var result = request.Fetch().Items;
+      System.Console.WriteLine("result.Count: {0}", result.Count);
+      
+      return result[0].ModifiedDate;
+    }
+
 
     private readonly DriveService mService;
+
+   
   }
 }

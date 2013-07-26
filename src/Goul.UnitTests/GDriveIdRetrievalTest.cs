@@ -8,19 +8,13 @@ namespace Goul.UnitTests {
     [Test]
     public void RetrieveTheIDOfASingleFileOnRoot() {
       var ids = mTestHelper.GetIdsOfTestFiles();
-      Assert.That(mIdRetriever.GetFileID("DO NOT DELETE"), Is.EqualTo(ids[0]));
+      Assert.That(mIdRetriever.GetFileId("testFile 1 DO NOT DELETE"), Is.EqualTo(ids[0]));
     }
-
-    //[Test]
-    //public void RetrieveTheIDsOfMultipleFilesOnRoot() {
-    //  var ids = mTestHelper.GetIdsOfTestFiles();
-    //  Assert.That(mIdRetriever.GetMultipleFileIDs("DO NOT DELETE"), Is.EqualTo(ids[0]));
-    //}
 
     [SetUp]
     public void DoSetup() {
       mTestHelper = new GDriveTestingHelper();
-      mTestHelper.SetUpGDriveIdRetrievalTestEnv();
+      mTestHelper.SetupTestingFilesOnRoot();
       mIdRetriever = new GDriveIdRetrieval();
     }
 
