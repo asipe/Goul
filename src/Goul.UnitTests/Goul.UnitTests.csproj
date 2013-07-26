@@ -62,6 +62,7 @@
     <Compile Include="Console.Core\Storage\RefreshTokenRepositoryTest.cs" />
     <Compile Include="Console.Core\Storage\CredentialsRepositoryTest.cs" />
     <Compile Include="GDriveIdRetrievalTest.cs" />
+    <Compile Include="UpdaterTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Core\" />
