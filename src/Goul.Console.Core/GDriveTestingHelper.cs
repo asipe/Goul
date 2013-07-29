@@ -3,6 +3,7 @@ using System.Linq;
 using Google.Apis.Drive.v2;
 using Google.Apis.Drive.v2.Data;
 using Goul.Console.Core.CommandHandlers;
+using Goul.Core;
 
 namespace Goul.Console.Core {
   public class GDriveTestingHelper {
@@ -29,14 +30,21 @@ namespace Goul.Console.Core {
     public string[] GetIdsOfTestFiles() {
       var request = mService.Files.List();
       request.Q = "title contains 'DO NOT DELETE'";
-      return request.Fetch().Items.Select(s => s.Id).ToArray();
+      var result = request.Fetch().Items.Select(s => s.Id).ToArray();
+      return result;
+    }
+
+    public string GetIdOfSpecificTestFile(string testFileToGet) {
+      var request = mService.Files.List();
+      request.Q = String.Format("title = '{0}'", testFileToGet);
+
+      var result = request.Fetch().Items[0].Id;
+      return result;
     }
 
     public string GetTitleOfFileOnRoot(string title) {
       var request = mService.Files.List();
       request.Q = String.Format("title = '{0}'", title);
-      System.Console.WriteLine("request.Fetch().Items.Count: {0}", request.Fetch().Items.Count);
-      
       return request.Fetch().Items.Select(s => s.Title).ToArray()[0];
     }
 
@@ -49,8 +57,6 @@ namespace Goul.Console.Core {
       var request = mService.Files.List();
       request.Q = String.Format("title = '{0}'", fileTitleToGet);
       var result = request.Fetch().Items;
-      System.Console.WriteLine("result.Count: {0}", result.Count);
-      
       return result[0].ModifiedDate;
     }
 

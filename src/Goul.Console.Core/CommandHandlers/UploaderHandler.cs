@@ -1,6 +1,7 @@
 // Copyright (c) Andy Sipe and Morgan Sipe. All rights reserved. Licensed under the MIT License (MIT). See License.txt in the project root for license information.
 
 using System.IO;
+using Goul.Core;
 using File = Google.Apis.Drive.v2.Data.File;
 
 namespace Goul.Console.Core.CommandHandlers {

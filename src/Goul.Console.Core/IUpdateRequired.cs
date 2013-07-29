@@ -1,5 +1,5 @@
 ﻿namespace Goul.Console.Core {
   public interface IUpdateRequired {
-    bool CheckDirectoryForUpdate(string[] idsToCheckAgainst, string idToCheckFor);
+    bool Check(string[] idsToCheckAgainst, string idToCheckFor);
   }
 }

@@ -37,8 +37,14 @@
     <Reference Include="DotNetOpenAuth">
       <HintPath>..\lib\DotNetOpenAuth.dll</HintPath>
     </Reference>
+    <Reference Include="Google.Apis">
+      <HintPath>..\lib\Google.Apis.dll</HintPath>
+    </Reference>
     <Reference Include="Google.Apis.Authentication.OAuth2">
       <HintPath>..\lib\Google.Apis.Authentication.OAuth2.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Drive.v2">
+      <HintPath>..\lib\Google.Apis.Drive.v2.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json.Net35">
       <HintPath>..\lib\Newtonsoft.Json.Net35.dll</HintPath>
