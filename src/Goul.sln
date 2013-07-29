@@ -20,6 +20,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{BFFE6E
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Goul.Console.Core", "Goul.Console.Core\Goul.Console.Core.csproj", "{DEC58AF0-3D98-445A-8D54-31AEE7879941}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_legacy", "_legacy", "{E252907C-19B5-4DC1-BE0E-106811A99BE1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -73,5 +75,11 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{16833F9D-3814-4906-8EFD-44C003BB8281} = {E252907C-19B5-4DC1-BE0E-106811A99BE1}
+		{7CD88305-0C63-4C60-A89E-C47EB8942411} = {E252907C-19B5-4DC1-BE0E-106811A99BE1}
+		{DEC58AF0-3D98-445A-8D54-31AEE7879941} = {E252907C-19B5-4DC1-BE0E-106811A99BE1}
+		{1D9BDE30-80F6-4EE5-9195-63B1B4B1F23A} = {E252907C-19B5-4DC1-BE0E-106811A99BE1}
 	EndGlobalSection
 EndGlobal
