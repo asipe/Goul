@@ -5,6 +5,8 @@ using System.Text;
 
 namespace DocumentUploader.Console {
   class Program {
-    static void Main(string[] args) {}
+    static void Main(string[] args) {
+      
+    }
   }
 }
