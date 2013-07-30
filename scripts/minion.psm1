@@ -53,21 +53,21 @@ function runUnitTestsVS() {
 
 function runUnitTests() {
   Write-Host -ForegroundColor Cyan '-------Debug Unit Tests-----------'
-  .\thirdparty\packages\common\nunit.runners\tools\nunit-console.exe .\debug\net-4.5\DocumentUploader.UnitTests\DocumentUploader.UnitTests.dll /nologo | Write-Host
+  .\thirdparty\packages\common\nunit.runners\tools\nunit-console.exe .\debug\net-4.0\DocumentUploader.UnitTests\DocumentUploader.UnitTests.dll /nologo | Write-Host
   CheckLastExitCode
   Write-Host -ForegroundColor Cyan '----------------------------------'
 }
 
 function runIntegrationTestsVS() {
   Write-Host -ForegroundColor Cyan '------VS Integration Tests--------'
-  .\thirdparty\packages\common\nunit.runners\tools\nunit-console.exe .\src\Meldz.IntegrationTests\bin\debug\Meldz.IntegrationTests.dll /nologo | Write-Host
+  .\thirdparty\packages\common\nunit.runners\tools\nunit-console.exe .\src\DocumentUploader.IntegrationTests\bin\debug\DocumentUploader.IntegrationTests.dll /nologo | Write-Host
   CheckLastExitCode
   Write-Host -ForegroundColor Cyan '----------------------------------'
 }
 
 function runIntegrationTests() {
   Write-Host -ForegroundColor Cyan '-----Debug Integration Tests------'
-  .\thirdparty\packages\common\nunit.runners\tools\nunit-console.exe .\debug\net-4.5\Meldz.IntegrationTests\Meldz.IntegrationTests.dll /nologo | Write-Host
+  .\thirdparty\packages\common\nunit.runners\tools\nunit-console.exe .\debug\net-4.5\DocumentUploader.IntegrationTests\DocumentUploader.IntegrationTests.dll /nologo | Write-Host
   CheckLastExitCode
   Write-Host -ForegroundColor Cyan '----------------------------------'
 }
@@ -113,8 +113,8 @@ function minion {
           cleanAll 
         }
         'clean' { clean }
-        'run.unit.tests.vs' { runUnitTestsVS }
-        'run.unit.tests' { runUnitTests }
+        'run.unit.tests' { runUnitTestsVS }
+        'run.unit.tests.dbg' { runUnitTests }
         'run.integration.tests.vs' { runIntegrationTestsVS }
         'run.integration.tests' { runIntegrationTests }
         'run.all.tests' { runAllTests }
