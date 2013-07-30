@@ -1,5 +1,4 @@
 ﻿using Autofac;
-using DocumentUploader.Core;
 using DocumentUploader.Core.Factory;
 using Moq;
 using NUnit.Framework;
@@ -7,7 +6,7 @@ using SupaCharge.Testing;
 
 namespace DocumentUploader.UnitTests {
   [TestFixture]
-  public class FactoryTest:BaseTestCase {
+  public class FactoryTest : BaseTestCase {
     [Test]
     public void TestBuild() {
       var module = Mok<IModuleConfiguration>();
@@ -16,6 +15,6 @@ namespace DocumentUploader.UnitTests {
         .Callback<ContainerBuilder>(b => b.Register(cc => 33));
       var factory = new Factory(module.Object);
       Assert.That(factory.Build<int>(), Is.EqualTo(33));
-    } 
+    }
   }
 }

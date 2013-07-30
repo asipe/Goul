@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Autofac;
+﻿using Autofac;
 
-namespace DocumentUploader.Core {
+namespace DocumentUploader.Core.Factory {
   public interface IModuleConfiguration {
-    void Init(ContainerBuilder builder);
+    void Init(ContainerBuilder builder); 
   }
 }
