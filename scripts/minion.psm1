@@ -67,7 +67,7 @@ function runIntegrationTestsVS() {
 
 function runIntegrationTests() {
   Write-Host -ForegroundColor Cyan '-----Debug Integration Tests------'
-  .\thirdparty\packages\common\nunit.runners\tools\nunit-console.exe .\debug\net-4.5\DocumentUploader.IntegrationTests\DocumentUploader.IntegrationTests.dll /nologo | Write-Host
+  .\thirdparty\packages\common\nunit.runners\tools\nunit-console.exe .\debug\net-4.0\DocumentUploader.IntegrationTests\DocumentUploader.IntegrationTests.dll /nologo | Write-Host
   CheckLastExitCode
   Write-Host -ForegroundColor Cyan '----------------------------------'
 }
@@ -115,8 +115,8 @@ function minion {
         'clean' { clean }
         'run.unit.tests' { runUnitTestsVS }
         'run.unit.tests.dbg' { runUnitTests }
-        'run.integration.tests.vs' { runIntegrationTestsVS }
-        'run.integration.tests' { runIntegrationTests }
+        'run.integration.tests' { runIntegrationTestsVS }
+        'run.integration.tests.dbg' { runIntegrationTests }
         'run.all.tests' { runAllTests }
         'build' { build }
         'cycle' { cycle }
