@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 
 namespace DocumentUploader.Core {
-  public class App {
+  public class App:IApp {
     public App(ICommand command) {
       mCommand = command;
     }

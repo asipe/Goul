@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autofac">
+      <HintPath>..\..\thirdparty\packages\net-4.5\Autofac\lib\net40\Autofac.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -40,13 +43,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App.cs" />
-    <Compile Include="ConsoleObserver.cs" />
-    <Compile Include="HelpCommand.cs" />
-    <Compile Include="ICommand.cs" />
-    <Compile Include="IMessageObserver.cs" />
+    <Compile Include="App\App.cs" />
+    <Compile Include="App\IApp.cs" />
+    <Compile Include="Factory\Factory.cs" />
+    <Compile Include="Factory\IFactory.cs" />
+    <Compile Include="Factory\IModuleConfiguration.cs" />
+    <Compile Include="Factory\Module\AppModule.cs" />
+    <Compile Include="Factory\Module\DefaultModuleConfiguration.cs" />
+    <Compile Include="Factory\Module\HelpCommandModule.cs" />
+    <Compile Include="Observer\ConsoleObserver.cs" />
+    <Compile Include="Command\HelpCommand.cs" />
+    <Compile Include="Command\ICommand.cs" />
+    <Compile Include="Observer\IMessageObserver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

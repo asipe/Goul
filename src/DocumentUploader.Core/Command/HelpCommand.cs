@@ -1,5 +1,5 @@
-﻿namespace DocumentUploader.Core {
-  public class HelpCommand:ICommand {
+﻿namespace DocumentUploader.Core.Command {
+  public class HelpCommand : ICommand {
     public HelpCommand(IMessageObserver observer) {
       mObserver = observer;
     }

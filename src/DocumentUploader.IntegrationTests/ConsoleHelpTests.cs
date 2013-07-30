@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using DocumentUploader.Core.Command;
+using NUnit.Framework;
 using DocumentUploader.Core;
 
 namespace DocumentUploader.IntegrationTests {
