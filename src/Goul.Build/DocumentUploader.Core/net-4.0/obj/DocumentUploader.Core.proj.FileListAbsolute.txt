@@ -1,1 +1,0 @@
-D:\mjsdata\Goul\src\Goul.Build\DocumentUploader.Core\net-4.0\obj\ResolveAssemblyReference.cache

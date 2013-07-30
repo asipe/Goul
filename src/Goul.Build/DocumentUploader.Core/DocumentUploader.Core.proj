@@ -15,6 +15,10 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
   </ItemGroup>
+  
+  <ItemGroup Condition="'$(FrameworkVersion)' == 'v4.0'">
+    <Reference Include="$(PackagesDir)\autofac\lib\net40\autofac.dll" />
+  </ItemGroup> 
 
   <ItemGroup>
     <Compile Include="$(SrcDir)\DocumentUploader.Core\**\*.cs"/>

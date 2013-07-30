@@ -23,6 +23,7 @@
     <Reference Include="$(PackagesDir)\nunit\lib\nunit.framework.dll" />
     <Reference Include="$(PackagesDir)\autofixture\lib\net40\ploeh.autofixture.dll" />
     <Reference Include="$(PackagesDir)\comparenetobjects\lib\kellermansoftware.compare-net-objects.dll" />
+    <Reference Include="$(PackagesDir)\autofac\lib\net40\autofac.dll" />
   </ItemGroup>
 
   <ItemGroup>
