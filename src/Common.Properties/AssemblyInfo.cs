@@ -4,8 +4,8 @@ using System.Runtime.InteropServices;
 
 [assembly: AssemblyDescription("Beta")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Z Bar Technologies, LLC")]
-[assembly: AssemblyCopyright("Copyright © Andy Sipe 2013")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyCopyright("Copyright © Morgan Sipe and Andy Sipe 2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

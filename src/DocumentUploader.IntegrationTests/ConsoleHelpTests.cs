@@ -6,12 +6,10 @@ namespace DocumentUploader.IntegrationTests {
   public class ConsoleHelpTests {
     [Test]
     public void TestSetupHelp() {
-      var app = new App();
       var consoleObserver = new ConsoleObserver();
-
-      app.Execute("help");
-      Assert.That(consoleObserver.GetMostRecentMessage(), Is.EqualTo("<help message>"));
-     
+      var app = new App(new HelpCommand(consoleObserver));
+      app.Execute(new[] {"help"});
+      Assert.That(consoleObserver.GetMessageCache()[0], Is.EqualTo("help"));
     }
   }
 }
