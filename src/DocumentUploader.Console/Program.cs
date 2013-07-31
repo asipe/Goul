@@ -1,12 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using DocumentUploader.Core;
+using DocumentUploader.Core.Factory;
+using DocumentUploader.Core.Factory.Module;
 
 namespace DocumentUploader.Console {
   class Program {
-    static void Main(string[] args) {
-      
+    static int Main(string[] args) {
+      try {
+        var factory = new Factory(new DefaultModuleConfiguration());
+        var app = factory.Build<IApp>();
+        app.Execute(args);
+        return 0;
+      } catch (Exception e) {
+          System.Console.WriteLine(e.Message);
+          System.Console.WriteLine(e.StackTrace);
+          return 1;
+      }
     }
   }
 }
