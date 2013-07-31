@@ -5,6 +5,7 @@ namespace DocumentUploader.Core.Factory.Module {
     public void Init(ContainerBuilder builder) {
       builder.RegisterModule(new AppModule());
       builder.RegisterModule(new HelpCommandModule());
+      builder.RegisterModule(new UtilityModule());
     }
   }
 }

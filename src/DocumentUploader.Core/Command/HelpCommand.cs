@@ -7,7 +7,8 @@ namespace DocumentUploader.Core.Command {
     }
 
     public void Execute(string[] messages) {
-      mObserver.AddMessage(messages[0]);
+      var output = new[] { "Goul Document Uploader Version 0.1", "Commands:", "setcredentials xClient_IDx xClient_Secretx", "..."};
+      mObserver.AddMessages(output);
     }
 
     private readonly IMessageObserver mObserver;

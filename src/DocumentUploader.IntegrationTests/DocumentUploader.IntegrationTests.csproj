@@ -35,16 +35,16 @@
       <HintPath>..\..\thirdparty\packages\net-4.0\Autofac\lib\net40\Autofac.dll</HintPath>
     </Reference>
     <Reference Include="Moq">
-      <HintPath>..\..\thirdparty\packages\net-4.5\Moq\lib\NET40\Moq.dll</HintPath>
+      <HintPath>..\..\thirdparty\packages\net-4.0\Moq\lib\NET40\Moq.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
-      <HintPath>..\..\thirdparty\packages\net-4.5\NUnit\lib\nunit.framework.dll</HintPath>
+      <HintPath>..\..\thirdparty\packages\net-4.0\NUnit\lib\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="Ploeh.AutoFixture">
       <HintPath>..\..\thirdparty\packages\net-4.0\AutoFixture\lib\net40\Ploeh.AutoFixture.dll</HintPath>
     </Reference>
     <Reference Include="supacharge.testing">
-      <HintPath>..\..\thirdparty\packages\net-4.5\SupaCharge.Testing\lib\net40\supacharge.testing.dll</HintPath>
+      <HintPath>..\..\thirdparty\packages\net-4.0\SupaCharge.Testing\lib\net40\supacharge.testing.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

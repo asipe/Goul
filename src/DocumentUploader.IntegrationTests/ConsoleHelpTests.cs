@@ -15,7 +15,9 @@ namespace DocumentUploader.IntegrationTests {
       var messageObserver = (ConsoleObserver)factory.Build<IMessageObserver>();
       var app = factory.Build<IApp>();
       app.Execute(new[] {"help"});
-      Assert.That(messageObserver.GetCommandCache(), Is.EqualTo(BA("help")));
+      Assert.That(messageObserver.GetMessageCache()[0], Is.EqualTo(("Goul Document Uploader Version 0.1")));
+      Assert.That(messageObserver.GetMessageCache()[1], Is.EqualTo(("Commands:")));
+      Assert.That(messageObserver.GetMessageCache()[2], Is.EqualTo(("setcredentials xClient_IDx xClient_Secretx")));
       //
       //Goul Document Uploader Version 0.0.0.1
       //

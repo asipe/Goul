@@ -32,7 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Autofac">
-      <HintPath>..\..\thirdparty\packages\net-4.5\Autofac\lib\net40\Autofac.dll</HintPath>
+      <HintPath>..\..\thirdparty\packages\net-4.0\Autofac\lib\net40\Autofac.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -53,6 +53,8 @@
     <Compile Include="Factory\Module\HelpCommandModule.cs" />
     <Compile Include="Command\HelpCommand.cs" />
     <Compile Include="Command\ICommand.cs" />
+    <Compile Include="ConsoleWriter.cs" />
+    <Compile Include="Factory\Module\UtilityModule.cs" />
     <Compile Include="Observer\IMessageObserver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -88,6 +88,12 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DocumentUploader.Core\DocumentUploader.Core.csproj">
+      <Project>{360C768E-28DC-4B16-92BC-424B9A90FF43}</Project>
+      <Name>DocumentUploader.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

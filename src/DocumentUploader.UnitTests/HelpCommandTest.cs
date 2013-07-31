@@ -10,7 +10,7 @@ namespace DocumentUploader.UnitTests {
   public class HelpCommandTest:BaseTestCase {
      [Test]
      public void TestExecuteAddsOneCorrectMessageToTheObserver() {
-       mMessageObserver.Setup(o => o.AddMessage("message"));
+       mMessageObserver.Setup(o => o.AddMessages(new[] { "Goul Document Uploader Version 0.1", "Commands:", "setcredentials xClient_IDx xClient_Secretx", "..." }));
        mHCommand.Execute(new[] { "message" });
      }
 
