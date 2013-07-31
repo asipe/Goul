@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" InitialTargets="EchoInfo;ValidateFrameworkVersion" DefaultTargets="Clean;Build;CleanTemp" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+
+  <PropertyGroup>
+    <ProjectGuid>{08414A25-042C-40AC-BF8A-01512BDFF27B}</ProjectGuid>
+    <RootNamespace>DocumentUploader.core</RootNamespace>
+    <AssemblyName>DocumentUploader.core</AssemblyName>
+  </PropertyGroup>
+
+  <Import Project="..\Goul.props" />
+  <Import Project="..\Goul.targets" />
+
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+  </ItemGroup>
+  
+  <ItemGroup Condition="'$(FrameworkVersion)' == 'v4.0'">
+    <Reference Include="$(PackagesDir)\autofac\lib\net40\autofac.dll" />
+  </ItemGroup> 
+
+  <ItemGroup>
+    <Compile Include="$(SrcDir)\DocumentUploader.Core\**\*.cs"/>
+    <Compile Include="$(SrcDir)\Common.Properties\*.cs"/>
+  </ItemGroup>
+
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

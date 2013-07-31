@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" InitialTargets="EchoInfo;ValidateFrameworkVersion" DefaultTargets="Clean;Build;CleanTemp" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+
+  <PropertyGroup>
+    <ProjectGuid>{C993591F-6A8E-47EE-9E21-596F6EEA54D0}</ProjectGuid>
+    <RootNamespace>DocumentUploader.UnitTests</RootNamespace>
+    <AssemblyName>DocumentUploader.UnitTests</AssemblyName>
+  </PropertyGroup>
+
+  <Import Project="..\Goul.props" />
+  <Import Project="..\Goul.targets" />
+
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="$(DebugDir)\Meldz.Core\meldz.core.dll" />
+  </ItemGroup>
+
+ <ItemGroup Condition="'$(FrameworkVersion)' == 'v4.0'">
+    <Reference Include="$(PackagesDir)\supacharge.core\lib\net45\supacharge.core.dll" />
+    <Reference Include="$(PackagesDir)\supacharge.testing\lib\net45\supacharge.testing.dll" />
+    <Reference Include="$(PackagesDir)\moq\lib\net40\moq.dll" />
+    <Reference Include="$(PackagesDir)\nunit\lib\nunit.framework.dll" />
+    <Reference Include="$(PackagesDir)\autofixture\lib\net40\ploeh.autofixture.dll" />
+    <Reference Include="$(PackagesDir)\comparenetobjects\lib\kellermansoftware.compare-net-objects.dll" />
+    <Reference Include="$(PackagesDir)\autofac\lib\net40\autofac.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="$(SrcDir)\ DocumentUploader.UnitTests\**\*.cs"/>
+    <Compile Include="$(SrcDir)\Common.Properties\*.cs"/>
+  </ItemGroup>
+
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

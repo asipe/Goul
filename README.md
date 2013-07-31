@@ -8,7 +8,7 @@ Goul.Console is a sample app which loads a file up to a Google Drive Account.
     
 Sets the given client id and the client secret to a local text file.
 
-    Goul.Console.exe getauthurl
+    Goul.Console.exe getauthorizationurl
 
 Returns a url to a Google process which you can follow to retrieve an authorization code.
 
