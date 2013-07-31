@@ -27,7 +27,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="$(SrcDir)\ DocumentUploader.UnitTests\**\*.cs"/>
+    <Compile Include="$(SrcDir)\DocumentUploader.UnitTests\**\*.cs"/>
     <Compile Include="$(SrcDir)\Common.Properties\*.cs"/>
   </ItemGroup>
 
