@@ -10,10 +10,8 @@ namespace DocumentUploader.UnitTests {
   public class HelpCommandTest:BaseTestCase {
      [Test]
      public void TestExecuteAddsOneCorrectMessageToTheObserver() {
-       var cmdMessage = "";
-       mMessageObserver.Setup(o => o.AddMessage("message")).Callback(() => cmdMessage = "message sent");
-       mHCommand.Execute(new[] {"message"});
-       Assert.That(cmdMessage, Is.EqualTo("message sent"));
+       mMessageObserver.Setup(o => o.AddMessage("message"));
+       mHCommand.Execute(new[] { "message" });
      }
 
      [SetUp]

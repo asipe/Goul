@@ -58,6 +58,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppTest.cs" />
     <Compile Include="FactoryTest.cs" />
     <Compile Include="HelpCommandTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

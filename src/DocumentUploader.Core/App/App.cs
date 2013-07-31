@@ -5,7 +5,9 @@
     }
 
     public void Execute(string[] commands) {
-      mCommand.Execute(commands);
+      if (commands[0] == "help") {
+        mCommand.Execute(commands);
+      }
     }
 
     private readonly ICommand mCommand;
