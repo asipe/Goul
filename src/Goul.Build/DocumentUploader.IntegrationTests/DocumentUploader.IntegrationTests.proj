@@ -13,7 +13,7 @@
 
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="$(DebugDir)\DocumentUploader.IntegrationTests\DocumentUploader.IntegrationTests.dll" />
+    <Reference Include="$(DebugDir)\DocumentUploader.Core\DocumentUploader.Core.dll" />
   </ItemGroup>
 
  <ItemGroup Condition="'$(FrameworkVersion)' == 'v4.0'">
