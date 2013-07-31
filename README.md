@@ -1,27 +1,20 @@
 ***This is all a work in progress***
 
-##How to run Goul.Console
-
-Goul.Console is a sample app which loads a file up to a Google Drive Account.
-
-    Goul.Console.exe setcredentials xMyClientIdx xMyClientSecretx
-    
-Sets the given client id and the client secret to a local text file.
-
-    Goul.Console.exe getauthorizationurl
-
-Returns a url to a Google process which you can follow to retrieve an authorization code.
-
-    Goul.Console.exe authorize xCodeGivenInThePreviousSetpx
-
-Pass in the code from the previous step and this will grant temporary access based on that code and creates a refresh token which grants long-term access.
-
-    Goul.Console.exe upload xPathOfTheFileToUploadx xNameOfTheFileForGoogleDrivex
-    
-Uploads the file at the given path and gives it the specefied name on Google.
-
-
-**Goul.Console stores the client id, client secret and refresh token in an unencrypted text file.**
+##How to run DocumentUploader.Console
+  
+  Run: scripts\init_minion.ps1
+  
+  In the command line: 
+  
+  - minion bootstrap
+  - minion clean, build
+  
+  The executable to run DocumentUploader.Console is located in bin\debug\DocumentUploader.Console.exe
+  
+  When running, pass it an argument => "help" (That's literally all it does right now)
+  
+  
+  
 
 
 
