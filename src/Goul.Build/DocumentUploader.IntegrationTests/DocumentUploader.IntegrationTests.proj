@@ -4,8 +4,8 @@
 
   <PropertyGroup>
     <ProjectGuid>{C993591F-6A8E-47EE-9E21-596F6EEA54D0}</ProjectGuid>
-    <RootNamespace>DocumentUploader.UnitTests</RootNamespace>
-    <AssemblyName>DocumentUploader.UnitTests</AssemblyName>
+    <RootNamespace>DocumentUploader.IntegrationTests</RootNamespace>
+    <AssemblyName>DocumentUploader.IntegrationTests</AssemblyName>
   </PropertyGroup>
 
   <Import Project="..\Goul.props" />
@@ -13,7 +13,7 @@
 
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="$(DebugDir)\DocumentUploader.Core\DocumentUploader.core.dll" />
+    <Reference Include="$(DebugDir)\DocumentUploader.IntegrationTests\DocumentUploader.IntegrationTests.dll" />
   </ItemGroup>
 
  <ItemGroup Condition="'$(FrameworkVersion)' == 'v4.0'">
@@ -27,7 +27,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="$(SrcDir)\ DocumentUploader.UnitTests\**\*.cs"/>
     <Compile Include="$(SrcDir)\Common.Properties\*.cs"/>
   </ItemGroup>
 
