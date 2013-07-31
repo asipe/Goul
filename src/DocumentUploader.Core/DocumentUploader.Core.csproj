@@ -51,7 +51,6 @@
     <Compile Include="Factory\Module\AppModule.cs" />
     <Compile Include="Factory\Module\DefaultModuleConfiguration.cs" />
     <Compile Include="Factory\Module\HelpCommandModule.cs" />
-    <Compile Include="Observer\ConsoleObserver.cs" />
     <Compile Include="Command\HelpCommand.cs" />
     <Compile Include="Command\ICommand.cs" />
     <Compile Include="Observer\IMessageObserver.cs" />

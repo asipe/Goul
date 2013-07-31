@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace DocumentUploader.Core {
+﻿namespace DocumentUploader.Core.App {
   public class App:IApp {
     public App(ICommand command) {
       mCommand = command;
@@ -13,6 +8,6 @@ namespace DocumentUploader.Core {
       mCommand.Execute(commands);
     }
 
-    private ICommand mCommand;
+    private readonly ICommand mCommand;
   }
 }

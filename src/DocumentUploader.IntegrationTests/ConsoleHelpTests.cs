@@ -1,6 +1,7 @@
-﻿using DocumentUploader.Core.Command;
-using DocumentUploader.Core.Factory;
+﻿using DocumentUploader.Core.Factory;
 using DocumentUploader.Core.Factory.Module;
+using DocumentUploader.Core.Observer;
+using DocumentUploader.IntegrationTests.Infrastructure;
 using NUnit.Framework;
 using DocumentUploader.Core;
 using SupaCharge.Testing;
@@ -9,18 +10,18 @@ namespace DocumentUploader.IntegrationTests {
   [TestFixture]
   public class ConsoleHelpTests:BaseTestCase {
     [Test]
-    public void TestSetupHelp() {
+    public void TestHelpCommandIsSentCorrectly() {
       var factory = new Factory(new DefaultModuleConfiguration(), new ITModuleConfiguration());
       var messageObserver = (ConsoleObserver)factory.Build<IMessageObserver>();
       var app = factory.Build<IApp>();
-      app.Execute(new[] {""});
-      Assert.That(messageObserver.GetMessageCache()[0], Is.EqualTo(BA("help")));
+      app.Execute(new[] {"help"});
+      Assert.That(messageObserver.GetCommandCache(), Is.EqualTo(BA("help")));
+      //
+      //Goul Document Uploader Version 0.0.0.1
+      //
+      //  help    #this message
+      //  auth    #blah
+      //
     }
-    //public void TestSetupHelp() {
-    //  var consoleObserver = new ConsoleObserver();
-    //  var app = new App(new HelpCommand(consoleObserver));
-    //  app.Execute(new[] {"help"});
-    //  Assert.That(consoleObserver.GetMessageCache()[0], Is.EqualTo("help"));
-    //}
   }
 }

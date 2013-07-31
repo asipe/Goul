@@ -1,5 +1,7 @@
 ﻿using Autofac;
 using DocumentUploader.Core;
+using DocumentUploader.Core.Observer;
+using DocumentUploader.IntegrationTests.Infrastructure;
 
 namespace DocumentUploader.IntegrationTests {
   public class ITModule : Module {

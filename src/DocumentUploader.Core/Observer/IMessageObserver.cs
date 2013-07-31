@@ -1,5 +1,5 @@
-﻿namespace DocumentUploader.Core {
+﻿namespace DocumentUploader.Core.Observer {
   public interface IMessageObserver {
-    void Notify(string message);
+    void AddMessage(string message);
   }
 }
