@@ -13,7 +13,7 @@
 
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="$(DebugDir)\DocumentUploader.IntegrationTests\DocumentUploader.IntegrationTests.dll" />
+    <Reference Include="$(DebugDir)\DocumentUploader.Core\DocumentUploader.Core.dll" />
   </ItemGroup>
 
  <ItemGroup Condition="'$(FrameworkVersion)' == 'v4.0'">
@@ -27,6 +27,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Include="$(SrcDir)\DocumentUploader.Integrationtests\**\*.cs"/>
     <Compile Include="$(SrcDir)\Common.Properties\*.cs"/>
   </ItemGroup>
 
