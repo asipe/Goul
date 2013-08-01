@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using DocumentUploader.Core.Observer;
+using SupaCharge.Core.IOAbstractions;
 
 namespace DocumentUploader.Core.Factory.Module {
   public class UtilityModule:Autofac.Module {
@@ -15,6 +16,11 @@ namespace DocumentUploader.Core.Factory.Module {
         .RegisterType<ConsoleWriter>()
         .SingleInstance()
         .As<IMessageObserver>();
+
+      builder
+        .RegisterType<DotNetFile>()
+        .SingleInstance()
+        .As<IFile>();
     }
   }
 }

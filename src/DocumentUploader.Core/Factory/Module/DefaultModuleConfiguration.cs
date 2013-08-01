@@ -7,6 +7,7 @@ namespace DocumentUploader.Core.Factory.Module {
       builder.RegisterModule(new HelpCommandModule());
       builder.RegisterModule(new UtilityModule());
       builder.RegisterModule(new SetCredentialsModule());
+      builder.RegisterModule(new CredentialStoreModule());
     }
   }
 }
