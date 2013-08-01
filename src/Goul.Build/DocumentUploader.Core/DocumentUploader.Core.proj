@@ -18,6 +18,7 @@
   
   <ItemGroup Condition="'$(FrameworkVersion)' == 'v4.0'">
     <Reference Include="$(PackagesDir)\autofac\lib\net40\autofac.dll" />
+    <Reference Include="$(PackagesDir)\supacharge.core\lib\net40\supacharge.core.dll" />
   </ItemGroup> 
 
   <ItemGroup>

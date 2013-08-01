@@ -43,6 +43,9 @@
     <Reference Include="Ploeh.AutoFixture">
       <HintPath>..\..\thirdparty\packages\net-4.0\AutoFixture\lib\net40\Ploeh.AutoFixture.dll</HintPath>
     </Reference>
+    <Reference Include="supacharge.core">
+      <HintPath>..\..\thirdparty\packages\net-4.0\SupaCharge.Core\lib\net40\supacharge.core.dll</HintPath>
+    </Reference>
     <Reference Include="supacharge.testing">
       <HintPath>..\..\thirdparty\packages\net-4.0\SupaCharge.Testing\lib\net40\supacharge.testing.dll</HintPath>
     </Reference>
@@ -60,6 +63,7 @@
     <Compile Include="ITModuleConfiguration.cs" />
     <Compile Include="ITModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SetCredentialsTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DocumentUploader.Core\DocumentUploader.Core.csproj">

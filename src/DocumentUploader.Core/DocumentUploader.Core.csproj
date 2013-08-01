@@ -34,6 +34,9 @@
     <Reference Include="Autofac">
       <HintPath>..\..\thirdparty\packages\net-4.0\Autofac\lib\net40\Autofac.dll</HintPath>
     </Reference>
+    <Reference Include="supacharge.core">
+      <HintPath>..\..\thirdparty\packages\net-4.0\SupaCharge.Core\lib\net40\supacharge.core.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -45,6 +48,7 @@
   <ItemGroup>
     <Compile Include="App\App.cs" />
     <Compile Include="App\IApp.cs" />
+    <Compile Include="Command\SetCredentialsCommand.cs" />
     <Compile Include="Factory\Factory.cs" />
     <Compile Include="Factory\IFactory.cs" />
     <Compile Include="Factory\IModuleConfiguration.cs" />
@@ -54,6 +58,7 @@
     <Compile Include="Command\HelpCommand.cs" />
     <Compile Include="Command\ICommand.cs" />
     <Compile Include="ConsoleWriter.cs" />
+    <Compile Include="Factory\Module\SetCredentialsModule.cs" />
     <Compile Include="Factory\Module\UtilityModule.cs" />
     <Compile Include="Observer\IMessageObserver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
