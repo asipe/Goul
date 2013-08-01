@@ -9,7 +9,7 @@ namespace DocumentUploader.Core.Factory.Module {
       builder
         .RegisterType<HelpCommand>()
         .InstancePerLifetimeScope()
-        .As<ICommand>();
+        .Keyed<ICommand>("help");
     }
   }
 }

@@ -3,12 +3,30 @@ using DocumentUploader.Core.App;
 using Moq;
 using NUnit.Framework;
 using SupaCharge.Testing;
+using Autofac.Features.Indexed;
 
 namespace DocumentUploader.UnitTests {
   [TestFixture]
   public class AppTest:BaseTestCase {
+    private class StubIndex : IIndex<string, ICommand> {
+      public ICommand NextCommandToReturn { private get; set; }
+      public string NextExpectedKey { private get; set; }
+
+      public bool TryGetValue(string key, out ICommand value) {
+        value = NextCommandToReturn;
+        Assert.That(key, Is.EqualTo(NextExpectedKey));
+        return value != null;
+      }
+
+      public ICommand this[string key] {
+        get { return null; }
+      }
+    }
+
     [Test]
     public void TestExecuteWithProperValueRunsTheCommand() {
+      mIndex.NextCommandToReturn = mCommand.Object;
+      mIndex.NextExpectedKey = "help";
       var commands = new[] {"help"};
       mCommand.Setup(c => c.Execute(commands));
       mApp.Execute(commands);
@@ -16,17 +34,19 @@ namespace DocumentUploader.UnitTests {
 
     [Test]
     public void TestExecuteWithInvalidValueDoesnotExecuteTheCommand() {
-      var commands = new[] { "randomCmd" };
-      mApp.Execute(commands);
+      mIndex.NextExpectedKey = "unknown_command";
+      mApp.Execute(new[] {"unknown_command"});
     }
 
     [SetUp]
     public void DoSetup() {
+      mIndex = new StubIndex();
       mCommand = Mok<ICommand>();
-      mApp = new App(mCommand.Object);
+      mApp = new App(mIndex);
     }
 
     private App mApp;
     private Mock<ICommand> mCommand;
+    private StubIndex mIndex;
   }
 }
