@@ -2,14 +2,14 @@
 using DocumentUploader.Core.Command;
 
 namespace DocumentUploader.Core.Factory.Module {
-  public class HelpCommandModule : Autofac.Module {
+  class SetCredentialsModule:Autofac.Module {
     protected override void Load(ContainerBuilder builder) {
       base.Load(builder);
 
       builder
-        .RegisterType<HelpCommand>()
+        .RegisterType<SetCredentialsCommand>()
         .InstancePerLifetimeScope()
-        .Keyed<ICommand>("help");
+        .Keyed<ICommand>("setcredentials");
     }
   }
 }

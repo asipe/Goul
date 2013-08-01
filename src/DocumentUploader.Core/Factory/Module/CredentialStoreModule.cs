@@ -1,15 +1,16 @@
 ﻿using Autofac;
-using DocumentUploader.Core.Command;
+using DocumentUploader.Core.Models;
 
 namespace DocumentUploader.Core.Factory.Module {
-  public class HelpCommandModule : Autofac.Module {
+  class CredentialStoreModule:Autofac.Module {
     protected override void Load(ContainerBuilder builder) {
       base.Load(builder);
 
       builder
-        .RegisterType<HelpCommand>()
+        .RegisterType<CredentialStore>()
         .InstancePerLifetimeScope()
-        .Keyed<ICommand>("help");
+        .As<ICredentialStore>()
+        .WithParameter("path", "credentials.txt");
     }
   }
 }

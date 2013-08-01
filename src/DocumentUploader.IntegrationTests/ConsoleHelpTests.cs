@@ -18,12 +18,6 @@ namespace DocumentUploader.IntegrationTests {
       Assert.That(messageObserver.GetMessageCache()[0], Is.EqualTo(("Goul Document Uploader Version 0.1")));
       Assert.That(messageObserver.GetMessageCache()[1], Is.EqualTo(("Commands:")));
       Assert.That(messageObserver.GetMessageCache()[2], Is.EqualTo(("setcredentials xClient_IDx xClient_Secretx")));
-      //
-      //Goul Document Uploader Version 0.0.0.1
-      //
-      //  help    #this message
-      //  auth    #blah
-      //
     }
   }
 }
