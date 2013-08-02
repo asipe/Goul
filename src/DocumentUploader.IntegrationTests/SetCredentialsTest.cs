@@ -3,6 +3,7 @@ using DocumentUploader.Core.Factory;
 using DocumentUploader.Core.Factory.Module;
 using DocumentUploader.Core.Observer;
 using DocumentUploader.IntegrationTests.Infrastructure;
+using DocumentUploader.IntegrationTests.Infrastructure.Modules;
 using NUnit.Framework;
 using SupaCharge.Core.IOAbstractions;
 
@@ -46,7 +47,7 @@ namespace DocumentUploader.IntegrationTests {
     [SetUp]
     public void DoSetup() {
       mFactory = new Factory(new DefaultModuleConfiguration(), new ITModuleConfiguration());
-      mMessageObserver = (ConsoleObserver)mFactory.Build<IMessageObserver>();
+      mMessageObserver = (RecordingObserver)mFactory.Build<IMessageObserver>();
       mApp = mFactory.Build<IApp>();
       mFile = new DotNetFile();
     }
@@ -58,7 +59,7 @@ namespace DocumentUploader.IntegrationTests {
 
     private DotNetFile mFile;
     private Factory mFactory;
-    private ConsoleObserver mMessageObserver;
+    private RecordingObserver mMessageObserver;
     private IApp mApp;
   }
 }

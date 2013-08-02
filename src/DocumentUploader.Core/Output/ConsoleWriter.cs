@@ -1,7 +1,7 @@
 ﻿using System;
 using DocumentUploader.Core.Observer;
 
-namespace DocumentUploader.Core {
+namespace DocumentUploader.Core.Output {
   public class ConsoleWriter : IMessageObserver {
     public void AddMessages(string[] messages) {
       Console.WriteLine();

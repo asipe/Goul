@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using DocumentUploader.Core.App;
 using DocumentUploader.Core.Observer;
+using DocumentUploader.Core.Output;
 using SupaCharge.Core.IOAbstractions;
 
 namespace DocumentUploader.Core.Factory.Module {

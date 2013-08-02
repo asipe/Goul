@@ -3,6 +3,7 @@ using DocumentUploader.Core.Factory;
 using DocumentUploader.Core.Factory.Module;
 using DocumentUploader.Core.Observer;
 using DocumentUploader.IntegrationTests.Infrastructure;
+using DocumentUploader.IntegrationTests.Infrastructure.Modules;
 using NUnit.Framework;
 using SupaCharge.Testing;
 
@@ -12,7 +13,7 @@ namespace DocumentUploader.IntegrationTests {
     [Test]
     public void TestHelpCommandIsSentCorrectly() {
       var factory = new Factory(new DefaultModuleConfiguration(), new ITModuleConfiguration());
-      var messageObserver = (ConsoleObserver)factory.Build<IMessageObserver>();
+      var messageObserver = (RecordingObserver)factory.Build<IMessageObserver>();
       var app = factory.Build<IApp>();
       app.Execute(new[] {"help"});
       Assert.That(messageObserver.GetMessageCache()[0], Is.EqualTo(("Goul Document Uploader Version 0.1")));

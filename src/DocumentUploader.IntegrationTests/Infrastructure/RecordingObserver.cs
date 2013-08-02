@@ -1,7 +1,7 @@
 ﻿using DocumentUploader.Core.Observer;
 
 namespace DocumentUploader.IntegrationTests.Infrastructure {
-  public class ConsoleObserver : IMessageObserver {
+  public class RecordingObserver : IMessageObserver {
     public void AddMessages(string[] messageSet) {
       mMessages = messageSet;
     }

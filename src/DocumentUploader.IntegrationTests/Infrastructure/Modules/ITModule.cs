@@ -1,14 +1,13 @@
 ﻿using Autofac;
 using DocumentUploader.Core.Observer;
-using DocumentUploader.IntegrationTests.Infrastructure;
 
-namespace DocumentUploader.IntegrationTests {
+namespace DocumentUploader.IntegrationTests.Infrastructure.Modules {
   public class ITModule : Module {
     protected override void Load(ContainerBuilder builder) {
       base.Load(builder);
 
       builder
-        .RegisterType<ConsoleObserver>()
+        .RegisterType<RecordingObserver>()
         .InstancePerLifetimeScope()
         .As<IMessageObserver>();
     }
