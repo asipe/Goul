@@ -12,8 +12,8 @@ namespace DocumentUploader.UnitTests {
     [Test]
     public void TestGetWithRealPathGivesCorrectValues() {
       mFile.Setup(f => f.ReadAllLines("fakePath.txt")).Returns(new[] {"1", "2"});
-      Assert.That(mCredStore.Get().Client_ID, Is.EqualTo("1"));
-      Assert.That(mCredStore.Get().Client_Secret, Is.EqualTo("2"));
+      Assert.That(mCredStore.Get().ClientID, Is.EqualTo("1"));
+      Assert.That(mCredStore.Get().ClientSecret, Is.EqualTo("2"));
     }
 
     [Test]
@@ -23,9 +23,9 @@ namespace DocumentUploader.UnitTests {
     }
 
     [Test]
-    public void TestUpdateWorks() {
+    public void TestThatUpdateGrabsCorrectValues() {
       mFile.Setup(f => f.WriteAllText("fakePath.txt", string.Format("{0}{1}{2}", "1", Environment.NewLine, "2")));
-      mCredStore.Update(new CredentialsFile {Client_ID = "1", Client_Secret = "2"});
+      mCredStore.Update(new CredentialsFile {ClientID = "1", ClientSecret = "2"});
     }
 
     [SetUp]

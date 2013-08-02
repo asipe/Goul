@@ -52,19 +52,18 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppTest.cs" />
+    <Compile Include="..\Common.Properties\AssemblyInfo.cs">
+      <Link>AssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="DocUploaderAppTest.cs" />
+    <Compile Include="CredentialsFileTest.cs" />
     <Compile Include="CredentialStoreTest.cs" />
     <Compile Include="FactoryTest.cs" />
     <Compile Include="HelpCommandTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SetCredentialsTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DocumentUploader.Core\DocumentUploader.Core.csproj">

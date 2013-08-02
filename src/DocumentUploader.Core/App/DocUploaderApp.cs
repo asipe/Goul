@@ -2,12 +2,12 @@
 using DocumentUploader.Core.Command;
 
 namespace DocumentUploader.Core.App {
-  public class App : IApp {
-    public App(IIndex<string, ICommand> index) {
+  public class DocUploaderApp : IApp {
+    public DocUploaderApp(IIndex<string, ICommand> index) {
       mIndex = index;
     }
 
-    public void Execute(string[] commands) {
+    public void Execute(params string[] commands) {
       ICommand command;
       if (mIndex.TryGetValue(commands[0], out command))
         command.Execute(commands);

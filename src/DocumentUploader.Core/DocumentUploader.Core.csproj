@@ -39,14 +39,13 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App\App.cs" />
+    <Compile Include="..\Common.Properties\AssemblyInfo.cs">
+      <Link>AssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="App\DocUploaderApp.cs" />
     <Compile Include="App\IApp.cs" />
     <Compile Include="Command\SetCredentialsCommand.cs" />
     <Compile Include="Factory\Factory.cs" />
@@ -58,7 +57,7 @@
     <Compile Include="Factory\Module\HelpCommandModule.cs" />
     <Compile Include="Command\HelpCommand.cs" />
     <Compile Include="Command\ICommand.cs" />
-    <Compile Include="ConsoleWriter.cs" />
+    <Compile Include="Output\ConsoleWriter.cs" />
     <Compile Include="Factory\Module\SetCredentialsModule.cs" />
     <Compile Include="Factory\Module\UtilityModule.cs" />
     <Compile Include="Models\CredentialsFile.cs" />

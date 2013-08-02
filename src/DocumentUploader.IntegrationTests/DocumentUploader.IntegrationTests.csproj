@@ -51,17 +51,16 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\Common.Properties\AssemblyInfo.cs">
+      <Link>AssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="ConsoleHelpTests.cs" />
-    <Compile Include="Infrastructure\ConsoleObserver.cs" />
-    <Compile Include="ITModuleConfiguration.cs" />
-    <Compile Include="ITModule.cs" />
+    <Compile Include="Infrastructure\RecordingObserver.cs" />
+    <Compile Include="Infrastructure\Modules\ITModuleConfiguration.cs" />
+    <Compile Include="Infrastructure\Modules\ITModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SetCredentialsTest.cs" />
   </ItemGroup>

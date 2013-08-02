@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using DocumentUploader.Core.App;
 using DocumentUploader.Core.Observer;
+using DocumentUploader.Core.Output;
 using SupaCharge.Core.IOAbstractions;
 
 namespace DocumentUploader.Core.Factory.Module {
@@ -9,7 +10,7 @@ namespace DocumentUploader.Core.Factory.Module {
       base.Load(builder);
 
       builder
-        .RegisterType<App.App>()
+        .RegisterType<DocUploaderApp>()
         .InstancePerLifetimeScope()
         .As<IApp>();
 
