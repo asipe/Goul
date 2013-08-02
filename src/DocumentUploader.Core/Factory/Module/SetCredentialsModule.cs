@@ -2,7 +2,7 @@
 using DocumentUploader.Core.Command;
 
 namespace DocumentUploader.Core.Factory.Module {
-  class SetCredentialsModule:Autofac.Module {
+  internal class SetCredentialsModule : Autofac.Module {
     protected override void Load(ContainerBuilder builder) {
       base.Load(builder);
 
