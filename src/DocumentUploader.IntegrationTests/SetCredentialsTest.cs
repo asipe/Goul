@@ -10,7 +10,7 @@ using SupaCharge.Testing;
 
 namespace DocumentUploader.IntegrationTests {
   [TestFixture]
-  public class SetCredentialsTest:BaseTestCase {
+  public class SetCredentialsTest : BaseTestCase {
     [Test]
     public void TestThatCustomCredentialsAreSet() {
       mApp.Execute("setcredentials", "val1", "val2");

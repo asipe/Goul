@@ -16,7 +16,7 @@ namespace DocumentUploader.Core.Command {
     }
 
     public CredentialsFile CredentialsBuilder(string clientId, string clientsecret) {
-      return new CredentialsFile { ClientID = clientId, ClientSecret = clientsecret };
+      return new CredentialsFile {ClientID = clientId, ClientSecret = clientsecret};
     }
 
     private readonly IMessageObserver mObserver;

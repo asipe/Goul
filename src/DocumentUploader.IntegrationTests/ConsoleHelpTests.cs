@@ -19,7 +19,7 @@ namespace DocumentUploader.IntegrationTests {
       Assert.That(messageObserver.GetMessageCache(), Is.EqualTo(BA("Goul Document Uploader Version 0.1",
                                                                    "Commands:",
                                                                    "setcredentials xClient_IDx xClient_Secretx",
-                                                                    "...")));
+                                                                   "...")));
     }
   }
 }
