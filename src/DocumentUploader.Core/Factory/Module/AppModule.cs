@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using DocumentUploader.Core.App;
 
 namespace DocumentUploader.Core.Factory.Module {
   public class AppModule : Autofac.Module {

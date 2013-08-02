@@ -1,13 +1,13 @@
-﻿using DocumentUploader.Core;
+﻿using Autofac.Features.Indexed;
 using DocumentUploader.Core.App;
+using DocumentUploader.Core.Command;
 using Moq;
 using NUnit.Framework;
 using SupaCharge.Testing;
-using Autofac.Features.Indexed;
 
 namespace DocumentUploader.UnitTests {
   [TestFixture]
-  public class AppTest:BaseTestCase {
+  public class AppTest : BaseTestCase {
     private class StubIndex : IIndex<string, ICommand> {
       public ICommand NextCommandToReturn { private get; set; }
       public string NextExpectedKey { private get; set; }

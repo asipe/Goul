@@ -1,8 +1,9 @@
 ﻿using Autofac.Features.Indexed;
+using DocumentUploader.Core.Command;
 
 namespace DocumentUploader.Core.App {
-  public class App:IApp {
-    public App(IIndex<string, ICommand> index ) {
+  public class App : IApp {
+    public App(IIndex<string, ICommand> index) {
       mIndex = index;
     }
 

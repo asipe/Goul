@@ -2,7 +2,7 @@
 using DocumentUploader.Core.Models;
 
 namespace DocumentUploader.Core.Factory.Module {
-  class CredentialStoreModule:Autofac.Module {
+  internal class CredentialStoreModule : Autofac.Module {
     protected override void Load(ContainerBuilder builder) {
       base.Load(builder);
 

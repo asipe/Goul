@@ -1,5 +1,5 @@
-﻿using DocumentUploader.Core.Factory;
-using Autofac;
+﻿using Autofac;
+using DocumentUploader.Core.Factory;
 
 namespace DocumentUploader.IntegrationTests {
   public class ITModuleConfiguration : IModuleConfiguration {

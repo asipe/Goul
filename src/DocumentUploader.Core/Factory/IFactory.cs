@@ -1,5 +1,5 @@
-﻿namespace DocumentUploader.Core {
+﻿namespace DocumentUploader.Core.Factory {
   public interface IFactory {
-     T Build<T>();
+    T Build<T>();
   }
 }

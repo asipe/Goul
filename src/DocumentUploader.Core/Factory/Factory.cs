@@ -1,6 +1,5 @@
 ﻿using System;
 using Autofac;
-using IContainer = Autofac.IContainer;
 
 namespace DocumentUploader.Core.Factory {
   public class Factory : IFactory {
