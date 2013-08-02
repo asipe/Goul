@@ -14,8 +14,8 @@
   The executable is run from DocumentUploader.Console and is located in bin\debug\DocumentUploader.Console.exe
   
   Commands:
-    "help"   
-    "setcredentials xClient_IDx xClient_Secretx" 
+    - "help"   
+    - "setcredentials xClient_IDx xClient_Secretx" 
   
 
 
