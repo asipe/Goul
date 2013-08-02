@@ -7,7 +7,7 @@ using SupaCharge.Testing;
 
 namespace DocumentUploader.UnitTests {
   [TestFixture]
-  public class AppTest : BaseTestCase {
+  public class DocUploaderAppTest : BaseTestCase {
     private class StubIndex : IIndex<string, ICommand> {
       public ICommand NextCommandToReturn { private get; set; }
       public string NextExpectedKey { private get; set; }

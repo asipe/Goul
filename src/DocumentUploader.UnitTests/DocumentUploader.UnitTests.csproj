@@ -58,7 +58,7 @@
     <Compile Include="..\Common.Properties\AssemblyInfo.cs">
       <Link>AssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="AppTest.cs" />
+    <Compile Include="DocUploaderAppTest.cs" />
     <Compile Include="CredentialsFileTest.cs" />
     <Compile Include="CredentialStoreTest.cs" />
     <Compile Include="FactoryTest.cs" />

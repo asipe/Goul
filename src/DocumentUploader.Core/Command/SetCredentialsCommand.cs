@@ -15,6 +15,10 @@ namespace DocumentUploader.Core.Command {
       } else mObserver.AddMessages("Invalid amount of arguments");
     }
 
+    public CredentialsFile CredentialsBuilder(string clientId, string clientsecret) {
+      return new CredentialsFile { ClientID = clientId, ClientSecret = clientsecret };
+    }
+
     private readonly IMessageObserver mObserver;
     private readonly ICredentialStore mStorage;
   }
