@@ -23,7 +23,7 @@ namespace DocumentUploader.UnitTests {
     }
 
     [Test]
-    public void TestUpdateWorks() {
+    public void TestThatUpdateGrabsCorrectValues() {
       mFile.Setup(f => f.WriteAllText("fakePath.txt", string.Format("{0}{1}{2}", "1", Environment.NewLine, "2")));
       mCredStore.Update(new CredentialsFile {ClientID = "1", ClientSecret = "2"});
     }

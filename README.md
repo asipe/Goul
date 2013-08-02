@@ -9,6 +9,8 @@
   - minion bootstrap
   - minion clean, build
   
+  - To run the unit tests: minion run.unit.tests.dbg
+  
   The executable to run DocumentUploader.Console is located in bin\debug\DocumentUploader.Console.exe
   
   When running, pass it an argument => "help" (That's literally all it does right now)

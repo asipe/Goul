@@ -23,9 +23,9 @@ namespace DocumentUploader.IntegrationTests {
     public void TestThatTheAppThrowsCorrectExceptionWhenGivenIncorrectNumberOfArgs() {
       mApp.Execute("setcredentials");
       Assert.That(mMessageObserver.GetMessageCache(), Is.EqualTo(BA("Invalid amount of arguments")));
-      mApp.Execute(new[] {"setcredentials", "heyo"});
+      mApp.Execute(new[] {"setcredentials", "1"});
       Assert.That(mMessageObserver.GetMessageCache(), Is.EqualTo(BA("Invalid amount of arguments")));
-      mApp.Execute(new[] {"setcredentials", "heyo", "yayo", "mayo"});
+      mApp.Execute(new[] {"setcredentials", "1", "2", "3"});
       Assert.That(mMessageObserver.GetMessageCache(), Is.EqualTo(BA("Invalid amount of arguments")));
     }
 
