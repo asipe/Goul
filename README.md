@@ -11,13 +11,12 @@
   
   - To run the unit tests: minion run.unit.tests.dbg
   
-  The executable to run DocumentUploader.Console is located in bin\debug\DocumentUploader.Console.exe
+  The executable is run from DocumentUploader.Console and is located in bin\debug\DocumentUploader.Console.exe
   
-  When running, pass it an argument => "help" (That's literally all it does right now)
+  Commands:
+    "help"   
+    "setcredentials xClient_IDx xClient_Secretx" 
   
-  
-  
-
 
 
 License
