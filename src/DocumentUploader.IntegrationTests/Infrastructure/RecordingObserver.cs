@@ -2,7 +2,7 @@
 
 namespace DocumentUploader.IntegrationTests.Infrastructure {
   public class RecordingObserver : IMessageObserver {
-    public void AddMessages(string[] messageSet) {
+    public void AddMessages(params string[] messageSet) {
       mMessages = messageSet;
     }
 

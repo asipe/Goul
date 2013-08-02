@@ -10,7 +10,7 @@ namespace DocumentUploader.Core.Factory.Module {
       base.Load(builder);
 
       builder
-        .RegisterType<App.App>()
+        .RegisterType<DocUploaderApp>()
         .InstancePerLifetimeScope()
         .As<IApp>();
 

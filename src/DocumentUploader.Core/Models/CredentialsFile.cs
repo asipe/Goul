@@ -1,6 +1,6 @@
 ﻿namespace DocumentUploader.Core.Models {
   public class CredentialsFile {
-    public string Client_ID { get; set; }
-    public string Client_Secret { get; set; }
+    public string ClientID { get; set; }
+    public string ClientSecret { get; set; }
   }
 }

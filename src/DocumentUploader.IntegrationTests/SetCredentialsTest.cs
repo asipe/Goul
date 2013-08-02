@@ -6,42 +6,27 @@ using DocumentUploader.IntegrationTests.Infrastructure;
 using DocumentUploader.IntegrationTests.Infrastructure.Modules;
 using NUnit.Framework;
 using SupaCharge.Core.IOAbstractions;
+using SupaCharge.Testing;
 
 namespace DocumentUploader.IntegrationTests {
   [TestFixture]
-  public class SetCredentialsTest {
-    [Test]
-    public void TestThatCorrectMessageIsSent() {
-      mApp.Execute(new[] {"setcredentials", "123", "324"});
-      Assert.That(mMessageObserver.GetMessageCache()[0], Is.EqualTo(("Credentials Set")));
-    }
-
-    [Test]
-    public void TestThatCredentialsAreActuallySet() {
-      mApp.Execute(new[] {"setcredentials", "123", "456"});
-      var credentialsFileLines = mFile.ReadAllLines("credentials.txt");
-      Assert.That(credentialsFileLines[0], Is.EqualTo(("123")));
-      Assert.That(credentialsFileLines[1], Is.EqualTo(("456")));
-      Assert.That(mMessageObserver.GetMessageCache()[0], Is.EqualTo(("Credentials Set")));
-    }
-
+  public class SetCredentialsTest:BaseTestCase {
     [Test]
     public void TestThatCustomCredentialsAreSet() {
-      mApp.Execute(new[] {"setcredentials", "val1", "val2"});
+      mApp.Execute("setcredentials", "val1", "val2");
       var credentialsFileLines = mFile.ReadAllLines("credentials.txt");
-      Assert.That(credentialsFileLines[0], Is.EqualTo(("val1")));
-      Assert.That(credentialsFileLines[1], Is.EqualTo(("val2")));
-      Assert.That(mMessageObserver.GetMessageCache()[0], Is.EqualTo(("Credentials Set")));
+      Assert.That(credentialsFileLines, Is.EqualTo(BA("val1", "val2")));
+      Assert.That(mMessageObserver.GetMessageCache(), Is.EqualTo(BA("Credentials Set")));
     }
 
     [Test]
     public void TestThatTheAppThrowsCorrectExceptionWhenGivenIncorrectNumberOfArgs() {
-      mApp.Execute(new[] {"setcredentials"});
-      Assert.That(mMessageObserver.GetMessageCache()[0], Is.EqualTo("Invalid amount of arguments"));
+      mApp.Execute("setcredentials");
+      Assert.That(mMessageObserver.GetMessageCache(), Is.EqualTo(BA("Invalid amount of arguments")));
       mApp.Execute(new[] {"setcredentials", "heyo"});
-      Assert.That(mMessageObserver.GetMessageCache()[0], Is.EqualTo("Invalid amount of arguments"));
+      Assert.That(mMessageObserver.GetMessageCache(), Is.EqualTo(BA("Invalid amount of arguments")));
       mApp.Execute(new[] {"setcredentials", "heyo", "yayo", "mayo"});
-      Assert.That(mMessageObserver.GetMessageCache()[0], Is.EqualTo("Invalid amount of arguments"));
+      Assert.That(mMessageObserver.GetMessageCache(), Is.EqualTo(BA("Invalid amount of arguments")));
     }
 
     [SetUp]

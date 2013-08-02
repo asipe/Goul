@@ -45,7 +45,7 @@
     <Compile Include="..\Common.Properties\AssemblyInfo.cs">
       <Link>AssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="App\App.cs" />
+    <Compile Include="App\DocUploaderApp.cs" />
     <Compile Include="App\IApp.cs" />
     <Compile Include="Command\SetCredentialsCommand.cs" />
     <Compile Include="Factory\Factory.cs" />

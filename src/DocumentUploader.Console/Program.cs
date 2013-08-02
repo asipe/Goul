@@ -11,8 +11,7 @@ namespace DocumentUploader.Console {
         app.Execute(args);
         return 0;
       } catch (Exception e) {
-        System.Console.WriteLine(e.Message);
-        System.Console.WriteLine(e.StackTrace);
+        System.Console.WriteLine(e);
         return 1;
       }
     }

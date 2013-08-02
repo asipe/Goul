@@ -10,11 +10,11 @@ namespace DocumentUploader.Core.Models {
 
     public CredentialsFile Get() {
       var lines = mFile.ReadAllLines(mPath);
-      return new CredentialsFile {Client_ID = lines[0], Client_Secret = lines[1]};
+      return new CredentialsFile {ClientID = lines[0], ClientSecret = lines[1]};
     }
 
     public void Update(CredentialsFile credentials) {
-      mFile.WriteAllText(mPath, string.Format("{0}{1}{2}", credentials.Client_ID, Environment.NewLine, credentials.Client_Secret));
+      mFile.WriteAllText(mPath, string.Format("{0}{1}{2}", credentials.ClientID, Environment.NewLine, credentials.ClientSecret));
     }
 
     private readonly IFile mFile;
