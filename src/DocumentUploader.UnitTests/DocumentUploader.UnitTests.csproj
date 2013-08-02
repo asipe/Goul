@@ -59,6 +59,7 @@
       <Link>AssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="AppTest.cs" />
+    <Compile Include="CredentialsFileTest.cs" />
     <Compile Include="CredentialStoreTest.cs" />
     <Compile Include="FactoryTest.cs" />
     <Compile Include="HelpCommandTest.cs" />
