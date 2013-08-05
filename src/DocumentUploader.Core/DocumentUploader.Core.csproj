@@ -48,6 +48,7 @@
     <Compile Include="App\DocUploaderApp.cs" />
     <Compile Include="App\IApp.cs" />
     <Compile Include="Command\ClearCredentialsCommand.cs" />
+    <Compile Include="Command\GetAuthorizationUrlCommand.cs" />
     <Compile Include="Command\ListCredentialsCommand.cs" />
     <Compile Include="Command\SetCredentialsCommand.cs" />
     <Compile Include="Factory\Factory.cs" />
@@ -55,6 +56,7 @@
     <Compile Include="Factory\IModuleConfiguration.cs" />
     <Compile Include="Factory\Module\AppModule.cs" />
     <Compile Include="Factory\Module\ClearCommandModule.cs" />
+    <Compile Include="Factory\Module\GetAuthorizationUrlCommandModule.cs" />
     <Compile Include="Factory\Module\ListCommandModule.cs" />
     <Compile Include="Factory\Module\CredentialStoreModule.cs" />
     <Compile Include="Factory\Module\DefaultModuleConfiguration.cs" />
