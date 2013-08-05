@@ -31,6 +31,25 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DotNetOpenAuth">
+      <HintPath>..\..\thirdparty\google\google-oauth2-v2-rev43-csharp-1.4.0-beta\oauth2\Lib\DotNetOpenAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis">
+      <HintPath>..\..\thirdparty\google\google-oauth2-v2-rev43-csharp-1.4.0-beta\oauth2\Lib\Google.Apis.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Authentication.OAuth2">
+      <HintPath>..\..\thirdparty\google\google-oauth2-v2-rev43-csharp-1.4.0-beta\oauth2\Lib\Google.Apis.Authentication.OAuth2.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Drive.v2">
+      <HintPath>..\..\thirdparty\google\google-drive-v2-rev90-csharp-1.4.0-beta\drive\Google.Apis.Drive.v2.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Oauth2.v2">
+      <HintPath>..\..\thirdparty\google\google-oauth2-v2-rev43-csharp-1.4.0-beta\oauth2\Google.Apis.Oauth2.v2.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\thirdparty\google\google-oauth2-v2-rev43-csharp-1.4.0-beta\oauth2\Lib\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -40,6 +59,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Credentials.cs" />
+    <Compile Include="GetAuthorizationUrl.cs" />
+    <Compile Include="GoulRequestHandler.cs" />
+    <Compile Include="IGoulRequestHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

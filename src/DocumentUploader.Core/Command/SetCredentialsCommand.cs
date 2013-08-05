@@ -1,5 +1,6 @@
 ﻿using DocumentUploader.Core.Models;
 using DocumentUploader.Core.Observer;
+using Goul.Core;
 
 namespace DocumentUploader.Core.Command {
   public class SetCredentialsCommand : ICommand {

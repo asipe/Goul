@@ -5,11 +5,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Stage1 Include="Goul.Core\Goul.Core.proj" />
     <Stage1 Include="DocumentUploader.Core\DocumentUploader.Core.proj" />
     <Stage2 Include="DocumentUploader.UnitTests\DocumentUploader.UnitTests.proj" />
     <Stage2 Include="DocumentUploader.Console\DocumentUploader.Console.proj" />
     <Stage2 Include="DocumentUploader.IntegrationTests\DocumentUploader.IntegrationTests.proj" />
-    <Stage2 Include="Goul.Core\Goul.Core.proj" />
   </ItemGroup>
   
   <Target Name="BuildStage1" Outputs="%(Frameworks.Identity)">

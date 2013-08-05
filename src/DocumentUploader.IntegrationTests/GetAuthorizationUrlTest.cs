@@ -16,7 +16,10 @@ namespace DocumentUploader.IntegrationTests {
       mApp.Execute("setcredentials", "randomVal", "seeminglyRandomVal");
       mApp.Execute("getauthorizationurl");
 
-      Assert.That(mMessageObserver.GetMessages(), Is.EqualTo(BA("url.com")));
+      var messages = mMessageObserver.GetMessages();
+      Assert.That(messages.Length, Is.EqualTo(1));
+      Assert.That(messages[0], Is.StringStarting("https://accounts.google.com/o/oauth2"));
+      
       mFile.Delete("credentials.txt");
     }
 

@@ -62,6 +62,7 @@
     <Compile Include="CredentialsFileTest.cs" />
     <Compile Include="CredentialStoreTest.cs" />
     <Compile Include="FactoryTest.cs" />
+    <Compile Include="GetAuthorizationUrlCommandTest.cs" />
     <Compile Include="HelpCommandTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -69,6 +70,10 @@
     <ProjectReference Include="..\DocumentUploader.Core\DocumentUploader.Core.csproj">
       <Project>{360C768E-28DC-4B16-92BC-424B9A90FF43}</Project>
       <Name>DocumentUploader.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Goul.Core\Goul.Core.csproj">
+      <Project>{BD321C2E-EBB8-45DE-B213-E50F6D8F1943}</Project>
+      <Name>Goul.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

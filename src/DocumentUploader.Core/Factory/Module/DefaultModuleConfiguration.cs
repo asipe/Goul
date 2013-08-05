@@ -11,6 +11,7 @@ namespace DocumentUploader.Core.Factory.Module {
       builder.RegisterModule(new ListCommandModule());
       builder.RegisterModule(new ClearCommandModule());
       builder.RegisterModule(new GetAuthorizationUrl());
+      builder.RegisterModule(new GoulModule());
     }
   }
 }

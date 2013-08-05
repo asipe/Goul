@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using DocumentUploader.Core.Models;
+using Goul.Core;
 using Moq;
 using NUnit.Framework;
 using SupaCharge.Core.IOAbstractions;

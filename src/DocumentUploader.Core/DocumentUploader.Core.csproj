@@ -57,6 +57,7 @@
     <Compile Include="Factory\Module\AppModule.cs" />
     <Compile Include="Factory\Module\ClearCommandModule.cs" />
     <Compile Include="Factory\Module\GetAuthorizationUrlCommandModule.cs" />
+    <Compile Include="Factory\Module\GoulModule.cs" />
     <Compile Include="Factory\Module\ListCommandModule.cs" />
     <Compile Include="Factory\Module\CredentialStoreModule.cs" />
     <Compile Include="Factory\Module\DefaultModuleConfiguration.cs" />
@@ -66,13 +67,17 @@
     <Compile Include="Output\ConsoleWriter.cs" />
     <Compile Include="Factory\Module\SetCredentialsModule.cs" />
     <Compile Include="Factory\Module\UtilityModule.cs" />
-    <Compile Include="Models\Credentials.cs" />
     <Compile Include="Models\CredentialStore.cs" />
     <Compile Include="Models\ICredentialStore.cs" />
     <Compile Include="Observer\IMessageObserver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Goul.Core\Goul.Core.csproj">
+      <Project>{BD321C2E-EBB8-45DE-B213-E50F6D8F1943}</Project>
+      <Name>Goul.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

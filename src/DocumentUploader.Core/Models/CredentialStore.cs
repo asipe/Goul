@@ -1,4 +1,5 @@
 ﻿using System;
+using Goul.Core;
 using SupaCharge.Core.IOAbstractions;
 
 namespace DocumentUploader.Core.Models {

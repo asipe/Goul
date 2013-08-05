@@ -1,0 +1,343 @@
+{
+  "discoveryLink": "./apis/drive/v2/rest", 
+  "kind": "discovery#directoryItem", 
+  "description": "The API to interact with Drive.", 
+  "title": "Drive API", 
+  "discoveryRestUrl": "https://www.googleapis.com/discovery/v1/apis/drive/v2/rest", 
+  "preferred": true, 
+  "version": "v2", 
+  "icons": {
+    "x32": "https://ssl.gstatic.com/docs/doclist/images/drive_icon_32.png", 
+    "x16": "https://ssl.gstatic.com/docs/doclist/images/drive_icon_16.png"
+  }, 
+  "documentationLink": "https://developers.google.com/drive/", 
+  "id": "drive:v2", 
+  "name": "drive", 
+  "files": [
+    {
+      "downloadUrl": "/downloads/drive/v2/90/csharp/1.4.0-beta/google-drive-v2-rev90-csharp-1.4.0-beta-bin.zip", 
+      "path": "google-drive-v2-rev90-csharp-1.4.0-beta-bin.zip", 
+      "type": "binary", 
+      "timestamp": "2013-08-01 00:36"
+    }, 
+    {
+      "downloadUrl": "/downloads/drive/v2/90/csharp/1.4.0-beta/google-drive-v2-rev90-csharp-1.4.0-beta-doc.zip", 
+      "path": "google-drive-v2-rev90-csharp-1.4.0-beta-doc.zip", 
+      "type": "documentation", 
+      "timestamp": "2013-08-01 00:36"
+    }, 
+    {
+      "downloadUrl": "/downloads/drive/v2/90/csharp/1.4.0-beta/google-drive-v2-rev90-csharp-1.4.0-beta-src.zip", 
+      "path": "google-drive-v2-rev90-csharp-1.4.0-beta-src.zip", 
+      "type": "source", 
+      "timestamp": "2013-08-01 00:36"
+    }
+  ], 
+  "revision": 90, 
+  "language": "csharp", 
+  "language_version": "1.4.0-beta", 
+  "dependencies": [
+    {
+      "version": "1.4.0-beta", 
+      "downloadLink": "https://code.google.com/p/google-api-dotnet-client/source/browse/1.4.0-beta/Generated/ZipFiles/google-api-dotnet-client-1.4.0-beta.binary.zip?repo=contrib", 
+      "name": "Google DotNet C# Client", 
+      "environments": [
+        "*"
+      ]
+    }, 
+    {
+      "files": [
+        {
+          "path": "Lib/DotNetOpenAuth.dll", 
+          "type": "binary"
+        }, 
+        {
+          "path": "dependencies/DotNetOpenAuth.LICENSE", 
+          "type": "license"
+        }
+      ], 
+      "version": "4.0.0.11165", 
+      "name": "DotNetOpenAuth", 
+      "environments": [
+        "*"
+      ]
+    }, 
+    {
+      "files": [
+        {
+          "path": "Lib/log4net.dll", 
+          "type": "binary"
+        }, 
+        {
+          "path": "dependencies/log4net.LICENSE", 
+          "type": "license"
+        }
+      ], 
+      "version": "1.2.11.0", 
+      "name": "Log4net", 
+      "environments": [
+        "*"
+      ]
+    }, 
+    {
+      "files": [
+        {
+          "path": "Lib/System.Runtime.dll", 
+          "type": "binary"
+        }, 
+        {
+          "path": "dependencies/Microsoft.Bcl.LICENSE.rtf", 
+          "type": "license"
+        }
+      ], 
+      "version": "2.5.19.0", 
+      "name": "Microsoft Bcl - System.Runtime", 
+      "environments": [
+        "*"
+      ]
+    }, 
+    {
+      "files": [
+        {
+          "path": "Lib/System.Threading.Tasks.dll", 
+          "type": "binary"
+        }, 
+        {
+          "path": "dependencies/Microsoft.Bcl.LICENSE.rtf", 
+          "type": "license"
+        }
+      ], 
+      "version": "2.5.19.0", 
+      "name": "Microsoft Bcl - System.Threading.Tasks", 
+      "environments": [
+        "*"
+      ]
+    }, 
+    {
+      "files": [
+        {
+          "path": "Lib/Microsoft.Threading.Tasks.dll", 
+          "type": "binary"
+        }, 
+        {
+          "path": "dependencies/Microsoft.Bcl.Async.LICENSE.rtf", 
+          "type": "license"
+        }
+      ], 
+      "version": "1.0.16.0", 
+      "name": "Microsoft Bcl Async - Microsoft.Threading.Tasks", 
+      "environments": [
+        "*"
+      ]
+    }, 
+    {
+      "files": [
+        {
+          "path": "Lib/Microsoft.Threading.Tasks.Extensions.Desktop.dll", 
+          "type": "binary"
+        }, 
+        {
+          "path": "dependencies/Microsoft.Bcl.Async.LICENSE.rtf", 
+          "type": "license"
+        }
+      ], 
+      "version": "1.0.16.0", 
+      "name": "Microsoft Bcl Async - Microsoft.Threading.Tasks.Extensions.Desktop", 
+      "environments": [
+        "*"
+      ]
+    }, 
+    {
+      "files": [
+        {
+          "path": "Lib/Microsoft.Threading.Tasks.Extensions.dll", 
+          "type": "binary"
+        }, 
+        {
+          "path": "dependencies/Microsoft.Bcl.Async.LICENSE.rtf", 
+          "type": "license"
+        }
+      ], 
+      "version": "1.0.16.0", 
+      "name": "Microsoft Bcl Async - Microsoft.Threading.Tasks.Extensions", 
+      "environments": [
+        "*"
+      ]
+    }, 
+    {
+      "files": [
+        {
+          "path": "Lib/Microsoft.Bcl.Build.targets", 
+          "type": "other"
+        }, 
+        {
+          "path": "dependencies/Microsoft.Bcl.Build.LICENSE.rtf", 
+          "type": "license"
+        }
+      ], 
+      "version": "1.0.7.0", 
+      "name": "Microsoft Bcl Build targets", 
+      "environments": [
+        "*"
+      ]
+    }, 
+    {
+      "files": [
+        {
+          "path": "Lib/Microsoft.Bcl.Build.Tasks.dll", 
+          "type": "binary"
+        }, 
+        {
+          "path": "dependencies/Microsoft.Bcl.Build.LICENSE.rtf", 
+          "type": "license"
+        }
+      ], 
+      "version": "1.0.7.0", 
+      "name": "Microsoft Bcl Build - Microsoft.Bcl.Build.Tasks", 
+      "environments": [
+        "*"
+      ]
+    }, 
+    {
+      "files": [
+        {
+          "path": "Lib/System.Net.Http.dll", 
+          "type": "binary"
+        }, 
+        {
+          "path": "dependencies/Microsoft.Http.Client.LICENSE.rtf", 
+          "type": "license"
+        }
+      ], 
+      "version": "2.1.10.0", 
+      "name": "Microsoft Net Http - System.Net.Http", 
+      "environments": [
+        "*"
+      ]
+    }, 
+    {
+      "files": [
+        {
+          "path": "Lib/System.Net.Http.Extensions.dll", 
+          "type": "binary"
+        }, 
+        {
+          "path": "dependencies/Microsoft.Http.Client.LICENSE.rtf", 
+          "type": "license"
+        }
+      ], 
+      "version": "2.1.10.0", 
+      "name": "Microsoft Net Http - System.Net.Http.Extensions", 
+      "environments": [
+        "*"
+      ]
+    }, 
+    {
+      "files": [
+        {
+          "path": "Lib/System.Net.Http.Primitives.dll", 
+          "type": "binary"
+        }, 
+        {
+          "path": "dependencies/Microsoft.Http.Client.LICENSE.rtf", 
+          "type": "license"
+        }
+      ], 
+      "version": "2.1.10.0", 
+      "name": "Microsoft Net Http - System.Net.Http.Primitives", 
+      "environments": [
+        "*"
+      ]
+    }, 
+    {
+      "files": [
+        {
+          "path": "Lib/System.Net.Http.WebRequest.dll", 
+          "type": "binary"
+        }, 
+        {
+          "path": "dependencies/Microsoft.Http.Client.LICENSE.rtf", 
+          "type": "license"
+        }
+      ], 
+      "version": "2.1.10.0", 
+      "name": "Microsoft Net Http - System.Net.Http.WebRequest", 
+      "environments": [
+        "*"
+      ]
+    }, 
+    {
+      "files": [
+        {
+          "path": "Lib/Newtonsoft.Json.dll", 
+          "type": "binary"
+        }, 
+        {
+          "path": "dependencies/Newtonsoft.Json.LICENSE", 
+          "type": "license"
+        }
+      ], 
+      "version": "5.0.5.16108", 
+      "name": "Newtonsoft Json .NET Library", 
+      "environments": [
+        "*"
+      ]
+    }, 
+    {
+      "files": [
+        {
+          "path": "Lib/Zlib.Portable.dll", 
+          "type": "binary"
+        }, 
+        {
+          "path": "dependencies/Zlib.Portable.LICENSE", 
+          "type": "license"
+        }
+      ], 
+      "version": "1.9.1.9000", 
+      "name": "ZLib Portable", 
+      "environments": [
+        "*"
+      ]
+    }, 
+    {
+      "files": [
+        {
+          "path": "Lib/Google.Apis.Authentication.OAuth2.dll", 
+          "type": "binary"
+        }
+      ], 
+      "version": "1.4.0-beta", 
+      "name": "Google APIs Client Authentication Library", 
+      "environments": [
+        "*"
+      ]
+    }, 
+    {
+      "files": [
+        {
+          "path": "Lib/Google.Apis.FullProfile.dll", 
+          "type": "binary"
+        }
+      ], 
+      "version": "1.4.0-beta", 
+      "name": "Google APIs Client Full Profile Library", 
+      "environments": [
+        "*"
+      ]
+    }, 
+    {
+      "files": [
+        {
+          "path": "Lib/Google.Apis.dll", 
+          "type": "binary"
+        }
+      ], 
+      "version": "1.4.0-beta", 
+      "name": "Google APIs Client Library (PCL)", 
+      "environments": [
+        "*"
+      ]
+    }
+  ]
+}

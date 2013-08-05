@@ -1,4 +1,4 @@
-﻿using DocumentUploader.Core.Models;
+﻿using Goul.Core;
 using NUnit.Framework;
 
 namespace DocumentUploader.UnitTests {

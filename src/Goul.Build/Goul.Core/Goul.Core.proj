@@ -15,13 +15,16 @@
     <Reference Include="System" />
   </ItemGroup>
 
- <ItemGroup Condition="'$(FrameworkVersion)' == 'v4.0'">
-    <Reference Include="$(PackagesDir)\SupaCharge.Core\lib\net40\supacharge.core.dll" />
-    <Reference Include="$(PackagesDir)\autofixture\lib\net40\ploeh.autofixture.dll" />
-    <Reference Include="$(PackagesDir)\autofac\lib\net40\autofac.dll" />
+  <ItemGroup Condition="'$(FrameworkVersion)' == 'v4.0'">
+    <Reference Include="$(PackagesDir)\google\DotNetOpenAuth.dll" />
+    <Reference Include="$(PackagesDir)\google\Google.Apis.Authentication.OAuth2.dll" />
+    <Reference Include="$(PackagesDir)\google\Google.Apis.dll" />
+    <Reference Include="$(PackagesDir)\google\Google.Apis.Drive.v2.dll" />
+    <Reference Include="$(PackagesDir)\google\Google.Apis.Oauth2.v2.dll" />
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Include="$(SrcDir)\Goul.Core\**\*.cs"/>
     <Compile Include="$(SrcDir)\Common.Properties\*.cs"/>
   </ItemGroup>
 
