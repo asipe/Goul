@@ -16,6 +16,8 @@
   Commands:
     - "help"   
     - "setcredentials xClient_IDx xClient_Secretx" 
+    - "listcredentials"
+    - "clearcredentials"
   
 
 

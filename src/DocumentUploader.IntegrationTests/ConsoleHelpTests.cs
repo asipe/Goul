@@ -17,9 +17,10 @@ namespace DocumentUploader.IntegrationTests {
       var app = factory.Build<IApp>();
       app.Execute("help");
       Assert.That(messageObserver.GetMessages(), Is.EqualTo(BA("Goul Document Uploader Version 0.1",
-                                                                   "Commands:",
-                                                                   "setcredentials xClient_IDx xClient_Secretx",
-                                                                   "listcredentials")));
+                                                               "Commands:",
+                                                               "setcredentials xClient_IDx xClient_Secretx | Sets the client id and the client secret to a local .txt file",
+                                                               "listcredentials | lists the credentials",
+                                                               "clearcredentials | deletes ALL of the credential files")));
     }
   }
 }
