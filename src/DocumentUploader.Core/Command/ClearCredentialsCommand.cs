@@ -12,9 +12,7 @@ namespace DocumentUploader.Core.Command {
       if (file.Exists("credentials.txt")) {
         file.Delete("credentials.txt");
         mObserver.AddMessages("Credentials Cleared");
-      } else {
-        mObserver.AddMessages("Could not find the Credentials file");
-      }
+      } else mObserver.AddMessages("Could not find the Credentials file");
     }
 
     private readonly IMessageObserver mObserver;
