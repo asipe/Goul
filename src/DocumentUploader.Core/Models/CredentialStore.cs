@@ -8,12 +8,12 @@ namespace DocumentUploader.Core.Models {
       mPath = path;
     }
 
-    public CredentialsFile Get() {
+    public Credentials Get() {
       var lines = mFile.ReadAllLines(mPath);
-      return new CredentialsFile {ClientID = lines[0], ClientSecret = lines[1]};
+      return new Credentials {ClientID = lines[0], ClientSecret = lines[1]};
     }
 
-    public void Update(CredentialsFile credentials) {
+    public void Update(Credentials credentials) {
       mFile.WriteAllText(mPath, string.Format("{0}{1}{2}", credentials.ClientID, Environment.NewLine, credentials.ClientSecret));
     }
 

@@ -1,6 +1,6 @@
 ﻿namespace DocumentUploader.Core.Models {
   public interface ICredentialStore {
-    CredentialsFile Get();
-    void Update(CredentialsFile credentials);
+    Credentials Get();
+    void Update(Credentials credentials);
   }
 }

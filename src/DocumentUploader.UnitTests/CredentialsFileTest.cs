@@ -6,14 +6,14 @@ namespace DocumentUploader.UnitTests {
   public class CredentialsFileTest {
     [Test]
     public void TestDefaultsToNull() {
-      var credentials = new CredentialsFile();
+      var credentials = new Credentials();
       Assert.Null(credentials.ClientID);
       Assert.Null(credentials.ClientSecret);
     }
 
     [Test]
     public void TestValuesCanBeInlaidCorrectly() {
-      var credentials = new CredentialsFile {ClientID = "123", ClientSecret = "456"};
+      var credentials = new Credentials {ClientID = "123", ClientSecret = "456"};
 
       Assert.That(credentials.ClientID, Is.EqualTo("123"));
       Assert.That(credentials.ClientSecret, Is.EqualTo("456"));
