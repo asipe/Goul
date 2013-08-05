@@ -47,11 +47,13 @@
     </Compile>
     <Compile Include="App\DocUploaderApp.cs" />
     <Compile Include="App\IApp.cs" />
+    <Compile Include="Command\ListCommand.cs" />
     <Compile Include="Command\SetCredentialsCommand.cs" />
     <Compile Include="Factory\Factory.cs" />
     <Compile Include="Factory\IFactory.cs" />
     <Compile Include="Factory\IModuleConfiguration.cs" />
     <Compile Include="Factory\Module\AppModule.cs" />
+    <Compile Include="Factory\Module\ListModule.cs" />
     <Compile Include="Factory\Module\CredentialStoreModule.cs" />
     <Compile Include="Factory\Module\DefaultModuleConfiguration.cs" />
     <Compile Include="Factory\Module\HelpCommandModule.cs" />
