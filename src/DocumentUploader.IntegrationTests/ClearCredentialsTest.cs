@@ -17,13 +17,13 @@ namespace DocumentUploader.IntegrationTests {
       mApp.Execute("clearcredentials");
 
       Assert.That(mFile.Exists("credentials.txt"), Is.False);
-      Assert.That(mMessageObserver.GetMessageCache(), Is.EqualTo(BA("Credentials Cleared")));
+      Assert.That(mMessageObserver.GetMessages(), Is.EqualTo(BA("Credentials Cleared")));
     }
 
     [Test]
     public void TestThatTheCorrectMessageIsSentWhenTheCredentialsFileIsMissing() {
       mApp.Execute("clearcredentials");
-      Assert.That(mMessageObserver.GetMessageCache(), Is.EqualTo(BA("Could not find the Credentials file")));
+      Assert.That(mMessageObserver.GetMessages(), Is.EqualTo(BA("Could not find the Credentials file")));
     }
 
     [SetUp]

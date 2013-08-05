@@ -16,7 +16,7 @@ namespace DocumentUploader.IntegrationTests {
       mApp.Execute("setcredentials", "randomVal", "seeminglyRandomVal");
       mApp.Execute("listcredentials");
 
-      Assert.That(mMessageObserver.GetMessageCache(), Is.EqualTo(mFile.ReadAllLines("credentials.txt")));
+      Assert.That(mMessageObserver.GetMessages(), Is.EqualTo(mFile.ReadAllLines("credentials.txt")));
       mFile.Delete("credentials.txt");
     }
 
@@ -24,7 +24,7 @@ namespace DocumentUploader.IntegrationTests {
     public void TestThatWhenTheCredentialsFileIsMissingTheCorrectMessageIsShown() {
       mApp.Execute("listcredentials");
 
-      Assert.That(mMessageObserver.GetMessageCache(), Is.EqualTo(BA("Could not find the Credentials file")));
+      Assert.That(mMessageObserver.GetMessages(), Is.EqualTo(BA("Could not find the Credentials file")));
     }
 
     [Test]
@@ -32,7 +32,7 @@ namespace DocumentUploader.IntegrationTests {
       mFile.WriteAllText("credentials.txt", "val1");
       mApp.Execute("listcredentials");
 
-      Assert.That(mMessageObserver.GetMessageCache(), Is.EqualTo(mFile.ReadAllLines("credentials.txt")));
+      Assert.That(mMessageObserver.GetMessages(), Is.EqualTo(mFile.ReadAllLines("credentials.txt")));
       mFile.Delete("credentials.txt");
     }
 

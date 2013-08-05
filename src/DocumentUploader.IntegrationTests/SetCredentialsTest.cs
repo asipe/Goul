@@ -16,17 +16,17 @@ namespace DocumentUploader.IntegrationTests {
       mApp.Execute("setcredentials", "val1", "val2");
       var credentialsFileLines = mFile.ReadAllLines("credentials.txt");
       Assert.That(credentialsFileLines, Is.EqualTo(BA("val1", "val2")));
-      Assert.That(mMessageObserver.GetMessageCache(), Is.EqualTo(BA("Credentials Set")));
+      Assert.That(mMessageObserver.GetMessages(), Is.EqualTo(BA("Credentials Set")));
     }
 
     [Test]
     public void TestThatTheAppThrowsCorrectExceptionWhenGivenIncorrectNumberOfArgs() {
       mApp.Execute("setcredentials");
-      Assert.That(mMessageObserver.GetMessageCache(), Is.EqualTo(BA("Invalid amount of arguments")));
+      Assert.That(mMessageObserver.GetMessages(), Is.EqualTo(BA("Invalid amount of arguments")));
       mApp.Execute(new[] {"setcredentials", "1"});
-      Assert.That(mMessageObserver.GetMessageCache(), Is.EqualTo(BA("Invalid amount of arguments")));
+      Assert.That(mMessageObserver.GetMessages(), Is.EqualTo(BA("Invalid amount of arguments")));
       mApp.Execute(new[] {"setcredentials", "1", "2", "3"});
-      Assert.That(mMessageObserver.GetMessageCache(), Is.EqualTo(BA("Invalid amount of arguments")));
+      Assert.That(mMessageObserver.GetMessages(), Is.EqualTo(BA("Invalid amount of arguments")));
     }
 
     [SetUp]

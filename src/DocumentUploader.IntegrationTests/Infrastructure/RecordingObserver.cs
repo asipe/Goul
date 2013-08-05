@@ -6,7 +6,7 @@ namespace DocumentUploader.IntegrationTests.Infrastructure {
       mMessages = messageSet;
     }
 
-    public string[] GetMessageCache() {
+    public string[] GetMessages() {
       return mMessages;
     }
 
