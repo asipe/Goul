@@ -8,7 +8,7 @@ using SupaCharge.Testing;
 
 namespace DocumentUploader.UnitTests {
   [TestFixture]
-  public class GetAuthorizationUrlCommandTest:BaseTestCase {
+  public class GetAuthorizationUrlCommandTest : BaseTestCase {
     [Test]
     public void TestGetAuthUrlCommandWorks() {
       mCredentialStore.Setup(o => o.Get()).Returns(mCredentials.Object);
@@ -17,7 +17,7 @@ namespace DocumentUploader.UnitTests {
       mGetAuthUrlCmd.Execute("authorization url");
     }
 
-    [SetUp] 
+    [SetUp]
     public void DoSetup() {
       mObserver = Mok<IMessageObserver>();
       mCredentialStore = Mok<ICredentialStore>();

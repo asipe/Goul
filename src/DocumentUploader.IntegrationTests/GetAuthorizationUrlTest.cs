@@ -19,7 +19,7 @@ namespace DocumentUploader.IntegrationTests {
       var messages = mMessageObserver.GetMessages();
       Assert.That(messages.Length, Is.EqualTo(1));
       Assert.That(messages[0], Is.StringStarting("https://accounts.google.com/o/oauth2"));
-      
+
       mFile.Delete("credentials.txt");
     }
 

@@ -9,12 +9,12 @@ namespace Goul.Core {
       return new NativeApplicationClient(GoogleAuthenticationServer.Description, credentials.ClientID, credentials.ClientSecret);
     }
 
-    public static Uri GetAuthorization (UserAgentClient appClient) {
+    public static Uri GetAuthorization(UserAgentClient appClient) {
       return appClient.RequestUserAuthorization(GetState());
     }
 
     private static IAuthorizationState GetState() {
-      var state = new AuthorizationState(new[] { "https://www.googleapis.com/auth/drive" }) { Callback = new Uri(NativeApplicationClient.OutOfBandCallbackUrl) };
+      var state = new AuthorizationState(new[] {"https://www.googleapis.com/auth/drive"}) {Callback = new Uri(NativeApplicationClient.OutOfBandCallbackUrl)};
       return state;
     }
   }
