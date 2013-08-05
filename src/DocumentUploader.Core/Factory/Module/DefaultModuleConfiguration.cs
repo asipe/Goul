@@ -8,7 +8,8 @@ namespace DocumentUploader.Core.Factory.Module {
       builder.RegisterModule(new UtilityModule());
       builder.RegisterModule(new SetCredentialsModule());
       builder.RegisterModule(new CredentialStoreModule());
-      builder.RegisterModule(new ListModule());
+      builder.RegisterModule(new ListCommandModule());
+      builder.RegisterModule(new ClearCommandModule());
     }
   }
 }

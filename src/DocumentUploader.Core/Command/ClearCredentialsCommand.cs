@@ -2,16 +2,16 @@
 using SupaCharge.Core.IOAbstractions;
 
 namespace DocumentUploader.Core.Command {
-  public class ListCommand : ICommand {
-    public ListCommand(IMessageObserver observer) {
+  public class ClearCredentialsCommand : ICommand {
+    public ClearCredentialsCommand(IMessageObserver observer) {
       mObserver = observer;
     }
 
-    public void Execute(params string[] messages) {
+    public void Execute(string[] messages) {
       var file = new DotNetFile();
       if (file.Exists("credentials.txt")) {
-      
-      mObserver.AddMessages(file.ReadAllLines("credentials.txt"));
+        file.Delete("credentials.txt");
+        mObserver.AddMessages("Credentials Cleared");
       } else {
         mObserver.AddMessages("Could not find the Credentials file");
       }
