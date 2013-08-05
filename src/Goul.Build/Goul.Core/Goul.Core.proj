@@ -16,11 +16,11 @@
   </ItemGroup>
 
   <ItemGroup Condition="'$(FrameworkVersion)' == 'v4.0'">
-    <Reference Include="$(PackagesDir)\google\DotNetOpenAuth.dll" />
-    <Reference Include="$(PackagesDir)\google\Google.Apis.Authentication.OAuth2.dll" />
-    <Reference Include="$(PackagesDir)\google\Google.Apis.dll" />
-    <Reference Include="$(PackagesDir)\google\Google.Apis.Drive.v2.dll" />
-    <Reference Include="$(PackagesDir)\google\Google.Apis.Oauth2.v2.dll" />
+    <Reference Include="$(ThirdPartyDir)\google\libs\DotNetOpenAuth.dll" />
+    <Reference Include="$(ThirdPartyDir)\google\libs\Google.Apis.Authentication.OAuth2.dll" />
+    <Reference Include="$(ThirdPartyDir)\google\libs\Google.Apis.dll" />
+    <Reference Include="$(ThirdPartyDir)\google\libs\Google.Apis.Drive.v2.dll" />
+    <Reference Include="$(ThirdPartyDir)\google\libs\Google.Apis.Oauth2.v2.dll" />
   </ItemGroup>
 
   <ItemGroup>

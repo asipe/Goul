@@ -25,7 +25,8 @@
 
   <PropertyGroup>
     <DebugDir>$(Rootdir)\debug\$(TargetFrameworkVersionName)</DebugDir>
-    <PackagesDir>$(Rootdir)\thirdparty\packages\$(TargetFrameworkVersionName)</PackagesDir>
+    <ThirdPartyDir>$(Rootdir)\thirdparty\</ThirdPartyDir>
+    <PackagesDir>$(ThirdPartyDir)\packages\$(TargetFrameworkVersionName)</PackagesDir>
     <OutputPath>$(DebugDir)\$(AssemblyName)</OutputPath>
     <BaseIntermediaryOutputPath>$(TargetFrameworkVersionName)\obj</BaseIntermediaryOutputPath>
     <IntermediateOutputPath>$(BaseIntermediaryOutputPath)</IntermediateOutputPath>
