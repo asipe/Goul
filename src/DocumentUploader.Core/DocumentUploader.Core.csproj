@@ -57,6 +57,7 @@
     <Compile Include="Factory\IModuleConfiguration.cs" />
     <Compile Include="Factory\Module\AppModule.cs" />
     <Compile Include="Factory\Module\ClearCommandModule.cs" />
+    <Compile Include="Factory\Module\AuthorizeCommandModule.cs" />
     <Compile Include="Factory\Module\GetAuthorizationUrlCommandModule.cs" />
     <Compile Include="Factory\Module\GoulModule.cs" />
     <Compile Include="Factory\Module\ListCommandModule.cs" />

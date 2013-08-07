@@ -17,8 +17,8 @@ namespace DocumentUploader.IntegrationTests {
       File.WriteAllLines("Credentials_Test_Use_Only.txt", new [] {"123", "345"});
       mApp.Execute("authorize", "authcode");
 
-    //  Assert.That(File.ReadAllLines("refreshToken.txt"), Is.EqualTo("123"));
-   //   Assert.That(mMessageObserver.GetMessages(), Is.EqualTo(BA("Authorize")));
+     // Assert.That(mFile.ReadAllLines("refreshToken.txt"), Is.EqualTo(BA("123")));
+      Assert.That(mMessageObserver.GetMessages(), Is.EqualTo(BA("Authorized")));
     }
 
     [SetUp]
