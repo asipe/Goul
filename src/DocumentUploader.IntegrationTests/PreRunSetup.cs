@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using NUnit.Framework;
 
 namespace DocumentUploader.IntegrationTests {
@@ -17,7 +18,8 @@ namespace DocumentUploader.IntegrationTests {
       Console.WriteLine("================================================================================");
       Console.WriteLine("");
      
-      Console.WriteLine("result");
+      if (!File.Exists("Credentials Test Use Only.txt")) 
+      Assert.Fail("Credentials file for test use could not be found");
     }
   }
 }

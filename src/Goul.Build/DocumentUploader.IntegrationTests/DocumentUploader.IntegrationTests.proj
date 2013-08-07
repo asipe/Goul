@@ -33,4 +33,8 @@
   </ItemGroup>
 
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  
+  <Target Name="AfterBuild">
+     <Copy SourceFiles="$(SrcDir)\DocumentUploader.Integrationtests\Credentials_Test_Use_Only.txt" DestinationFolder="$(DebugDir)\DocumentUploader.Integrationtests" ContinueOnError="false" />
+  </Target>
 </Project>
