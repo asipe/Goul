@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="BuildStage1;BuildStage2" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="4.0" DefaultTargets="BuildStage1;BuildStage2;BuildStage3" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Frameworks Include="v4.0"/>
   </ItemGroup>
 
   <ItemGroup>
     <Stage1 Include="Goul.Core\Goul.Core.proj" />
-    <Stage1 Include="DocumentUploader.Core\DocumentUploader.Core.proj" />
-    <Stage2 Include="DocumentUploader.UnitTests\DocumentUploader.UnitTests.proj" />
-    <Stage2 Include="DocumentUploader.Console\DocumentUploader.Console.proj" />
-    <Stage2 Include="DocumentUploader.IntegrationTests\DocumentUploader.IntegrationTests.proj" />
+    <Stage2 Include="DocumentUploader.Core\DocumentUploader.Core.proj" />
+    <Stage3 Include="DocumentUploader.UnitTests\DocumentUploader.UnitTests.proj" />
+    <Stage3 Include="DocumentUploader.Console\DocumentUploader.Console.proj" />
+    <Stage3 Include="DocumentUploader.IntegrationTests\DocumentUploader.IntegrationTests.proj" />
   </ItemGroup>
   
   <Target Name="BuildStage1" Outputs="%(Frameworks.Identity)">
@@ -22,6 +22,13 @@
   <Target Name="BuildStage2" Outputs="%(Frameworks.Identity)">
     <MSBuild BuildInParallel="true"
              Projects="@(Stage2)"
+             Properties="FrameworkVersion=%(Frameworks.Identity)"
+             StopOnFirstFailure="false"/>
+  </Target>
+  
+  <Target Name="BuildStage3" Outputs="%(Frameworks.Identity)">
+    <MSBuild BuildInParallel="true"
+             Projects="@(Stage3)"
              Properties="FrameworkVersion=%(Frameworks.Identity)"
              StopOnFirstFailure="false"/>
   </Target>
