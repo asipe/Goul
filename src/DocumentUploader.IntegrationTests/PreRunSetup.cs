@@ -17,9 +17,10 @@ namespace DocumentUploader.IntegrationTests {
       Console.WriteLine("================================================================================");
       Console.WriteLine("================================================================================");
       Console.WriteLine("");
-     
-      if (!File.Exists("Credentials Test Use Only.txt")) 
-      Assert.Fail("Credentials file for test use could not be found");
+
+      if (!File.Exists("Credentials_Test_Use_Only.txt")) {
+        Assert.Fail("Credentials file for test use could not be found");
+      }
     }
   }
 }
