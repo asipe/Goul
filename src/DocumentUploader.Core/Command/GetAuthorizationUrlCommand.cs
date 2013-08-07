@@ -5,7 +5,7 @@ using Goul.Core;
 namespace DocumentUploader.Core.Command {
   public class GetAuthorizationUrlCommand : ICommand {
     public GetAuthorizationUrlCommand(IMessageObserver observer,
-                                      ICredentialStore store,
+                                      IStore store,
                                       IGoulRequestHandler handler) {
       mObserver = observer;
       mStore = store;
@@ -18,6 +18,6 @@ namespace DocumentUploader.Core.Command {
 
     private readonly IGoulRequestHandler mHandler;
     private readonly IMessageObserver mObserver;
-    private readonly ICredentialStore mStore;
+    private readonly IStore mStore;
   }
 }

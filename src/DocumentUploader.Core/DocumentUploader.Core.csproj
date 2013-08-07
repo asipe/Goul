@@ -47,6 +47,7 @@
     </Compile>
     <Compile Include="App\DocUploaderApp.cs" />
     <Compile Include="App\IApp.cs" />
+    <Compile Include="Command\AuthorizeCommand.cs" />
     <Compile Include="Command\ClearCredentialsCommand.cs" />
     <Compile Include="Command\GetAuthorizationUrlCommand.cs" />
     <Compile Include="Command\ListCredentialsCommand.cs" />
@@ -64,11 +65,12 @@
     <Compile Include="Factory\Module\HelpCommandModule.cs" />
     <Compile Include="Command\HelpCommand.cs" />
     <Compile Include="Command\ICommand.cs" />
+    <Compile Include="Models\RefreshTokenStore.cs" />
     <Compile Include="Output\ConsoleWriter.cs" />
     <Compile Include="Factory\Module\SetCredentialsModule.cs" />
     <Compile Include="Factory\Module\UtilityModule.cs" />
     <Compile Include="Models\CredentialStore.cs" />
-    <Compile Include="Models\ICredentialStore.cs" />
+    <Compile Include="Models\IStore.cs" />
     <Compile Include="Observer\IMessageObserver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

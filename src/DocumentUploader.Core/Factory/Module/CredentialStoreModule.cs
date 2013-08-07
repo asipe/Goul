@@ -9,7 +9,7 @@ namespace DocumentUploader.Core.Factory.Module {
       builder
         .RegisterType<CredentialStore>()
         .InstancePerLifetimeScope()
-        .As<ICredentialStore>()
+        .As<IStore>()
         .WithParameter("path", "credentials.txt");
     }
   }

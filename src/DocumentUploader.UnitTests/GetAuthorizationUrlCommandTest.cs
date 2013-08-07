@@ -20,14 +20,14 @@ namespace DocumentUploader.UnitTests {
     [SetUp]
     public void DoSetup() {
       mObserver = Mok<IMessageObserver>();
-      mCredentialStore = Mok<ICredentialStore>();
+      mCredentialStore = Mok<IStore>();
       mGoulReqHandler = Mok<IGoulRequestHandler>();
       mCredentials = Mok<Credentials>();
       mGetAuthUrlCmd = new GetAuthorizationUrlCommand(mObserver.Object, mCredentialStore.Object, mGoulReqHandler.Object);
     }
 
     private Mock<IMessageObserver> mObserver;
-    private Mock<ICredentialStore> mCredentialStore;
+    private Mock<IStore> mCredentialStore;
     private Mock<IGoulRequestHandler> mGoulReqHandler;
     private Mock<Credentials> mCredentials;
     private ICommand mGetAuthUrlCmd;
