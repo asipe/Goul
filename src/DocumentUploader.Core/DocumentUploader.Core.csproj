@@ -52,12 +52,14 @@
     <Compile Include="Command\GetAuthorizationUrlCommand.cs" />
     <Compile Include="Command\ListCredentialsCommand.cs" />
     <Compile Include="Command\SetCredentialsCommand.cs" />
+    <Compile Include="Command\UploadCommand.cs" />
     <Compile Include="Factory\Factory.cs" />
     <Compile Include="Factory\IFactory.cs" />
     <Compile Include="Factory\IModuleConfiguration.cs" />
     <Compile Include="Factory\Module\AppModule.cs" />
     <Compile Include="Factory\Module\ClearCommandModule.cs" />
     <Compile Include="Factory\Module\AuthorizeCommandModule.cs" />
+    <Compile Include="Factory\Module\UploadCommandModule.cs" />
     <Compile Include="Factory\Module\RefreshTokenStoreModule.cs" />
     <Compile Include="Factory\Module\GetAuthorizationUrlCommandModule.cs" />
     <Compile Include="Factory\Module\GoulModule.cs" />
