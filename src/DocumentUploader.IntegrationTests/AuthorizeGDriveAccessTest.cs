@@ -13,12 +13,16 @@ namespace DocumentUploader.IntegrationTests {
   [TestFixture]
   public class AuthorizeGDriveAccessTest:BaseTestCase {
     [Test]
+    [Explicit]
     public void InitTest() {
-      File.WriteAllLines("Credentials_Test_Use_Only.txt", new [] {"123", "345"});
-      mApp.Execute("authorize", "authcode");
+      File.Copy("Credentials_Test_Use_Only.txt", "credentials.txt");
+      mApp.Execute("authorize", File.ReadAllLines("Refresh_AuthToken_Test_Use_Only.txt")[0]);
 
-     // Assert.That(mFile.ReadAllLines("refreshToken.txt"), Is.EqualTo(BA("123")));
       Assert.That(mMessageObserver.GetMessages(), Is.EqualTo(BA("Authorized")));
+      var value = mFile.ReadAllLines("refreshToken.txt")[0];
+      Assert.That(value.Length, Is.GreaterThan(5));
+      Assert.That(value[0], Is.EqualTo('1'));
+      File.Delete("refreshToken.txt");
     }
 
     [SetUp]

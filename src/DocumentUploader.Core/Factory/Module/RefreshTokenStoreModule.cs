@@ -2,15 +2,15 @@
 using DocumentUploader.Core.Models;
 
 namespace DocumentUploader.Core.Factory.Module {
-  internal class CredentialStoreModule : Autofac.Module {
+  internal class RefreshTokenStoreModule : Autofac.Module {
     protected override void Load(ContainerBuilder builder) {
       base.Load(builder);
 
       builder
-        .RegisterType<CredentialStore>()
+        .RegisterType<RefreshTokenStore>()
         .InstancePerLifetimeScope()
-        .As<ICredentialStore>()
-        .WithParameter("path", "credentials.txt");
+        .As<IRefreshTokenStore>()
+        .WithParameter("path", "refreshToken.txt");
     }
   }
 }

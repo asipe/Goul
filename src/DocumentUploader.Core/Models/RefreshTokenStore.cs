@@ -2,7 +2,7 @@
 using SupaCharge.Core.IOAbstractions;
 
 namespace DocumentUploader.Core.Models {
-  public class RefreshTokenStore {
+  public class RefreshTokenStore:IRefreshTokenStore {
     public RefreshTokenStore(IFile file, string path) {
       mFile = file;
       mPath = path;

@@ -36,6 +36,6 @@ namespace DocumentUploader.UnitTests {
     }
 
     private Mock<IFile> mFile;
-    private CredentialStore mCredStore;
+    private ICredentialStore mCredStore;
   }
 }

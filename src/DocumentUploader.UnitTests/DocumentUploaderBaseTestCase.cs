@@ -2,10 +2,11 @@
 using System.Linq;
 using KellermanSoftware.CompareNetObjects;
 using NUnit.Framework;
+using SupaCharge.Testing;
 
 namespace DocumentUploader.UnitTests {
   [TestFixture]
-  public class DocumentUploaderBaseTestCase {
+  public class DocumentUploaderBaseTestCase:BaseTestCase {
      static DocumentUploaderBaseTestCase() {
       _ObjectComparer.MaxDifferences = 10;
     }

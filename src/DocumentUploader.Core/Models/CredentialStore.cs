@@ -3,7 +3,7 @@ using Goul.Core;
 using SupaCharge.Core.IOAbstractions;
 
 namespace DocumentUploader.Core.Models {
-  public class CredentialStore : IStore {
+  public class CredentialStore:ICredentialStore {
     public CredentialStore(IFile file, string path) {
       mFile = file;
       mPath = path;

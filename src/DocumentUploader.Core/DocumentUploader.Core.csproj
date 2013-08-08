@@ -58,6 +58,7 @@
     <Compile Include="Factory\Module\AppModule.cs" />
     <Compile Include="Factory\Module\ClearCommandModule.cs" />
     <Compile Include="Factory\Module\AuthorizeCommandModule.cs" />
+    <Compile Include="Factory\Module\RefreshTokenStoreModule.cs" />
     <Compile Include="Factory\Module\GetAuthorizationUrlCommandModule.cs" />
     <Compile Include="Factory\Module\GoulModule.cs" />
     <Compile Include="Factory\Module\ListCommandModule.cs" />
@@ -66,12 +67,13 @@
     <Compile Include="Factory\Module\HelpCommandModule.cs" />
     <Compile Include="Command\HelpCommand.cs" />
     <Compile Include="Command\ICommand.cs" />
+    <Compile Include="Models\ICredentialStore.cs" />
+    <Compile Include="Models\IRefreshTokenStore.cs" />
     <Compile Include="Models\RefreshTokenStore.cs" />
     <Compile Include="Output\ConsoleWriter.cs" />
     <Compile Include="Factory\Module\SetCredentialsModule.cs" />
     <Compile Include="Factory\Module\UtilityModule.cs" />
     <Compile Include="Models\CredentialStore.cs" />
-    <Compile Include="Models\IStore.cs" />
     <Compile Include="Observer\IMessageObserver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

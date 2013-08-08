@@ -37,6 +37,9 @@
     <Reference Include="Autofac">
       <HintPath>..\..\thirdparty\packages\net-4.0\Autofac\lib\net40\Autofac.dll</HintPath>
     </Reference>
+    <Reference Include="KellermanSoftware.Compare-NET-Objects">
+      <HintPath>..\..\thirdparty\packages\net-4.0\CompareNETObjects\lib\KellermanSoftware.Compare-NET-Objects.dll</HintPath>
+    </Reference>
     <Reference Include="Moq">
       <HintPath>..\..\thirdparty\packages\net-4.0\Moq\lib\NET40\Moq.dll</HintPath>
     </Reference>
@@ -59,6 +62,7 @@
       <Link>AssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="AuthorizeCommandTest.cs" />
+    <Compile Include="DocumentUploaderBaseTestCase.cs" />
     <Compile Include="DocUploaderAppTest.cs" />
     <Compile Include="CredentialsFileTest.cs" />
     <Compile Include="CredentialStoreTest.cs" />

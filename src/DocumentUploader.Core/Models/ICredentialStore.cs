@@ -1,8 +1,8 @@
 ﻿using Goul.Core;
 
 namespace DocumentUploader.Core.Models {
-  public interface IStore {
-    Credentials Get();
+  public interface ICredentialStore {
     void Update(Credentials credentials);
+    Credentials Get();
   }
 }

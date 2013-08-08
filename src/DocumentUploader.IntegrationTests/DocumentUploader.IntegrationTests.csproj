@@ -74,6 +74,10 @@
       <Project>{360C768E-28DC-4B16-92BC-424B9A90FF43}</Project>
       <Name>DocumentUploader.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Goul.Core\Goul.Core.csproj">
+      <Project>{BD321C2E-EBB8-45DE-B213-E50F6D8F1943}</Project>
+      <Name>Goul.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -5,19 +5,19 @@ using Goul.Core;
 namespace DocumentUploader.Core.Command {
   public class GetAuthorizationUrlCommand : ICommand {
     public GetAuthorizationUrlCommand(IMessageObserver observer,
-                                      IStore store,
+                                      ICredentialStore credentialStore,
                                       IGoulRequestHandler handler) {
       mObserver = observer;
-      mStore = store;
+      mCredentialStore = credentialStore;
       mHandler = handler;
     }
 
     public void Execute(params string[] messages) {
-      mObserver.AddMessages(mHandler.GetAuthUrl(mStore.Get()));
+      mObserver.AddMessages(mHandler.GetAuthUrl(mCredentialStore.Get()));
     }
 
     private readonly IGoulRequestHandler mHandler;
     private readonly IMessageObserver mObserver;
-    private readonly IStore mStore;
+    private readonly ICredentialStore mCredentialStore;
   }
 }

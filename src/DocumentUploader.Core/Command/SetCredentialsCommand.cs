@@ -4,7 +4,7 @@ using Goul.Core;
 
 namespace DocumentUploader.Core.Command {
   public class SetCredentialsCommand : ICommand {
-    public SetCredentialsCommand(IMessageObserver observer, IStore storage) {
+    public SetCredentialsCommand(IMessageObserver observer, ICredentialStore storage) {
       mObserver = observer;
       mStorage = storage;
     }
@@ -21,6 +21,6 @@ namespace DocumentUploader.Core.Command {
     }
 
     private readonly IMessageObserver mObserver;
-    private readonly IStore mStorage;
+    private readonly ICredentialStore mStorage;
   }
 }

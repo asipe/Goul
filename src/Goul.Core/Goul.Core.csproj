@@ -59,6 +59,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GetAuthorizationState.cs" />
     <Compile Include="Credentials.cs" />
     <Compile Include="GetAuthorizationUrl.cs" />
     <Compile Include="GoulRequestHandler.cs" />
