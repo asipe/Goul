@@ -1,5 +1,4 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using DocumentUploader.Core.Models;
 using Goul.Core;
 using Moq;
@@ -12,7 +11,7 @@ namespace DocumentUploader.UnitTests {
   public class RefreshTokenStoreTest : BaseTestCase {
     [Test]
     public void TestGetWithRealPathGivesCorrectValues() {
-      mFile.Setup(f => f.ReadAllLines("fakePath.txt")).Returns(new[] { "1"});
+      mFile.Setup(f => f.ReadAllLines("fakePath.txt")).Returns(new[] {"1"});
       Assert.That(mRefreshTokenStore.Get().Token, Is.EqualTo("1"));
     }
 

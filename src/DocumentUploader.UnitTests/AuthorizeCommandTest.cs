@@ -11,8 +11,8 @@ namespace DocumentUploader.UnitTests {
     [Test]
     public void TestExecuteAddsOneCorrectMessageToTheObserver() {
       mMessageObserver.Setup(o => o.AddMessages("Authorized"));
-      mRefreshTokenStore.Setup(s => s.Update(It.Is<RefreshToken>(t => AreEqual(t, new RefreshToken { Token = "123" }))));
-      mGReqHandler.Setup(r => r.CreateRefreshToken(It.Is<Credentials>(c => AreEqual(c, new Credentials { ClientID = "1", ClientSecret = "2"})),"123")).Returns("123");
+      mRefreshTokenStore.Setup(s => s.Update(It.Is<RefreshToken>(t => AreEqual(t, new RefreshToken {Token = "123"}))));
+      mGReqHandler.Setup(r => r.CreateRefreshToken(It.Is<Credentials>(c => AreEqual(c, new Credentials {ClientID = "1", ClientSecret = "2"})), "123")).Returns("123");
       mCredStore.Setup(r => r.Get()).Returns(new Credentials {ClientID = "1", ClientSecret = "2"});
       mACommand.Execute("authorize", "123");
     }

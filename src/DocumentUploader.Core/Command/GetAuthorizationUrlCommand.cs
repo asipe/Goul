@@ -16,8 +16,8 @@ namespace DocumentUploader.Core.Command {
       mObserver.AddMessages(mHandler.GetAuthUrl(mCredentialStore.Get()));
     }
 
+    private readonly ICredentialStore mCredentialStore;
     private readonly IGoulRequestHandler mHandler;
     private readonly IMessageObserver mObserver;
-    private readonly ICredentialStore mCredentialStore;
   }
 }

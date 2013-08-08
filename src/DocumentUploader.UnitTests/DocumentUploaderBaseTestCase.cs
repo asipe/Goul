@@ -6,8 +6,8 @@ using SupaCharge.Testing;
 
 namespace DocumentUploader.UnitTests {
   [TestFixture]
-  public class DocumentUploaderBaseTestCase:BaseTestCase {
-     static DocumentUploaderBaseTestCase() {
+  public class DocumentUploaderBaseTestCase : BaseTestCase {
+    static DocumentUploaderBaseTestCase() {
       _ObjectComparer.MaxDifferences = 10;
     }
 

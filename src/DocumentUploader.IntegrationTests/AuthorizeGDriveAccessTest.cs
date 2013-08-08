@@ -11,7 +11,7 @@ using SupaCharge.Testing;
 
 namespace DocumentUploader.IntegrationTests {
   [TestFixture]
-  public class AuthorizeGDriveAccessTest:BaseTestCase {
+  public class AuthorizeGDriveAccessTest : BaseTestCase {
     [Test]
     [Explicit]
     public void InitTest() {
