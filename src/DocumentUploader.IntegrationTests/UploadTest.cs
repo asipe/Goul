@@ -19,8 +19,10 @@ namespace DocumentUploader.IntegrationTests {
       var provider = new TestConfigurationProvider();
       provider.SetupCredentialsFile();
       provider.SetupRefreshTokenFile();
+      provider.SetupDummyFile();
+      mHandler.DeleteAllFiles(mCredentials.Get(), mRefreshToken.Get());
 
-      mApp.Execute("upload", "file", "file2");
+      mApp.Execute("upload", "file.txt", "myFile");
       var files = mHandler.GetFilesByTitle(mCredentials.Get(), mRefreshToken.Get());
 
       Assert.That(mMessageObserver.GetMessages(), Is.EqualTo(BA("File uploaded")));

@@ -19,5 +19,9 @@ namespace Goul.Core {
       var uploader = new Uploader();
       uploader.Execute(fileToUpload, fileTitle, credentials, refreshToken);
     }
+
+    public void DeleteAllFiles(Credentials credentials, RefreshToken refreshToken) {
+      new GDriveFileManager(credentials, refreshToken).CleanGDriveAcct();
+    }
   }
 }

@@ -16,7 +16,7 @@ namespace DocumentUploader.IntegrationTests {
     public string GetRefreshToken() {
       var path = Path.Combine(GetDevelopmentRoot(), @"testconfigs\refreshToken.txt");
       return File.ReadAllText(path);
-    } 
+    }
 
     public void SetupCredentialsFile() {
        File.WriteAllLines("credentials.txt", GetCredentials());
@@ -24,6 +24,10 @@ namespace DocumentUploader.IntegrationTests {
 
     public void SetupRefreshTokenFile() {
       File.WriteAllText("refreshToken.txt", GetRefreshToken());
+    }
+
+    public void SetupDummyFile() {
+      File.WriteAllText("file.txt", "");
     }
 
     public void SetupAuthTokenFile() {
@@ -51,5 +55,7 @@ namespace DocumentUploader.IntegrationTests {
         Directory.Exists(Path.Combine(path, "src")) &&
         Directory.Exists(Path.Combine(path, "scripts"));
     }
+
+   
   }
 }
