@@ -20,7 +20,7 @@ namespace Goul.Core {
     }
 
     private IAuthorizationState GetAuthorization(NativeApplicationClient appClient) {
-      var state = new AuthorizationState(new [] {"https://www.googleapis.com/auth/drive"}) {Callback = new Uri(NativeApplicationClient.OutOfBandCallbackUrl), RefreshToken = mRefreshToken.Token};
+      var state = new AuthorizationState(new[] {"https://www.googleapis.com/auth/drive"}) {Callback = new Uri(NativeApplicationClient.OutOfBandCallbackUrl), RefreshToken = mRefreshToken.Token};
       appClient.RefreshToken(state);
       return state;
     }

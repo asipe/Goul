@@ -13,11 +13,11 @@ using SupaCharge.Testing;
 
 namespace DocumentUploader.IntegrationTests {
   [TestFixture]
-  public class UploadTest:BaseTestCase {
+  public class UploadTest : BaseTestCase {
     [Test]
     public void TestMessage() {
       if (!File.Exists("refreshToken.txt"))
-      File.Copy("Refresh_AuthToken_Test_Use_Only.txt", "refreshToken.txt");
+        File.Copy("Refresh_AuthToken_Test_Use_Only.txt", "refreshToken.txt");
 
       File.Copy("Credentials_Test_Use_Only.txt", "credentials.txt");
       mApp.Execute("upload");

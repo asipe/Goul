@@ -6,7 +6,7 @@ using SupaCharge.Testing;
 
 namespace DocumentUploader.UnitTests {
   [TestFixture]
-  public class UploadCommandTest:BaseTestCase {
+  public class UploadCommandTest : BaseTestCase {
     [Test]
     public void TestUploadMessageIsSent() {
       mObserver.Setup(o => o.AddMessages("File uploaded"));
