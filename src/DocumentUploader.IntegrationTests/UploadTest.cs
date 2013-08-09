@@ -20,11 +20,11 @@ namespace DocumentUploader.IntegrationTests {
       provider.SetupCredentialsFile();
       provider.SetupRefreshTokenFile();
 
-      mApp.Execute("upload");
+      mApp.Execute("upload", "file", "file2");
       var files = mHandler.GetFilesByTitle(mCredentials.Get(), mRefreshToken.Get());
 
       Assert.That(mMessageObserver.GetMessages(), Is.EqualTo(BA("File uploaded")));
-      Assert.That(files.Count, Is.EqualTo(0));
+      Assert.That(files.Count, Is.EqualTo(1));
     }
 
     [SetUp]
