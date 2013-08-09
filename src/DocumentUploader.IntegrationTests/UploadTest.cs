@@ -16,10 +16,10 @@ namespace DocumentUploader.IntegrationTests {
   public class UploadTest : BaseTestCase {
     [Test]
     public void TestMessage() {
-      if (!File.Exists("refreshToken.txt"))
-        File.Copy("Refresh_AuthToken_Test_Use_Only.txt", "refreshToken.txt");
+      var provider = new TestConfigurationProvider();
+      provider.SetupCredentialsFile();
+      provider.SetupRefreshTokenFile();
 
-      File.Copy("Credentials_Test_Use_Only.txt", "credentials.txt");
       mApp.Execute("upload");
       var files = mHandler.GetFilesByTitle(mCredentials.Get(), mRefreshToken.Get());
 
@@ -34,7 +34,7 @@ namespace DocumentUploader.IntegrationTests {
       mApp = mFactory.Build<IApp>();
       mFile = new DotNetFile();
       mRefreshToken = new RefreshTokenStore(mFile, "refreshToken.txt");
-      mCredentials = new CredentialStore(mFile, "Credentials_Test_Use_Only.txt");
+      mCredentials = new CredentialStore(mFile, "credentials.txt");
       mHandler = new GoulRequestHandler();
     }
 

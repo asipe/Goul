@@ -13,7 +13,9 @@ namespace DocumentUploader.IntegrationTests {
   public class GetAuthorizationUrlTest : BaseTestCase {
     [Test]
     public void TestAuthorizationUrlIsCorrect() {
-      mApp.Execute("setcredentials", "randomVal", "seeminglyRandomVal");
+      var provider = new TestConfigurationProvider();
+      provider.SetupCredentialsFile();
+
       mApp.Execute("getauthorizationurl");
 
       var messages = mMessageObserver.GetMessages();
