@@ -1,4 +1,6 @@
-﻿namespace Goul.Core {
+﻿using System.Collections.Generic;
+
+namespace Goul.Core {
   public class GoulRequestHandler : IGoulRequestHandler {
     public string GetAuthUrl(Credentials credentials) {
       var result = GetAuthorizationUrl.GetAuthorization(GetAuthorizationUrl.BuildNativeAppClient(credentials));
@@ -7,6 +9,10 @@
 
     public string CreateRefreshToken(Credentials credentials, string code) {
       return new GetAuthorizationState().GetAuthorization(credentials, code).RefreshToken;
+    }
+
+    public List<string> GetFilesByTitle(Credentials credentials, RefreshToken refreshToken) {
+      return new GDriveFileManager(credentials, refreshToken).GetFilesByTitle();
     }
   }
 }
