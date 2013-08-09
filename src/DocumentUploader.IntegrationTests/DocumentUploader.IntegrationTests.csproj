@@ -57,19 +57,27 @@
     <Compile Include="..\Common.Properties\AssemblyInfo.cs">
       <Link>AssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="AuthorizeGDriveAccessTest.cs" />
     <Compile Include="ClearCredentialsTest.cs" />
     <Compile Include="ConsoleHelpTests.cs" />
+    <Compile Include="GetAuthorizationUrlTest.cs" />
     <Compile Include="ListCredentialsTest.cs" />
     <Compile Include="Infrastructure\RecordingObserver.cs" />
     <Compile Include="Infrastructure\Modules\ITModuleConfiguration.cs" />
     <Compile Include="Infrastructure\Modules\ITModule.cs" />
+    <Compile Include="PreRunSetup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SetCredentialsTest.cs" />
+    <Compile Include="UploadTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DocumentUploader.Core\DocumentUploader.Core.csproj">
       <Project>{360C768E-28DC-4B16-92BC-424B9A90FF43}</Project>
       <Name>DocumentUploader.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Goul.Core\Goul.Core.csproj">
+      <Project>{BD321C2E-EBB8-45DE-B213-E50F6D8F1943}</Project>
+      <Name>Goul.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

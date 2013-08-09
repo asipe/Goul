@@ -14,6 +14,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="$(DebugDir)\DocumentUploader.Core\DocumentUploader.Core.dll" />
+    <Reference Include="$(DebugDir)\Goul.Core\Goul.Core.dll" />
   </ItemGroup>
 
  <ItemGroup Condition="'$(FrameworkVersion)' == 'v4.0'">
@@ -32,4 +33,9 @@
   </ItemGroup>
 
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  
+  <Target Name="AfterBuild">
+     <Copy SourceFiles="$(SrcDir)\DocumentUploader.Integrationtests\Credentials_Test_Use_Only.txt" DestinationFolder="$(DebugDir)\DocumentUploader.Integrationtests" ContinueOnError="false" />
+     <Copy SourceFiles="$(SrcDir)\DocumentUploader.Integrationtests\Refresh_AuthToken_Test_Use_Only.txt" DestinationFolder="$(DebugDir)\DocumentUploader.Integrationtests" ContinueOnError="false" />
+  </Target>
 </Project>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" InitialTargets="EchoInfo;ValidateFrameworkVersion" DefaultTargets="Clean;Build;CleanTemp" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+
+  <PropertyGroup>
+    <ProjectGuid>{C993591F-6A8E-47EE-9E21-596F6EEA54D0}</ProjectGuid>
+    <RootNamespace>Goul.Core</RootNamespace>
+    <AssemblyName>Goul.Core</AssemblyName>
+  </PropertyGroup>
+
+  <Import Project="..\Goul.props" />
+  <Import Project="..\Goul.targets" />
+
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(FrameworkVersion)' == 'v4.0'">
+    <Reference Include="$(ThirdPartyDir)\google\libs\DotNetOpenAuth.dll" />
+    <Reference Include="$(ThirdPartyDir)\google\libs\Google.Apis.Authentication.OAuth2.dll" />
+    <Reference Include="$(ThirdPartyDir)\google\libs\Google.Apis.dll" />
+    <Reference Include="$(ThirdPartyDir)\google\libs\Google.Apis.Drive.v2.dll" />
+    <Reference Include="$(ThirdPartyDir)\google\libs\Google.Apis.Oauth2.v2.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="$(SrcDir)\Goul.Core\**\*.cs"/>
+    <Compile Include="$(SrcDir)\Common.Properties\*.cs"/>
+  </ItemGroup>
+
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

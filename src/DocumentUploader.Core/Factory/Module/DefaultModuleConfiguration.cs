@@ -10,6 +10,11 @@ namespace DocumentUploader.Core.Factory.Module {
       builder.RegisterModule(new CredentialStoreModule());
       builder.RegisterModule(new ListCommandModule());
       builder.RegisterModule(new ClearCommandModule());
+      builder.RegisterModule(new GetAuthorizationUrl());
+      builder.RegisterModule(new GoulModule());
+      builder.RegisterModule(new AuthorizeCommandModule());
+      builder.RegisterModule(new RefreshTokenStoreModule());
+      builder.RegisterModule(new UploadCommandModule());
     }
   }
 }

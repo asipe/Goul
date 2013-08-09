@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using DocumentUploader.Core.Models;
+using Goul.Core;
 using Moq;
 using NUnit.Framework;
 using SupaCharge.Core.IOAbstractions;
@@ -25,7 +26,7 @@ namespace DocumentUploader.UnitTests {
     [Test]
     public void TestThatUpdateGrabsCorrectValues() {
       mFile.Setup(f => f.WriteAllText("fakePath.txt", string.Format("{0}{1}{2}", "1", Environment.NewLine, "2")));
-      mCredStore.Update(new CredentialsFile {ClientID = "1", ClientSecret = "2"});
+      mCredStore.Update(new Credentials {ClientID = "1", ClientSecret = "2"});
     }
 
     [SetUp]
@@ -35,6 +36,6 @@ namespace DocumentUploader.UnitTests {
     }
 
     private Mock<IFile> mFile;
-    private CredentialStore mCredStore;
+    private ICredentialStore mCredStore;
   }
 }

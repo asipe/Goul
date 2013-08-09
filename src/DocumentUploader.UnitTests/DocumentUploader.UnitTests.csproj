@@ -37,6 +37,9 @@
     <Reference Include="Autofac">
       <HintPath>..\..\thirdparty\packages\net-4.0\Autofac\lib\net40\Autofac.dll</HintPath>
     </Reference>
+    <Reference Include="KellermanSoftware.Compare-NET-Objects">
+      <HintPath>..\..\thirdparty\packages\net-4.0\CompareNETObjects\lib\KellermanSoftware.Compare-NET-Objects.dll</HintPath>
+    </Reference>
     <Reference Include="Moq">
       <HintPath>..\..\thirdparty\packages\net-4.0\Moq\lib\NET40\Moq.dll</HintPath>
     </Reference>
@@ -58,17 +61,25 @@
     <Compile Include="..\Common.Properties\AssemblyInfo.cs">
       <Link>AssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="AuthorizeCommandTest.cs" />
+    <Compile Include="DocumentUploaderBaseTestCase.cs" />
     <Compile Include="DocUploaderAppTest.cs" />
     <Compile Include="CredentialsFileTest.cs" />
     <Compile Include="CredentialStoreTest.cs" />
     <Compile Include="FactoryTest.cs" />
+    <Compile Include="GetAuthorizationUrlCommandTest.cs" />
     <Compile Include="HelpCommandTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RefreshTokenStoreTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DocumentUploader.Core\DocumentUploader.Core.csproj">
       <Project>{360C768E-28DC-4B16-92BC-424B9A90FF43}</Project>
       <Name>DocumentUploader.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Goul.Core\Goul.Core.csproj">
+      <Project>{BD321C2E-EBB8-45DE-B213-E50F6D8F1943}</Project>
+      <Name>Goul.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

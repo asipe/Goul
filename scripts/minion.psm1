@@ -34,6 +34,7 @@ function help() {
 function bootstrap() {
   .\thirdparty\nuget\nuget.exe install .\src\Goul.Nuget.Packages\common\packages.config -OutputDirectory .\thirdparty\packages\common -ExcludeVersion | Write-Host
   .\thirdparty\nuget\nuget.exe install .\src\Goul.Nuget.Packages\net-4.0\packages.config -OutputDirectory .\thirdparty\packages\net-4.0 -ExcludeVersion | Write-Host
+  
 }
 
 function clean() {

@@ -1,6 +1,8 @@
-﻿namespace DocumentUploader.Core.Models {
+﻿using Goul.Core;
+
+namespace DocumentUploader.Core.Models {
   public interface ICredentialStore {
-    CredentialsFile Get();
-    void Update(CredentialsFile credentials);
+    void Update(Credentials credentials);
+    Credentials Get();
   }
 }

@@ -14,6 +14,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="$(DebugDir)\Goul.Core\Goul.Core.dll" />
   </ItemGroup>
   
   <ItemGroup Condition="'$(FrameworkVersion)' == 'v4.0'">
