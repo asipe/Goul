@@ -22,3 +22,5 @@ Credentials_Test_Use_Only.txt
 packages
 supacharge
 Refresh_AuthToken_Test_Use_Only.txt
+thirdparty/google/old_libs/
+thirdparty/google/_libs/
