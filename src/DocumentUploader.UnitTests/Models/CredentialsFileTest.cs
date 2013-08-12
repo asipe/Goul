@@ -1,7 +1,7 @@
 ﻿using Goul.Core;
 using NUnit.Framework;
 
-namespace DocumentUploader.UnitTests {
+namespace DocumentUploader.UnitTests.Models {
   [TestFixture]
   public class CredentialsFileTest {
     [Test]
