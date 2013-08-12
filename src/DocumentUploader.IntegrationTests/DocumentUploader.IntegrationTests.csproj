@@ -61,6 +61,7 @@
     <Compile Include="ClearCredentialsTest.cs" />
     <Compile Include="ConsoleHelpTests.cs" />
     <Compile Include="GetAuthorizationUrlTest.cs" />
+    <Compile Include="TestConfigurationProvider.cs" />
     <Compile Include="ListCredentialsTest.cs" />
     <Compile Include="Infrastructure\RecordingObserver.cs" />
     <Compile Include="Infrastructure\Modules\ITModuleConfiguration.cs" />

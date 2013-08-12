@@ -13,18 +13,20 @@ using SupaCharge.Testing;
 
 namespace DocumentUploader.IntegrationTests {
   [TestFixture]
-  public class UploadTest:BaseTestCase {
+  public class UploadTest : BaseTestCase {
     [Test]
     public void TestMessage() {
-      if (!File.Exists("refreshToken.txt"))
-      File.Copy("Refresh_AuthToken_Test_Use_Only.txt", "refreshToken.txt");
+      var provider = new TestConfigurationProvider();
+      provider.SetupCredentialsFile();
+      provider.SetupRefreshTokenFile();
+      provider.SetupDummyFile();
+      mHandler.DeleteAllFiles(mCredentials.Get(), mRefreshToken.Get());
 
-      File.Copy("Credentials_Test_Use_Only.txt", "credentials.txt");
-      mApp.Execute("upload");
+      mApp.Execute("upload", "file.txt", "myFile");
       var files = mHandler.GetFilesByTitle(mCredentials.Get(), mRefreshToken.Get());
 
       Assert.That(mMessageObserver.GetMessages(), Is.EqualTo(BA("File uploaded")));
-      Assert.That(files.Count, Is.EqualTo(0));
+      Assert.That(files.Count, Is.EqualTo(1));
     }
 
     [SetUp]
@@ -34,7 +36,7 @@ namespace DocumentUploader.IntegrationTests {
       mApp = mFactory.Build<IApp>();
       mFile = new DotNetFile();
       mRefreshToken = new RefreshTokenStore(mFile, "refreshToken.txt");
-      mCredentials = new CredentialStore(mFile, "Credentials_Test_Use_Only.txt");
+      mCredentials = new CredentialStore(mFile, "credentials.txt");
       mHandler = new GoulRequestHandler();
     }
 

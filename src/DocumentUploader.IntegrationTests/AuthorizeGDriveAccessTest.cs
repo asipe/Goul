@@ -15,7 +15,6 @@ namespace DocumentUploader.IntegrationTests {
     [Test]
     [Explicit]
     public void InitTest() {
-      File.Copy("Credentials_Test_Use_Only.txt", "credentials.txt");
       mApp.Execute("authorize", File.ReadAllLines("Refresh_AuthToken_Test_Use_Only.txt")[0]);
 
       Assert.That(mMessageObserver.GetMessages(), Is.EqualTo(BA("Authorized")));
