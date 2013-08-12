@@ -64,6 +64,7 @@
       <Link>AssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="Command\AuthorizeCommandTest.cs" />
+    <Compile Include="Command\ListCredentialsCommandTest.cs" />
     <Compile Include="DocumentUploaderBaseTestCase.cs" />
     <Compile Include="App\DocUploaderAppTest.cs" />
     <Compile Include="Models\CredentialsFileTest.cs" />
