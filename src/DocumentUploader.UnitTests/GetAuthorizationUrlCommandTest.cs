@@ -4,32 +4,29 @@ using DocumentUploader.Core.Observer;
 using Goul.Core;
 using Moq;
 using NUnit.Framework;
-using SupaCharge.Testing;
 
 namespace DocumentUploader.UnitTests {
   [TestFixture]
-  public class GetAuthorizationUrlCommandTest : BaseTestCase {
+  public class GetAuthorizationUrlCommandTest : DocumentUploaderBaseTestCase {
     [Test]
     public void TestGetAuthUrlCommandWorks() {
-      mCredentialStore.Setup(o => o.Get()).Returns(mCredentials.Object);
+      mStore.Setup(o => o.Get()).Returns(new Credentials {ClientID = "1", ClientSecret = "2"});
       mObserver.Setup(o => o.AddMessages("authorization url"));
-      mGoulReqHandler.Setup(o => o.GetAuthUrl(mCredentials.Object)).Returns("authorization url");
+      mHandler.Setup(o => o.GetAuthUrl(It.Is<Credentials>( c => AreEqual(c, new Credentials { ClientID = "1", ClientSecret = "2" })))).Returns("authorization url");
       mGetAuthUrlCmd.Execute("authorization url");
     }
 
     [SetUp]
     public void DoSetup() {
       mObserver = Mok<IMessageObserver>();
-      mCredentialStore = Mok<ICredentialStore>();
-      mGoulReqHandler = Mok<IGoulRequestHandler>();
-      mCredentials = Mok<Credentials>();
-      mGetAuthUrlCmd = new GetAuthorizationUrlCommand(mObserver.Object, mCredentialStore.Object, mGoulReqHandler.Object);
+      mStore = Mok<ICredentialStore>();
+      mHandler = Mok<IGoulRequestHandler>();
+      mGetAuthUrlCmd = new GetAuthorizationUrlCommand(mObserver.Object, mStore.Object, mHandler.Object);
     }
 
     private Mock<IMessageObserver> mObserver;
-    private Mock<ICredentialStore> mCredentialStore;
-    private Mock<IGoulRequestHandler> mGoulReqHandler;
-    private Mock<Credentials> mCredentials;
+    private Mock<ICredentialStore> mStore;
+    private Mock<IGoulRequestHandler> mHandler;
     private ICommand mGetAuthUrlCmd;
   }
 }
