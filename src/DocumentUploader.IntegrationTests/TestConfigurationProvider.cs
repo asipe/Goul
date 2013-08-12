@@ -19,7 +19,7 @@ namespace DocumentUploader.IntegrationTests {
     }
 
     public void SetupCredentialsFile() {
-       File.WriteAllLines("credentials.txt", GetCredentials());
+      File.WriteAllLines("credentials.txt", GetCredentials());
     }
 
     public void SetupRefreshTokenFile() {
@@ -34,9 +34,7 @@ namespace DocumentUploader.IntegrationTests {
       if (!File.Exists("authToken.txt")) {
         File.Create("authToken.txt");
         File.WriteAllText("authToken.txt", GetAuthorizationToken());
-      } else {
-        File.WriteAllLines("credentials.txt", GetCredentials());
-      }
+      } else File.WriteAllLines("credentials.txt", GetCredentials());
     }
 
     public string GetDevelopmentRoot() {
@@ -52,10 +50,8 @@ namespace DocumentUploader.IntegrationTests {
 
     private bool IsThisRootFolder(string path) {
       return File.Exists(Path.Combine(path, "readme.md")) &&
-        Directory.Exists(Path.Combine(path, "src")) &&
-        Directory.Exists(Path.Combine(path, "scripts"));
+             Directory.Exists(Path.Combine(path, "src")) &&
+             Directory.Exists(Path.Combine(path, "scripts"));
     }
-
-   
   }
 }

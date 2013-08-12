@@ -1,7 +1,4 @@
-﻿using System;
-using System.IO;
-using Goul.Core;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
 namespace DocumentUploader.IntegrationTests {
   [SetUpFixture]

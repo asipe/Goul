@@ -17,10 +17,8 @@ namespace Goul.Core {
 
     public void CleanGDriveAcct() {
       var files = mService.Files.List().Fetch().Items;
-      
-      for (var x = 0; x < files.Count; x++) {
-        mService.Files.Delete(files[x].Id).Fetch();
-      }
+
+      for (var x = 0; x < files.Count; x++) mService.Files.Delete(files[x].Id).Fetch();
     }
 
     private readonly DriveService mService;
