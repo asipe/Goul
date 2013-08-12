@@ -28,23 +28,23 @@ namespace DocumentUploader.UnitTests.App {
       mIndex.NextCommandToReturn = mCommand.Object;
       mIndex.NextExpectedKey = "help";
       mCommand.Setup(c => c.Execute("help"));
-      mDocUploaderApp.Execute("help");
+      mApp.Execute("help");
     }
 
     [Test]
     public void TestExecuteWithInvalidValueDoesnotExecuteTheCommand() {
       mIndex.NextExpectedKey = "unknown_command";
-      mDocUploaderApp.Execute("unknown_command");
+      mApp.Execute("unknown_command");
     }
 
     [SetUp]
     public void DoSetup() {
       mIndex = new StubIndex();
       mCommand = Mok<ICommand>();
-      mDocUploaderApp = new DocUploaderApp(mIndex);
+      mApp = new DocUploaderApp(mIndex);
     }
 
-    private DocUploaderApp mDocUploaderApp;
+    private DocUploaderApp mApp;
     private Mock<ICommand> mCommand;
     private StubIndex mIndex;
   }

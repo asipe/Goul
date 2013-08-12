@@ -13,7 +13,7 @@ namespace DocumentUploader.UnitTests.Command {
       mStore.Setup(o => o.Get()).Returns(new Credentials {ClientID = "1", ClientSecret = "2"});
       mObserver.Setup(o => o.AddMessages("authorization url"));
       mHandler.Setup(o => o.GetAuthUrl(It.Is<Credentials>( c => AreEqual(c, new Credentials { ClientID = "1", ClientSecret = "2" })))).Returns("authorization url");
-      mGetAuthUrlCmd.Execute("authorization url");
+      mCommand.Execute("authorization url");
     }
 
     [SetUp]
@@ -21,12 +21,12 @@ namespace DocumentUploader.UnitTests.Command {
       mObserver = Mok<IMessageObserver>();
       mStore = Mok<ICredentialStore>();
       mHandler = Mok<IGoulRequestHandler>();
-      mGetAuthUrlCmd = new GetAuthorizationUrlCommand(mObserver.Object, mStore.Object, mHandler.Object);
+      mCommand = new GetAuthorizationUrlCommand(mObserver.Object, mStore.Object, mHandler.Object);
     }
 
     private Mock<IMessageObserver> mObserver;
     private Mock<ICredentialStore> mStore;
     private Mock<IGoulRequestHandler> mHandler;
-    private ICommand mGetAuthUrlCmd;
+    private ICommand mCommand;
   }
 }

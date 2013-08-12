@@ -10,26 +10,26 @@ namespace DocumentUploader.UnitTests.Command {
   public class AuthorizeCommandTest : DocumentUploaderBaseTestCase {
     [Test]
     public void TestExecuteAddsOneCorrectMessageToTheObserver() {
-      mMessageObserver.Setup(o => o.AddMessages("Authorized"));
+      mObserver.Setup(o => o.AddMessages("Authorized"));
       mRefreshTokenStore.Setup(s => s.Update(It.Is<RefreshToken>(t => AreEqual(t, new RefreshToken {Token = "123"}))));
-      mGReqHandler.Setup(r => r.CreateRefreshToken(It.Is<Credentials>(c => AreEqual(c, new Credentials {ClientID = "1", ClientSecret = "2"})), "123")).Returns("123");
-      mCredStore.Setup(r => r.Get()).Returns(new Credentials {ClientID = "1", ClientSecret = "2"});
-      mACommand.Execute("authorize", "123");
+      mHandler.Setup(r => r.CreateRefreshToken(It.Is<Credentials>(c => AreEqual(c, new Credentials {ClientID = "1", ClientSecret = "2"})), "123")).Returns("123");
+      mCredentialStore.Setup(r => r.Get()).Returns(new Credentials {ClientID = "1", ClientSecret = "2"});
+      mCommand.Execute("authorize", "123");
     }
 
     [SetUp]
     public void DoSetup() {
-      mMessageObserver = Mok<IMessageObserver>();
+      mObserver = Mok<IMessageObserver>();
       mRefreshTokenStore = Mok<IRefreshTokenStore>();
-      mCredStore = Mok<ICredentialStore>();
-      mGReqHandler = Mok<IGoulRequestHandler>();
-      mACommand = new AuthorizeCommand(mMessageObserver.Object, mRefreshTokenStore.Object, mCredStore.Object, mGReqHandler.Object);
+      mCredentialStore = Mok<ICredentialStore>();
+      mHandler = Mok<IGoulRequestHandler>();
+      mCommand = new AuthorizeCommand(mObserver.Object, mRefreshTokenStore.Object, mCredentialStore.Object, mHandler.Object);
     }
 
-    private Mock<IMessageObserver> mMessageObserver;
+    private Mock<IMessageObserver> mObserver;
     private Mock<IRefreshTokenStore> mRefreshTokenStore;
-    private Mock<ICredentialStore> mCredStore;
-    private Mock<IGoulRequestHandler> mGReqHandler;
-    private ICommand mACommand;
+    private Mock<ICredentialStore> mCredentialStore;
+    private Mock<IGoulRequestHandler> mHandler;
+    private ICommand mCommand;
   }
 }

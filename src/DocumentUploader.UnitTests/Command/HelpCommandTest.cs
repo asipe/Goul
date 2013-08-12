@@ -9,17 +9,17 @@ namespace DocumentUploader.UnitTests.Command {
   public class HelpCommandTest : BaseTestCase {
     [Test]
     public void TestExecuteAddsOneCorrectMessageToTheObserver() {
-      mMessageObserver.Setup(o => o.AddMessages("Goul Document Uploader Version 0.1", "Commands:", "setcredentials xClient_IDx xClient_Secretx | Sets the client id and the client secret to a local .txt file", "listcredentials | lists the credentials", "clearcredentials | deletes ALL of the credential files"));
-      mHCommand.Execute("message");
+      mObserver.Setup(o => o.AddMessages("Goul Document Uploader Version 0.1", "Commands:", "setcredentials xClient_IDx xClient_Secretx | Sets the client id and the client secret to a local .txt file", "listcredentials | lists the credentials", "clearcredentials | deletes ALL of the credential files"));
+      mCommand.Execute("message");
     }
 
     [SetUp]
     public void DoSetup() {
-      mMessageObserver = Mok<IMessageObserver>();
-      mHCommand = new HelpCommand(mMessageObserver.Object);
+      mObserver = Mok<IMessageObserver>();
+      mCommand = new HelpCommand(mObserver.Object);
     }
 
-    private Mock<IMessageObserver> mMessageObserver;
-    private ICommand mHCommand;
+    private Mock<IMessageObserver> mObserver;
+    private ICommand mCommand;
   }
 }
