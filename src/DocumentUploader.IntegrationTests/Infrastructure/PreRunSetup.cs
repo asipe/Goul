@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
 
-namespace DocumentUploader.IntegrationTests {
+namespace DocumentUploader.IntegrationTests.Infrastructure {
   [SetUpFixture]
   public sealed class GlobalSetup {
     [SetUp]

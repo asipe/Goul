@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace DocumentUploader.IntegrationTests {
+namespace DocumentUploader.IntegrationTests.Infrastructure {
   public class TestConfigurationProvider {
     public string GetAuthorizationToken() {
       var path = Path.Combine(GetDevelopmentRoot(), @"testconfigs\AuthToken.txt");
