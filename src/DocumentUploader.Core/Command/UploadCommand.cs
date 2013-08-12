@@ -12,8 +12,8 @@ namespace DocumentUploader.Core.Command {
     }
 
     public void Execute(params string[] args) {
-      mObserver.AddMessages("File uploaded");
       mHandler.UploadFile(args[1], args[2], mCredStore.Get(), mRefreshStore.Get());
+      mObserver.AddMessages("File uploaded");
     }
 
     private readonly ICredentialStore mCredStore;

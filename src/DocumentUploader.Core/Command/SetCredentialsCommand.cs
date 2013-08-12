@@ -11,8 +11,8 @@ namespace DocumentUploader.Core.Command {
 
     public void Execute(string[] args) {
       if (args.Length == 3) {
-        mObserver.AddMessages("Credentials Set");
         mStorage.Update(new Credentials {ClientID = args[1], ClientSecret = args[2]});
+        mObserver.AddMessages("Credentials Set");
       } else mObserver.AddMessages("Invalid amount of arguments");
     }
 
