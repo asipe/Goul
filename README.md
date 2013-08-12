@@ -12,11 +12,17 @@
   - To run the unit tests: minion run.unit.tests.dbg
   
   - To run the integration tests:
-    1)Add a folder named "testconfigs" to the root directory
-    2)In that folder add 3 files, "credentials.txt", "file.txt" and "refreshToken.txt"
-    3)For "credentials.txt": Add the credentials for the Google Account you want to run the IT's in.
-    4)For "refreshToken.txt": Add the refreshToken for the Google Account you want to run the IT's in (You can use Goul to do this).
   
+      1)Add a folder named "testconfigs" to the root directory
+
+      2)In that folder add 3 files, "credentials.txt", "file.txt" and "refreshToken.txt"
+      
+      3)For "credentials.txt": Add the credentials for the Google Account you want to run the IT's in.
+      
+      4)For "refreshToken.txt": Add the refreshToken for the Google Account you want to run the IT's in (You can use Goul to do this).
+  
+      5)run.integration.tests.dbg
+      
   The executable is run from DocumentUploader.Console and is located in bin\debug\DocumentUploader.Console.exe
   
   Commands:
