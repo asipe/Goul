@@ -121,7 +121,6 @@ function minion {
         'run.unit.tests.dbg' { runUnitTests }
         'run.integration.tests' { runIntegrationTestsVS }
         'run.integration.tests.dbg' { runIntegrationTests }
-        'run.all.tests' { runAllTests }
         'build' { build }
         'cycle' { cycle }
         default { Write-Host -ForegroundColor Red "command not known: $command" }
