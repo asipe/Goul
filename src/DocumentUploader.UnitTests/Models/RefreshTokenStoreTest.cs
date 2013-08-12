@@ -5,7 +5,7 @@ using NUnit.Framework;
 using SupaCharge.Core.IOAbstractions;
 using SupaCharge.Testing;
 
-namespace DocumentUploader.UnitTests {
+namespace DocumentUploader.UnitTests.Models {
   [TestFixture]
   public class RefreshTokenStoreTest : BaseTestCase {
     [Test]

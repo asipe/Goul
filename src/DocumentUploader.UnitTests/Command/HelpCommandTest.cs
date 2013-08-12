@@ -4,7 +4,7 @@ using Moq;
 using NUnit.Framework;
 using SupaCharge.Testing;
 
-namespace DocumentUploader.UnitTests {
+namespace DocumentUploader.UnitTests.Command {
   [TestFixture]
   public class HelpCommandTest : BaseTestCase {
     [Test]

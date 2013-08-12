@@ -5,7 +5,7 @@ using Moq;
 using NUnit.Framework;
 using SupaCharge.Testing;
 
-namespace DocumentUploader.UnitTests {
+namespace DocumentUploader.UnitTests.App {
   [TestFixture]
   public class DocUploaderAppTest : BaseTestCase {
     private class StubIndex : IIndex<string, ICommand> {

@@ -4,7 +4,7 @@ using Moq;
 using NUnit.Framework;
 using SupaCharge.Testing;
 
-namespace DocumentUploader.UnitTests {
+namespace DocumentUploader.UnitTests.Factory {
   [TestFixture]
   public class FactoryTest : BaseTestCase {
     [Test]
@@ -13,7 +13,7 @@ namespace DocumentUploader.UnitTests {
       module
         .Setup(m => m.Init(It.IsAny<ContainerBuilder>()))
         .Callback<ContainerBuilder>(b => b.Register(cc => 33));
-      var factory = new Factory(module.Object);
+      var factory = new Core.Factory.Factory(module.Object);
       Assert.That(factory.Build<int>(), Is.EqualTo(33));
     }
   }

@@ -63,17 +63,17 @@
     <Compile Include="..\Common.Properties\AssemblyInfo.cs">
       <Link>AssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="AuthorizeCommandTest.cs" />
+    <Compile Include="Command\AuthorizeCommandTest.cs" />
     <Compile Include="DocumentUploaderBaseTestCase.cs" />
-    <Compile Include="DocUploaderAppTest.cs" />
+    <Compile Include="App\DocUploaderAppTest.cs" />
     <Compile Include="CredentialsFileTest.cs" />
-    <Compile Include="CredentialStoreTest.cs" />
-    <Compile Include="FactoryTest.cs" />
-    <Compile Include="GetAuthorizationUrlCommandTest.cs" />
-    <Compile Include="HelpCommandTest.cs" />
+    <Compile Include="Models\CredentialStoreTest.cs" />
+    <Compile Include="Factory\FactoryTest.cs" />
+    <Compile Include="Command\GetAuthorizationUrlCommandTest.cs" />
+    <Compile Include="Command\HelpCommandTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RefreshTokenStoreTest.cs" />
-    <Compile Include="UploadCommandTest.cs" />
+    <Compile Include="Models\RefreshTokenStoreTest.cs" />
+    <Compile Include="Command\UploadCommandTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DocumentUploader.Core\DocumentUploader.Core.csproj">
@@ -85,6 +85,7 @@
       <Name>Goul.Core</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
