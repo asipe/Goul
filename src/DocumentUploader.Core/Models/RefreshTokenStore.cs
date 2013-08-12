@@ -9,8 +9,7 @@ namespace DocumentUploader.Core.Models {
     }
 
     public RefreshToken Get() {
-      var lines = mFile.ReadAllLines(mPath);
-      return new RefreshToken {Token = lines[0]};
+      return new RefreshToken { Token = mFile.ReadAllLines(mPath)[0] };
     }
 
     public void Update(RefreshToken token) {
