@@ -1,5 +1,4 @@
-﻿using System.IO;
-using DocumentUploader.Core.App;
+﻿using DocumentUploader.Core.App;
 using DocumentUploader.Core.Factory;
 using DocumentUploader.Core.Factory.Module;
 using DocumentUploader.Core.Models;

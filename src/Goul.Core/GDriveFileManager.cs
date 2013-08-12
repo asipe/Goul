@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Google.Apis.Drive.v2;
 
 namespace Goul.Core {
@@ -9,18 +10,14 @@ namespace Goul.Core {
 
     public List<string> GetFilesByTitle() {
       var files = mService.Files.List().Fetch().Items;
-      var output = new List<string>();
-      for (var x = 0; x < files.Count; x++) output.Add(files[x].Title);
-
-      return output;
+      return files.Select(t => t.Title).ToList();
     }
 
     public void CleanGDriveAcct() {
       var files = mService.Files.List().Fetch().Items;
-      
-      for (var x = 0; x < files.Count; x++) {
-        mService.Files.Delete(files[x].Id).Fetch();
-      }
+
+      foreach (var f in files)
+        mService.Files.Delete(f.Id).Fetch();
     }
 
     private readonly DriveService mService;
