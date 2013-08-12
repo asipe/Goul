@@ -21,7 +21,8 @@ namespace Goul.Core {
     }
 
     public void DeleteAllFiles(Credentials credentials, RefreshToken refreshToken) {
-      new GDriveFileManager(credentials, refreshToken).CleanGDriveAcct();
+      var manager = new GDriveFileManager(credentials, refreshToken);
+      manager.CleanGDriveAcct();
     }
   }
 }

@@ -15,10 +15,6 @@ namespace DocumentUploader.IntegrationTests {
   public class UploadTest : BaseTestCase {
     [Test]
     public void TestMessage() {
-      var provider = new TestConfigurationProvider();
-      provider.SetupCredentialsFile();
-      provider.SetupRefreshTokenFile();
-      provider.SetupDummyFile();
       mHandler.DeleteAllFiles(mCredentials.Get(), mRefreshToken.Get());
 
       mApp.Execute("upload", "file.txt", "myFile");
@@ -37,6 +33,10 @@ namespace DocumentUploader.IntegrationTests {
       mRefreshToken = new RefreshTokenStore(mFile, "refreshToken.txt");
       mCredentials = new CredentialStore(mFile, "credentials.txt");
       mHandler = new GoulRequestHandler();
+      var provider = new TestConfigurationProvider();
+      provider.SetupCredentialsFile();
+      provider.SetupRefreshTokenFile();
+      provider.SetupDummyFile();
     }
 
     private DotNetFile mFile;
