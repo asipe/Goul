@@ -76,6 +76,8 @@ function runIntegrationTests() {
 function runAllTests() {
   runUnitTests
   runUnitTestsVS
+  runIntegrationTests
+  runIntegrationTestsVS
 }
 
 function build() {
@@ -115,6 +117,7 @@ function minion {
         }
         'clean' { clean }
         'run.unit.tests' { runUnitTestsVS }
+        'run.all.tests' {runAllTests}
         'run.unit.tests.dbg' { runUnitTests }
         'run.integration.tests' { runIntegrationTestsVS }
         'run.integration.tests.dbg' { runIntegrationTests }
