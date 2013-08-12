@@ -6,7 +6,7 @@ namespace DocumentUploader.Core.Command {
       mObserver = observer;
     }
 
-    public void Execute(params string[] messages) {
+    public void Execute(params string[] args) {
       mObserver.AddMessages("Goul Document Uploader Version 0.1",
                             "Commands:",
                             "setcredentials xClient_IDx xClient_Secretx | Sets the client id and the client secret to a local .txt file",

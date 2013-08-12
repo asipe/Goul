@@ -12,7 +12,7 @@ namespace DocumentUploader.Core.Command {
       mHandler = handler;
     }
 
-    public void Execute(params string[] messages) {
+    public void Execute(params string[] args) {
       mObserver.AddMessages(mHandler.GetAuthUrl(mCredentialStore.Get()));
     }
 

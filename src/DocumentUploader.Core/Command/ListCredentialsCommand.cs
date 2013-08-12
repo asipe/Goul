@@ -7,7 +7,7 @@ namespace DocumentUploader.Core.Command {
       mObserver = observer;
     }
 
-    public void Execute(params string[] messages) {
+    public void Execute(params string[] args) {
       var file = new DotNetFile();
       if (file.Exists("credentials.txt"))
         mObserver.AddMessages(file.ReadAllLines("credentials.txt"));
