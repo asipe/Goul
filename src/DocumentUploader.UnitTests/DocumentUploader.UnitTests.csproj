@@ -74,7 +74,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\RefreshTokenStoreTest.cs" />
     <Compile Include="Command\UploadCommandTest.cs" />
-    <Compile Include="SetCredentialsCommandTest.cs" />
+    <Compile Include="Command\SetCredentialsCommandTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DocumentUploader.Core\DocumentUploader.Core.csproj">

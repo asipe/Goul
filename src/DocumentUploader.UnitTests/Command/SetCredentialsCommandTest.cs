@@ -5,7 +5,7 @@ using Goul.Core;
 using Moq;
 using NUnit.Framework;
 
-namespace DocumentUploader.UnitTests {
+namespace DocumentUploader.UnitTests.Command {
   [TestFixture]
   public class SetCredentialsCommandTest:DocumentUploaderBaseTestCase {
     [Test]
