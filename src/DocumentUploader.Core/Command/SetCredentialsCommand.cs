@@ -11,12 +11,12 @@ namespace DocumentUploader.Core.Command {
 
     public void Execute(string[] args) {
       if (args.Length == 3) {
-        mStorage.Update(new Credentials {ClientID = args[1], ClientSecret = args[2]});
+        mStorage.Update(CredentialsBuilder(args[1], args[2]));
         mObserver.AddMessages("Credentials Set");
       } else mObserver.AddMessages("Invalid amount of arguments");
     }
 
-    public Credentials CredentialsBuilder(string clientId, string clientsecret) {
+    private Credentials CredentialsBuilder(string clientId, string clientsecret) {
       return new Credentials {ClientID = clientId, ClientSecret = clientsecret};
     }
 
