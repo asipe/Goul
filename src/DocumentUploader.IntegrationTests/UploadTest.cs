@@ -15,8 +15,6 @@ namespace DocumentUploader.IntegrationTests {
   public class UploadTest : BaseTestCase {
     [Test]
     public void TestMessage() {
-      mHandler.DeleteAllFiles(mCredentials.Get(), mRefreshToken.Get());
-
       mApp.Execute("upload", "file.txt", "myFile");
       var files = mHandler.GetFilesByTitle(mCredentials.Get(), mRefreshToken.Get());
 
@@ -37,6 +35,7 @@ namespace DocumentUploader.IntegrationTests {
       provider.SetupCredentialsFile();
       provider.SetupRefreshTokenFile();
       provider.SetupDummyFile();
+      mHandler.DeleteAllFiles(mCredentials.Get(), mRefreshToken.Get());
     }
 
     private DotNetFile mFile;

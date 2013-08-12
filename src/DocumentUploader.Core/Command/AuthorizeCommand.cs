@@ -11,9 +11,9 @@ namespace DocumentUploader.Core.Command {
       mHandler = handler;
     }
 
-    public void Execute(params string[] messages) {
+    public void Execute(params string[] args) {
       mRefreshStorage.Update(new RefreshToken {
-        Token = mHandler.CreateRefreshToken(mCredStore.Get(), messages[1])
+        Token = mHandler.CreateRefreshToken(mCredStore.Get(), args[1])
       });
       mObserver.AddMessages("Authorized");
     }

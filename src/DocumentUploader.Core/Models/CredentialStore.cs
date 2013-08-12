@@ -10,7 +10,8 @@ namespace DocumentUploader.Core.Models {
     }
 
     public Credentials Get() {
-      return new Credentials { ClientID = mFile.ReadAllLines(mPath)[0], ClientSecret = mFile.ReadAllLines(mPath)[1] };
+      var lines = mFile.ReadAllLines(mPath);
+      return new Credentials { ClientID = lines[0], ClientSecret = lines[1] };
     }
 
     public void Update(Credentials credentials) {

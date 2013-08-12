@@ -9,14 +9,14 @@ namespace DocumentUploader.Core.Command {
       mStorage = storage;
     }
 
-    public void Execute(string[] messages) {
-      if (messages.Length == 3) {
+    public void Execute(string[] args) {
+      if (args.Length == 3) {
+        mStorage.Update(CredentialsBuilder(args[1], args[2]));
         mObserver.AddMessages("Credentials Set");
-        mStorage.Update(new Credentials {ClientID = messages[1], ClientSecret = messages[2]});
       } else mObserver.AddMessages("Invalid amount of arguments");
     }
 
-    public Credentials CredentialsBuilder(string clientId, string clientsecret) {
+    private Credentials CredentialsBuilder(string clientId, string clientsecret) {
       return new Credentials {ClientID = clientId, ClientSecret = clientsecret};
     }
 
