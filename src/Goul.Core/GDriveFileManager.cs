@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Google.Apis.Drive.v2;
 
@@ -18,6 +19,12 @@ namespace Goul.Core {
 
       foreach (var f in files)
         mService.Files.Delete(f.Id).Fetch();
+    }
+
+    public string GetFolderIdFromRoot(string folderTitleToLookFor) {
+      var request = mService.Files.List();
+      request.Q = String.Format("mimeType = 'application/vnd.google-apps.folder' and title='{0}'", folderTitleToLookFor);
+      return request.Fetch().Items[0].Id;
     }
 
     private readonly DriveService mService;

@@ -24,5 +24,10 @@ namespace Goul.Core {
       var manager = new GDriveFileManager(credentials, refreshToken);
       manager.CleanGDriveAcct();
     }
+
+    public string GetFolderFromRoot(string folderToGet, Credentials credentials, RefreshToken refreshToken) {
+      var manager = new GDriveFileManager(credentials, refreshToken);
+      return manager.GetFolderIdFromRoot(folderToGet);
+    }
   }
 }

@@ -14,12 +14,20 @@ namespace DocumentUploader.IntegrationTests.CommandFunctionality {
   [TestFixture]
   public class UploadTest : BaseTestCase {
     [Test]
-    public void TestMessage() {
+    public void TestUploadWith3ArgsUploadsAFileOnly() {
       mApp.Execute("upload", "file.txt", "myFile");
       var files = mHandler.GetFilesByTitle(mCredentials.Get(), mRefreshToken.Get());
 
       Assert.That(mMessageObserver.GetMessages(), Is.EqualTo(BA("File uploaded")));
       Assert.That(files.Count, Is.EqualTo(1));
+    }
+
+    [Test]
+    public void TestUploadWith4ArgsUploadsAFolder() {
+      mApp.Execute("upload", "file.txt", "fileTitle", "folder1");
+      var folder = mHandler.GetFolderFromRoot("folder1", mCredentials.Get(), mRefreshToken.Get());
+      Assert.That(mMessageObserver.GetMessages(), Is.EqualTo(BA("Folder Uploaded")));
+      // Assert.That(folder.Length, Is.GreaterThan(3));
     }
 
     [SetUp]
