@@ -1,5 +1,4 @@
-﻿using System.IO;
-using DocumentUploader.Core.App;
+﻿using DocumentUploader.Core.App;
 using DocumentUploader.Core.Factory;
 using DocumentUploader.Core.Factory.Module;
 using DocumentUploader.Core.Observer;
@@ -9,19 +8,21 @@ using NUnit.Framework;
 using SupaCharge.Core.IOAbstractions;
 using SupaCharge.Testing;
 
-namespace DocumentUploader.IntegrationTests {
+namespace DocumentUploader.IntegrationTests.CommandFunctionality {
   [TestFixture]
-  public class AuthorizeGDriveAccessTest : BaseTestCase {
+  public class GetAuthorizationUrlTest : BaseTestCase {
     [Test]
-    [Explicit]
-    public void InitTest() {
-      mApp.Execute("authorize", File.ReadAllLines("Refresh_AuthToken_Test_Use_Only.txt")[0]);
+    public void TestAuthorizationUrlIsCorrect() {
+      var provider = new TestConfigurationProvider();
+      provider.SetupCredentialsFile();
 
-      Assert.That(mMessageObserver.GetMessages(), Is.EqualTo(BA("Authorized")));
-      var value = mFile.ReadAllLines("refreshToken.txt")[0];
-      Assert.That(value.Length, Is.GreaterThan(5));
-      Assert.That(value[0], Is.EqualTo('1'));
-      File.Delete("refreshToken.txt");
+      mApp.Execute("getauthorizationurl");
+
+      var messages = mMessageObserver.GetMessages();
+      Assert.That(messages.Length, Is.EqualTo(1));
+      Assert.That(messages[0], Is.StringStarting("https://accounts.google.com/o/oauth2"));
+
+      mFile.Delete("credentials.txt");
     }
 
     [SetUp]

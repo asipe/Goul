@@ -10,7 +10,7 @@ using NUnit.Framework;
 using SupaCharge.Core.IOAbstractions;
 using SupaCharge.Testing;
 
-namespace DocumentUploader.IntegrationTests {
+namespace DocumentUploader.IntegrationTests.CommandFunctionality {
   [TestFixture]
   public class UploadTest : BaseTestCase {
     [Test]

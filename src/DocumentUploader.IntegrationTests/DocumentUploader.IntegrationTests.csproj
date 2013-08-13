@@ -57,19 +57,19 @@
     <Compile Include="..\Common.Properties\AssemblyInfo.cs">
       <Link>AssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="AuthorizeGDriveAccessTest.cs" />
-    <Compile Include="ClearCredentialsTest.cs" />
-    <Compile Include="ConsoleHelpTests.cs" />
-    <Compile Include="GetAuthorizationUrlTest.cs" />
-    <Compile Include="TestConfigurationProvider.cs" />
-    <Compile Include="ListCredentialsTest.cs" />
+    <Compile Include="CommandFunctionality\AuthorizeGDriveAccessTest.cs" />
+    <Compile Include="CommandFunctionality\ClearCredentialsTest.cs" />
+    <Compile Include="CommandFunctionality\ConsoleHelpTests.cs" />
+    <Compile Include="CommandFunctionality\GetAuthorizationUrlTest.cs" />
+    <Compile Include="Infrastructure\TestConfigurationProvider.cs" />
+    <Compile Include="CommandFunctionality\ListCredentialsTest.cs" />
     <Compile Include="Infrastructure\RecordingObserver.cs" />
     <Compile Include="Infrastructure\Modules\ITModuleConfiguration.cs" />
     <Compile Include="Infrastructure\Modules\ITModule.cs" />
-    <Compile Include="PreRunSetup.cs" />
+    <Compile Include="Infrastructure\PreRunSetup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SetCredentialsTest.cs" />
-    <Compile Include="UploadTest.cs" />
+    <Compile Include="CommandFunctionality\SetCredentialsTest.cs" />
+    <Compile Include="CommandFunctionality\UploadTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DocumentUploader.Core\DocumentUploader.Core.csproj">
