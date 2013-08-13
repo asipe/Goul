@@ -17,7 +17,12 @@ namespace Goul.Core {
 
     public void UploadFile(string fileToUpload, string fileTitle, Credentials credentials, RefreshToken refreshToken) {
       var uploader = new Uploader();
-      uploader.Execute(fileToUpload, fileTitle, credentials, refreshToken);
+      uploader.UploadFile(fileToUpload, fileTitle, credentials, refreshToken);
+    }
+
+    public void UploadFileWithFolder(string file, string fileTitle,string[] foldersToUpload, Credentials credentials, RefreshToken refreshToken) {
+      var uploader = new Uploader();
+      uploader.UploadFolderSetWithParents(foldersToUpload, credentials, refreshToken);
     }
 
     public void DeleteAllFiles(Credentials credentials, RefreshToken refreshToken) {

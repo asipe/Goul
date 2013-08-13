@@ -12,8 +12,18 @@ namespace DocumentUploader.Core.Command {
     }
 
     public void Execute(params string[] args) {
-      mHandler.UploadFile(args[1], args[2], mCredStore.Get(), mRefreshStore.Get());
-      mObserver.AddMessages("File uploaded");
+      switch (args.Length) {
+        case 3:
+          mHandler.UploadFile(args[1], args[2], mCredStore.Get(), mRefreshStore.Get());
+          mObserver.AddMessages("File uploaded");
+          break;
+        case 4:
+          var folders = args[3].Split(new[] {'\\'});
+          //This is just uploading an array of folders right now
+          mHandler.UploadFileWithFolder(args[1], args[2], folders, mCredStore.Get(), mRefreshStore.Get());
+          mObserver.AddMessages("Folder uploaded");
+          break;
+      }
     }
 
     private readonly ICredentialStore mCredStore;

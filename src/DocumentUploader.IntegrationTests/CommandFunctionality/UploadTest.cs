@@ -24,10 +24,18 @@ namespace DocumentUploader.IntegrationTests.CommandFunctionality {
 
     [Test]
     public void TestUploadWith4ArgsUploadsAFolder() {
-      mApp.Execute("upload", "file.txt", "fileTitle", "folder1");
-      var folder = mHandler.GetFolderFromRoot("folder1", mCredentials.Get(), mRefreshToken.Get());
-      Assert.That(mMessageObserver.GetMessages(), Is.EqualTo(BA("Folder Uploaded")));
-      // Assert.That(folder.Length, Is.GreaterThan(3));
+      mApp.Execute("upload","file.txt", "file", "folder1");
+      Assert.That(mMessageObserver.GetMessages(), Is.EqualTo(BA("Folder uploaded")));
+      mHandler.GetFolderFromRoot("folder1", mCredentials.Get(), mRefreshToken.Get());
+    }
+
+    [Test]
+    public void TestUploadWith4ArgsUploadsAFolderSet() {
+      mApp.Execute("upload", "file.txt", "file", @"folder1\folder2\folder3");
+      Assert.That(mMessageObserver.GetMessages(), Is.EqualTo(BA("Folder uploaded")));
+      mHandler.GetFolderFromRoot("folder1", mCredentials.Get(), mRefreshToken.Get());
+      mHandler.GetFolderFromRoot("folder2", mCredentials.Get(), mRefreshToken.Get());
+      mHandler.GetFolderFromRoot("folder3", mCredentials.Get(), mRefreshToken.Get());
     }
 
     [SetUp]
