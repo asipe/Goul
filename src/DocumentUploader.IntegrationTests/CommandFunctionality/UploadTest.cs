@@ -24,18 +24,36 @@ namespace DocumentUploader.IntegrationTests.CommandFunctionality {
 
     [Test]
     public void TestUploadWith1ArgsUploadsAFolder() {
-      mApp.Execute("upload","file.txt", "file", "folder1");
+      mApp.Execute("upload","file.txt", "file", "folder3");
       Assert.That(mMessageObserver.GetMessages(), Is.EqualTo(BA("Folder uploaded")));
-      mHandler.GetFolderFromRoot("folder1", mCredentials.Get(), mRefreshToken.Get());
+      mHandler.GetFolderFromRoot("folder3", mCredentials.Get(), mRefreshToken.Get());
     }
 
     [Test]
     public void TestUploadWith4ArgsUploadsAFolderSetWithAFileAtTheEnd() {
-      mApp.Execute("upload", "file.txt", "file", @"folder1\folder2\folder3");
+      mApp.Execute("upload", "file.txt", "file", @"folder3\folder2\folder3");
       Assert.That(mMessageObserver.GetMessages(), Is.EqualTo(BA("Folder uploaded")));
-      mHandler.GetFolderFromRoot("folder1", mCredentials.Get(), mRefreshToken.Get());
-      mHandler.GetChildOfFolderOnRoot("folder1", mCredentials.Get(), mRefreshToken.Get());
-      //mHandler.GetFileAtTheLastDirectory("folder1", mCredentials.Get(), mRefreshToken.Get());
+      mHandler.GetFolderFromRoot("folder3", mCredentials.Get(), mRefreshToken.Get());
+      mHandler.GetChildOfFolderOnRoot("folder3", mCredentials.Get(), mRefreshToken.Get());
+      mHandler.GetFileAtTheLastDirectory("folder3", mCredentials.Get(), mRefreshToken.Get());
+    }
+
+    [Test]
+    public void TestUploadingAFolderSetWithOnly2Folders() {
+      mApp.Execute("upload", "file.txt", "file", @"folder3\folder2");
+      Assert.That(mMessageObserver.GetMessages(), Is.EqualTo(BA("Folder uploaded")));
+      mHandler.GetFolderFromRoot("folder3", mCredentials.Get(), mRefreshToken.Get());
+      mHandler.GetChildOfFolderOnRoot("folder3", mCredentials.Get(), mRefreshToken.Get());
+      mHandler.GetFileAtTheLastDirectory("folder3", mCredentials.Get(), mRefreshToken.Get());
+    }
+
+    [Test]
+    public void TestUploadingAFolderSetWithOnly1Folders() {
+      mApp.Execute("upload", "file.txt", "file", @"folder3");
+      Assert.That(mMessageObserver.GetMessages(), Is.EqualTo(BA("Folder uploaded")));
+      mHandler.GetFolderFromRoot("folder3", mCredentials.Get(), mRefreshToken.Get());
+      mHandler.GetChildOfFolderOnRoot("folder3", mCredentials.Get(), mRefreshToken.Get());
+      mHandler.GetFileAtTheLastDirectory("folder3", mCredentials.Get(), mRefreshToken.Get());
     }
 
     [SetUp]
