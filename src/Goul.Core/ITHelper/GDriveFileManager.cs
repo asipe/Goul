@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using Google.Apis.Drive.v2;
+using Google.Apis.Drive.v2.Data;
 using Goul.Core.Functionality;
 using Goul.Core.Tokens;
 
 namespace Goul.Core.ITHelper {
-  public class GDriveFileManager {
+  public class GDriveFileManager:IFileManager {
     public GDriveFileManager(Credentials credentials, RefreshToken refreshToken) {
       mService = new GetDriveService().GetService(credentials, refreshToken);
     }
@@ -27,6 +28,11 @@ namespace Goul.Core.ITHelper {
       var request = mService.Files.List();
       request.Q = String.Format("mimeType = 'application/vnd.google-apps.folder' and title='{0}'", folderTitleToLookFor);
       return request.Fetch().Items[0].Id;
+    }
+
+    public IList<File> ListAllFilesOnRoot() {
+      var request = mService.Files.List();
+      return request.Fetch().Items;
     }
 
     public string GetChildOfFolderOnRoot(string folderOnRootToRetrieve) {

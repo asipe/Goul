@@ -6,6 +6,7 @@ using DocumentUploader.Core.Observer;
 using DocumentUploader.IntegrationTests.Infrastructure;
 using DocumentUploader.IntegrationTests.Infrastructure.Modules;
 using Goul.Core.Adapter;
+using Goul.Core.ITHelper;
 using NUnit.Framework;
 using SupaCharge.Core.IOAbstractions;
 using SupaCharge.Testing;
@@ -15,7 +16,7 @@ namespace DocumentUploader.IntegrationTests.CommandFunctionality {
   public class UpdateTest : BaseTestCase {
     [Test]
     public void TestUploadWith3ArgsUploadsAFileOnly() {
-     
+
     }
 
     [SetUp]
@@ -27,13 +28,14 @@ namespace DocumentUploader.IntegrationTests.CommandFunctionality {
       mRefreshToken = new RefreshTokenStore(mFile, "refreshToken.txt");
       mCredentials = new CredentialStore(mFile, "credentials.txt");
       mHandler = new GoulRequestHandler();
-
+      
       var provider = new TestConfigurationProvider();
       provider.SetupCredentialsFile();
       provider.SetupRefreshTokenFile();
       provider.SetupDummyFile();
 
-      mHandler.DeleteAllFiles(mCredentials.Get(), mRefreshToken.Get());
+      mFileManager = new GDriveFileManager(mCredentials.Get(), mRefreshToken.Get());
+      mFileManager.CleanGDriveAcct();
     }
 
     private DotNetFile mFile;
@@ -43,5 +45,6 @@ namespace DocumentUploader.IntegrationTests.CommandFunctionality {
     private ICredentialStore mCredentials;
     private IRefreshTokenStore mRefreshToken;
     private IGoulRequestHandler mHandler;
+    private IFileManager mFileManager;
   }
 }

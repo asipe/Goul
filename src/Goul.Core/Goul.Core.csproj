@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="ITHelper\GDriveFileManager.cs" />
     <Compile Include="Functionality\GetAuthorizationState.cs" />
+    <Compile Include="ITHelper\IFileManager.cs" />
     <Compile Include="Tokens\Credentials.cs" />
     <Compile Include="Functionality\GetAuthorizationUrl.cs" />
     <Compile Include="Functionality\GetDriveService.cs" />
