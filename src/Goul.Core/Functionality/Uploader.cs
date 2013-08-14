@@ -31,15 +31,6 @@ namespace Goul.Core.Functionality {
       request.Upload();
     }
 
-    public void UploadFolderSetWithParents(string[] folders) {
-      var parent = new ParentReference {Id = "root"};
-      for (var x = 0; x < folders.Length; x++) {
-        var file = new File {Title = folders[x], MimeType = "application/vnd.google-apps.folder", Parents = new List<ParentReference> {parent}};
-        var result = mService.Files.Insert(file).Fetch();
-        parent = new ParentReference {Id = result.Id};
-      }
-    }
-
     public void UploadFileWithFolderSet(string file, string fileTitle, string[] foldersToUpload) {
       var parent = new ParentReference {Id = "root"};
       for (var x = 0; x < foldersToUpload.Length; x++) {
