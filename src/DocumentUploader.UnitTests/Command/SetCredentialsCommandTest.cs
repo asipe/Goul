@@ -1,18 +1,17 @@
 ﻿using DocumentUploader.Core.Command;
 using DocumentUploader.Core.Models;
 using DocumentUploader.Core.Observer;
-using Goul.Core;
 using Goul.Core.Tokens;
 using Moq;
 using NUnit.Framework;
 
 namespace DocumentUploader.UnitTests.Command {
   [TestFixture]
-  public class SetCredentialsCommandTest:DocumentUploaderBaseTestCase {
+  public class SetCredentialsCommandTest : DocumentUploaderBaseTestCase {
     [Test]
     public void TestThatCredentialsAreSetWhenThereAre3Args() {
       mObserver.Setup(o => o.AddMessages("Credentials Set"));
-      mStorage.Setup(s => s.Update(It.Is<Credentials>(c => AreEqual(c, new Credentials{ClientID = "1", ClientSecret = "2"}))));
+      mStorage.Setup(s => s.Update(It.Is<Credentials>(c => AreEqual(c, new Credentials {ClientID = "1", ClientSecret = "2"}))));
       mCommand.Execute("setcredentials", "1", "2");
     }
 

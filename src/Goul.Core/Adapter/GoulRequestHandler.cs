@@ -23,9 +23,9 @@ namespace Goul.Core.Adapter {
       uploader.UploadFile(fileToUpload, fileTitle);
     }
 
-    public void UploadFileWithFolder(string file, string fileTitle,string[] foldersToUpload, Credentials credentials, RefreshToken refreshToken) {
+    public void UploadFileWithFolder(string file, string fileTitle, string[] foldersToUpload, Credentials credentials, RefreshToken refreshToken) {
       var uploader = new Uploader(credentials, refreshToken);
-     // uploader.UploadFolderSetWithParents(foldersToUpload);
+      // uploader.UploadFolderSetWithParents(foldersToUpload);
       uploader.UploadFileWithFolderSet(file, fileTitle, foldersToUpload);
     }
 

@@ -1,6 +1,5 @@
 ﻿using DocumentUploader.Core.Models;
 using DocumentUploader.Core.Observer;
-using Goul.Core;
 using Goul.Core.Adapter;
 
 namespace DocumentUploader.Core.Command {

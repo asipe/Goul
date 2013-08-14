@@ -9,8 +9,8 @@ namespace DocumentUploader.UnitTests.App {
   [TestFixture]
   public class DocUploaderAppTest : BaseTestCase {
     private class StubIndex : IIndex<string, ICommand> {
-      public ICommand NextCommandToReturn { private get; set; }
-      public string NextExpectedKey { private get; set; }
+      public ICommand NextCommandToReturn{private get;set;}
+      public string NextExpectedKey{private get;set;}
 
       public bool TryGetValue(string key, out ICommand value) {
         value = NextCommandToReturn;
@@ -19,7 +19,7 @@ namespace DocumentUploader.UnitTests.App {
       }
 
       public ICommand this[string key] {
-        get { return null; }
+        get {return null;}
       }
     }
 

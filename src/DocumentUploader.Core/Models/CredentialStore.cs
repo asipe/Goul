@@ -1,5 +1,4 @@
 ﻿using System;
-using Goul.Core;
 using Goul.Core.Tokens;
 using SupaCharge.Core.IOAbstractions;
 
@@ -12,7 +11,7 @@ namespace DocumentUploader.Core.Models {
 
     public Credentials Get() {
       var lines = mFile.ReadAllLines(mPath);
-      return new Credentials { ClientID = lines[0], ClientSecret = lines[1] };
+      return new Credentials {ClientID = lines[0], ClientSecret = lines[1]};
     }
 
     public void Update(Credentials credentials) {

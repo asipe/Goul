@@ -1,5 +1,4 @@
 ﻿using Autofac;
-using Goul.Core;
 using Goul.Core.Adapter;
 
 namespace DocumentUploader.Core.Factory.Module {

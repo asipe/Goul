@@ -1,6 +1,5 @@
 ﻿using DocumentUploader.Core.Models;
 using DocumentUploader.Core.Observer;
-using Goul.Core;
 using Goul.Core.Tokens;
 
 namespace DocumentUploader.Core.Command {
@@ -14,7 +13,8 @@ namespace DocumentUploader.Core.Command {
       if (args.Length == 3) {
         mStorage.Update(CredentialsBuilder(args[1], args[2]));
         mObserver.AddMessages("Credentials Set");
-      } else mObserver.AddMessages("Invalid amount of arguments");
+      } else
+        mObserver.AddMessages("Invalid amount of arguments");
     }
 
     private Credentials CredentialsBuilder(string clientId, string clientsecret) {

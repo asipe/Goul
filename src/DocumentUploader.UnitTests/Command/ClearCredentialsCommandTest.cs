@@ -7,7 +7,7 @@ using SupaCharge.Testing;
 
 namespace DocumentUploader.UnitTests.Command {
   [TestFixture]
-  public class ClearCredentialsCommandTest:BaseTestCase {
+  public class ClearCredentialsCommandTest : BaseTestCase {
     [Test]
     public void TestThatClearDisplaysTheCorrectMessageOnSuccesfulCompletion() {
       mObserver.Setup(o => o.AddMessages("Credentials Cleared"));

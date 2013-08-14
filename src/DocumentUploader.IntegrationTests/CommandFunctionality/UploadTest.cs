@@ -5,7 +5,7 @@ using DocumentUploader.Core.Models;
 using DocumentUploader.Core.Observer;
 using DocumentUploader.IntegrationTests.Infrastructure;
 using DocumentUploader.IntegrationTests.Infrastructure.Modules;
-using Goul.Core;
+using Goul.Core.Adapter;
 using NUnit.Framework;
 using SupaCharge.Core.IOAbstractions;
 using SupaCharge.Testing;
@@ -24,7 +24,7 @@ namespace DocumentUploader.IntegrationTests.CommandFunctionality {
 
     [Test]
     public void TestUploadWith1ArgsUploadsAFolder() {
-      mApp.Execute("upload","file.txt", "file", "folder3");
+      mApp.Execute("upload", "file.txt", "file", "folder3");
       Assert.That(mObserver.GetMessages(), Is.EqualTo(BA("Folder uploaded")));
       mHandler.GetFolderFromRoot("folder3", mCredentials.Get(), mRefreshToken.Get());
     }

@@ -30,7 +30,7 @@ namespace Goul.Core.Functionality {
 
     public void UploadFolderSetWithParents(string[] folders) {
       var parent = new ParentReference {Id = "root"};
-      for (var x =0; x< folders.Length; x++) {
+      for (var x = 0; x < folders.Length; x++) {
         var file = new File {Title = folders[x], MimeType = "application/vnd.google-apps.folder", Parents = new List<ParentReference> {parent}};
         var result = mService.Files.Insert(file).Fetch();
         parent = new ParentReference {Id = result.Id};
@@ -38,16 +38,15 @@ namespace Goul.Core.Functionality {
     }
 
     public void UploadFileWithFolderSet(string file, string fileTitle, string[] foldersToUpload) {
-      var parent = new ParentReference { Id = "root" };
+      var parent = new ParentReference {Id = "root"};
       for (var x = 0; x < foldersToUpload.Length; x++) {
-        var fileToUpload = new File { Title = foldersToUpload[x], MimeType = "application/vnd.google-apps.folder", Parents = new List<ParentReference> { parent } };
+        var fileToUpload = new File {Title = foldersToUpload[x], MimeType = "application/vnd.google-apps.folder", Parents = new List<ParentReference> {parent}};
         var result = mService.Files.Insert(fileToUpload).Fetch();
-        parent = new ParentReference { Id = result.Id };
+        parent = new ParentReference {Id = result.Id};
       }
 
-      var myFile = new File { Title = fileTitle, Parents = new List<ParentReference> { parent } };
+      var myFile = new File {Title = fileTitle, Parents = new List<ParentReference> {parent}};
       UploadFileUsingGoogleBase(myFile, file);
-
     }
 
     private readonly Credentials mCredentials;

@@ -1,6 +1,5 @@
 ﻿using System;
 using DocumentUploader.Core.Models;
-using Goul.Core;
 using Goul.Core.Tokens;
 using Moq;
 using NUnit.Framework;
@@ -12,7 +11,7 @@ namespace DocumentUploader.UnitTests.Models {
   public class CredentialStoreTest : BaseTestCase {
     [Test]
     public void TestGetWithCorrectPathReturnsValues() {
-      mFile.Setup(f => f.ReadAllLines("credentials.txt")).Returns(new[] { "1", "2" });
+      mFile.Setup(f => f.ReadAllLines("credentials.txt")).Returns(new[] {"1", "2"});
       Assert.That(mStore.Get().ClientID, Is.EqualTo("1"));
       Assert.That(mStore.Get().ClientSecret, Is.EqualTo("2"));
     }
