@@ -17,7 +17,7 @@ namespace DocumentUploader.IntegrationTests.CommandFunctionality {
     public void InitTest() {
       mApp.Execute("authorize", File.ReadAllLines("Refresh_AuthToken_Test_Use_Only.txt")[0]);
 
-      Assert.That(mMessageObserver.GetMessages(), Is.EqualTo(BA("Authorized")));
+      Assert.That(mObserver.GetMessages(), Is.EqualTo(BA("Authorized")));
       var value = mFile.ReadAllLines("refreshToken.txt")[0];
       Assert.That(value.Length, Is.GreaterThan(5));
       Assert.That(value[0], Is.EqualTo('1'));
@@ -27,14 +27,14 @@ namespace DocumentUploader.IntegrationTests.CommandFunctionality {
     [SetUp]
     public void DoSetup() {
       mFactory = new Factory(new DefaultModuleConfiguration(), new ITModuleConfiguration());
-      mMessageObserver = (RecordingObserver)mFactory.Build<IMessageObserver>();
+      mObserver = (RecordingObserver)mFactory.Build<IMessageObserver>();
       mApp = mFactory.Build<IApp>();
       mFile = new DotNetFile();
     }
 
     private DotNetFile mFile;
     private Factory mFactory;
-    private RecordingObserver mMessageObserver;
+    private RecordingObserver mObserver;
     private IApp mApp;
   }
 }
