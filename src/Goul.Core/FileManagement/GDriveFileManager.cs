@@ -5,7 +5,7 @@ using Google.Apis.Drive.v2;
 using Goul.Core.Functionality;
 using Goul.Core.Tokens;
 
-namespace Goul.Core.ITHelper {
+namespace Goul.Core.FileManagement {
   public class GDriveFileManager : IFileManager {
     public GDriveFileManager(Credentials credentials, RefreshToken refreshToken) {
       mService = new GetDriveService().GetService(credentials, refreshToken);

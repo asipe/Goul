@@ -5,7 +5,7 @@ using DocumentUploader.Core.Models;
 using DocumentUploader.Core.Observer;
 using DocumentUploader.IntegrationTests.Infrastructure;
 using DocumentUploader.IntegrationTests.Infrastructure.Modules;
-using Goul.Core.ITHelper;
+using Goul.Core.FileManagement;
 using NUnit.Framework;
 using SupaCharge.Core.IOAbstractions;
 using SupaCharge.Testing;

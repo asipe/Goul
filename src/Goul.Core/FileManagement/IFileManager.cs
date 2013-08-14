@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Goul.Core.ITHelper {
+namespace Goul.Core.FileManagement {
   public interface IFileManager {
     List<string> GetFilesByTitle();
     void CleanGDriveAcct();
