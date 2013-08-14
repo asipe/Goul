@@ -1,4 +1,4 @@
-﻿using Goul.Core;
+﻿using Goul.Core.Tokens;
 using SupaCharge.Core.IOAbstractions;
 
 namespace DocumentUploader.Core.Models {
@@ -9,7 +9,7 @@ namespace DocumentUploader.Core.Models {
     }
 
     public RefreshToken Get() {
-      return new RefreshToken { Token = mFile.ReadAllLines(mPath)[0] };
+      return new RefreshToken {Token = mFile.ReadAllLines(mPath)[0]};
     }
 
     public void Update(RefreshToken token) {

@@ -34,7 +34,8 @@ namespace DocumentUploader.IntegrationTests.Infrastructure {
       if (!File.Exists("authToken.txt")) {
         File.Create("authToken.txt");
         File.WriteAllText("authToken.txt", GetAuthorizationToken());
-      } else File.WriteAllLines("credentials.txt", GetCredentials());
+      } else
+        File.WriteAllLines("credentials.txt", GetCredentials());
     }
 
     public string GetDevelopmentRoot() {

@@ -2,8 +2,9 @@
 using DotNetOpenAuth.OAuth2;
 using Google.Apis.Authentication.OAuth2;
 using Google.Apis.Authentication.OAuth2.DotNetOpenAuth;
+using Goul.Core.Tokens;
 
-namespace Goul.Core {
+namespace Goul.Core.Functionality {
   public static class GetAuthorizationUrl {
     public static NativeApplicationClient BuildNativeAppClient(Credentials credentials) {
       return new NativeApplicationClient(GoogleAuthenticationServer.Description, credentials.ClientID, credentials.ClientSecret);

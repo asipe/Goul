@@ -16,23 +16,23 @@ namespace DocumentUploader.IntegrationTests.CommandFunctionality {
       mApp.Execute("setcredentials", "val1", "val2");
       var credentialsFileLines = mFile.ReadAllLines("credentials.txt");
       Assert.That(credentialsFileLines, Is.EqualTo(BA("val1", "val2")));
-      Assert.That(mMessageObserver.GetMessages(), Is.EqualTo(BA("Credentials Set")));
+      Assert.That(mObserver.GetMessages(), Is.EqualTo(BA("Credentials Set")));
     }
 
     [Test]
     public void TestThatTheAppThrowsCorrectExceptionWhenGivenIncorrectNumberOfArgs() {
       mApp.Execute("setcredentials");
-      Assert.That(mMessageObserver.GetMessages(), Is.EqualTo(BA("Invalid amount of arguments")));
-      mApp.Execute(new[] {"setcredentials", "1"});
-      Assert.That(mMessageObserver.GetMessages(), Is.EqualTo(BA("Invalid amount of arguments")));
-      mApp.Execute(new[] {"setcredentials", "1", "2", "3"});
-      Assert.That(mMessageObserver.GetMessages(), Is.EqualTo(BA("Invalid amount of arguments")));
+      Assert.That(mObserver.GetMessages(), Is.EqualTo(BA("Invalid amount of arguments")));
+      mApp.Execute("setcredentials", "1");
+      Assert.That(mObserver.GetMessages(), Is.EqualTo(BA("Invalid amount of arguments")));
+      mApp.Execute("setcredentials", "1", "2", "3");
+      Assert.That(mObserver.GetMessages(), Is.EqualTo(BA("Invalid amount of arguments")));
     }
 
     [SetUp]
     public void DoSetup() {
       mFactory = new Factory(new DefaultModuleConfiguration(), new ITModuleConfiguration());
-      mMessageObserver = (RecordingObserver)mFactory.Build<IMessageObserver>();
+      mObserver = (RecordingObserver)mFactory.Build<IMessageObserver>();
       mApp = mFactory.Build<IApp>();
       mFile = new DotNetFile();
     }
@@ -44,7 +44,7 @@ namespace DocumentUploader.IntegrationTests.CommandFunctionality {
 
     private DotNetFile mFile;
     private Factory mFactory;
-    private RecordingObserver mMessageObserver;
+    private RecordingObserver mObserver;
     private IApp mApp;
   }
 }

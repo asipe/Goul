@@ -1,7 +1,8 @@
 ﻿using DocumentUploader.Core.Command;
 using DocumentUploader.Core.Models;
 using DocumentUploader.Core.Observer;
-using Goul.Core;
+using Goul.Core.Adapter;
+using Goul.Core.Tokens;
 using Moq;
 using NUnit.Framework;
 
@@ -12,7 +13,7 @@ namespace DocumentUploader.UnitTests.Command {
     public void TestGetAuthUrlCommandWorks() {
       mStore.Setup(o => o.Get()).Returns(new Credentials {ClientID = "1", ClientSecret = "2"});
       mObserver.Setup(o => o.AddMessages("authorization url"));
-      mHandler.Setup(o => o.GetAuthUrl(It.Is<Credentials>( c => AreEqual(c, new Credentials { ClientID = "1", ClientSecret = "2" })))).Returns("authorization url");
+      mHandler.Setup(o => o.GetAuthUrl(It.Is<Credentials>(c => AreEqual(c, new Credentials {ClientID = "1", ClientSecret = "2"})))).Returns("authorization url");
       mCommand.Execute("authorization url");
     }
 

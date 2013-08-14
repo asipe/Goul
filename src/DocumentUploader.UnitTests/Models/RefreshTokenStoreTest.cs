@@ -1,5 +1,5 @@
 ﻿using DocumentUploader.Core.Models;
-using Goul.Core;
+using Goul.Core.Tokens;
 using Moq;
 using NUnit.Framework;
 using SupaCharge.Core.IOAbstractions;
@@ -10,7 +10,7 @@ namespace DocumentUploader.UnitTests.Models {
   public class RefreshTokenStoreTest : BaseTestCase {
     [Test]
     public void TestGetWithCorrectPathReturnsValues() {
-      mFile.Setup(f => f.ReadAllLines("credentials.txt")).Returns(new[] { "1" });
+      mFile.Setup(f => f.ReadAllLines("credentials.txt")).Returns(new[] {"1"});
       Assert.That(mStore.Get().Token, Is.EqualTo("1"));
     }
 

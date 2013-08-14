@@ -1,6 +1,7 @@
 ﻿using DocumentUploader.Core.Models;
 using DocumentUploader.Core.Observer;
-using Goul.Core;
+using Goul.Core.Adapter;
+using Goul.Core.Tokens;
 
 namespace DocumentUploader.Core.Command {
   public class AuthorizeCommand : ICommand {
@@ -13,8 +14,8 @@ namespace DocumentUploader.Core.Command {
 
     public void Execute(params string[] args) {
       mRefreshStorage.Update(new RefreshToken {
-        Token = mHandler.CreateRefreshToken(mCredStore.Get(), args[1])
-      });
+                                                Token = mHandler.CreateRefreshToken(mCredStore.Get(), args[1])
+                                              });
       mObserver.AddMessages("Authorized");
     }
 

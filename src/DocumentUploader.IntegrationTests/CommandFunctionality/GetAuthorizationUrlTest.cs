@@ -18,7 +18,7 @@ namespace DocumentUploader.IntegrationTests.CommandFunctionality {
 
       mApp.Execute("getauthorizationurl");
 
-      var messages = mMessageObserver.GetMessages();
+      var messages = mObserver.GetMessages();
       Assert.That(messages.Length, Is.EqualTo(1));
       Assert.That(messages[0], Is.StringStarting("https://accounts.google.com/o/oauth2"));
 
@@ -28,14 +28,14 @@ namespace DocumentUploader.IntegrationTests.CommandFunctionality {
     [SetUp]
     public void DoSetup() {
       mFactory = new Factory(new DefaultModuleConfiguration(), new ITModuleConfiguration());
-      mMessageObserver = (RecordingObserver)mFactory.Build<IMessageObserver>();
+      mObserver = (RecordingObserver)mFactory.Build<IMessageObserver>();
       mApp = mFactory.Build<IApp>();
       mFile = new DotNetFile();
     }
 
     private DotNetFile mFile;
     private Factory mFactory;
-    private RecordingObserver mMessageObserver;
+    private RecordingObserver mObserver;
     private IApp mApp;
   }
 }

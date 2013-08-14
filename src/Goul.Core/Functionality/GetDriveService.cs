@@ -4,15 +4,16 @@ using Google.Apis.Authentication.OAuth2;
 using Google.Apis.Authentication.OAuth2.DotNetOpenAuth;
 using Google.Apis.Drive.v2;
 using Google.Apis.Services;
+using Goul.Core.Tokens;
 
-namespace Goul.Core {
+namespace Goul.Core.Functionality {
   public class GetDriveService {
     public DriveService GetService(Credentials credentials, RefreshToken refreshToken) {
       var provider = GetAppClient(credentials);
       var auth = new OAuth2Authenticator<NativeApplicationClient>(provider, GetAuthorization);
       var service = new DriveService(new BaseClientService.Initializer {
-        Authenticator = auth
-      });
+                                                                         Authenticator = auth
+                                                                       });
 
       mRefreshToken = refreshToken;
 
