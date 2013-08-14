@@ -48,7 +48,7 @@ namespace DocumentUploader.IntegrationTests.CommandFunctionality {
     }
 
     [Test]
-    public void TestUploadingAFolderSetWithOnly1Folders() {
+    public void TestUploadingAFolderSetWithOnly1Folder() {
       mApp.Execute("upload", "file.txt", "file", @"folder3");
       Assert.That(mObserver.GetMessages(), Is.EqualTo(BA("Folder uploaded")));
       mHandler.GetFolderFromRoot("folder3", mCredentials.Get(), mRefreshToken.Get());
