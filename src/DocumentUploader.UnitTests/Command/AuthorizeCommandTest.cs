@@ -2,6 +2,8 @@
 using DocumentUploader.Core.Models;
 using DocumentUploader.Core.Observer;
 using Goul.Core;
+using Goul.Core.Adapter;
+using Goul.Core.Tokens;
 using Moq;
 using NUnit.Framework;
 

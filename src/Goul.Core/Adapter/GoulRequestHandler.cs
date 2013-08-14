@@ -1,6 +1,9 @@
 ﻿using System.Collections.Generic;
+using Goul.Core.Functionality;
+using Goul.Core.ITHelper;
+using Goul.Core.Tokens;
 
-namespace Goul.Core {
+namespace Goul.Core.Adapter {
   public class GoulRequestHandler : IGoulRequestHandler {
     public string GetAuthUrl(Credentials credentials) {
       var result = GetAuthorizationUrl.GetAuthorization(GetAuthorizationUrl.BuildNativeAppClient(credentials));

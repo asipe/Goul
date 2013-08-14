@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using Google.Apis.Drive.v2;
-using Google.Apis.Drive.v2.Data;
+using Goul.Core.Functionality;
+using Goul.Core.Tokens;
 
-namespace Goul.Core {
+namespace Goul.Core.ITHelper {
   public class GDriveFileManager {
     public GDriveFileManager(Credentials credentials, RefreshToken refreshToken) {
       mService = new GetDriveService().GetService(credentials, refreshToken);

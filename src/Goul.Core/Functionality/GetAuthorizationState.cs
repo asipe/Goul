@@ -2,8 +2,9 @@
 using DotNetOpenAuth.OAuth2;
 using Google.Apis.Authentication.OAuth2;
 using Google.Apis.Authentication.OAuth2.DotNetOpenAuth;
+using Goul.Core.Tokens;
 
-namespace Goul.Core {
+namespace Goul.Core.Functionality {
   public class GetAuthorizationState {
     public IAuthorizationState GetAuthorization(Credentials credentials, string authCode) {
       var state = GetState();

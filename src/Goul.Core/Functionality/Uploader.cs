@@ -2,9 +2,10 @@
 using System.IO;
 using Google.Apis.Drive.v2;
 using Google.Apis.Drive.v2.Data;
+using Goul.Core.Tokens;
 using File = Google.Apis.Drive.v2.Data.File;
 
-namespace Goul.Core {
+namespace Goul.Core.Functionality {
   public class Uploader {
     public Uploader(Credentials credentials, RefreshToken refreshToken) {
       mCredentials = credentials;

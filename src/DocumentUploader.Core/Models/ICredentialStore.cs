@@ -1,4 +1,5 @@
 ﻿using Goul.Core;
+using Goul.Core.Tokens;
 
 namespace DocumentUploader.Core.Models {
   public interface ICredentialStore {
