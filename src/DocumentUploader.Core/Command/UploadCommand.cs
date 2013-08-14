@@ -19,9 +19,8 @@ namespace DocumentUploader.Core.Command {
           break;
         case 4:
           var folders = args[3].Split(new[] {'\\'});
-          //We need this to upload a set of folders with a file at the end
           mHandler.UploadFileWithFolder(args[1], args[2], folders, mCredStore.Get(), mRefreshStore.Get());
-          mObserver.AddMessages("Folder uploaded");
+          mObserver.AddMessages("Files uploaded");
           break;
       }
     }
