@@ -5,7 +5,6 @@ using DocumentUploader.Core.Models;
 using DocumentUploader.Core.Observer;
 using DocumentUploader.IntegrationTests.Infrastructure;
 using DocumentUploader.IntegrationTests.Infrastructure.Modules;
-using Goul.Core.Adapter;
 using Goul.Core.ITHelper;
 using NUnit.Framework;
 using SupaCharge.Core.IOAbstractions;
@@ -51,12 +50,6 @@ namespace DocumentUploader.IntegrationTests.CommandFunctionality {
       CheckThatGivenFilesExist("folder3");
     }
 
-    private void CheckThatGivenFilesExist(string folderToLookFor) {
-      mFileManager.GetFolderIdFromRoot(folderToLookFor);
-      mFileManager.GetChildOfFolderOnRoot(folderToLookFor);
-      mFileManager.GetFileAtTheLastDirectory(folderToLookFor);
-    }
-
     [SetUp]
     public void Setup() {
       mFactory = new Factory(new DefaultModuleConfiguration(), new ITModuleConfiguration());
@@ -65,7 +58,7 @@ namespace DocumentUploader.IntegrationTests.CommandFunctionality {
       mFile = new DotNetFile();
       mRefreshTokenStore = new RefreshTokenStore(mFile, "refreshToken.txt");
       mCredentialStore = new CredentialStore(mFile, "credentials.txt");
-      
+
       var provider = new TestConfigurationProvider();
       provider.SetupCredentialsFile();
       provider.SetupRefreshTokenFile();
@@ -73,6 +66,12 @@ namespace DocumentUploader.IntegrationTests.CommandFunctionality {
 
       mFileManager = new GDriveFileManager(mCredentialStore.Get(), mRefreshTokenStore.Get());
       mFileManager.CleanGDriveAcct();
+    }
+
+    private void CheckThatGivenFilesExist(string folderToLookFor) {
+      mFileManager.GetFolderIdFromRoot(folderToLookFor);
+      mFileManager.GetChildOfFolderOnRoot(folderToLookFor);
+      mFileManager.GetFileAtTheLastDirectory(folderToLookFor);
     }
 
     private DotNetFile mFile;

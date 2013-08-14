@@ -6,7 +6,7 @@ using Goul.Core.Functionality;
 using Goul.Core.Tokens;
 
 namespace Goul.Core.ITHelper {
-  public class GDriveFileManager:IFileManager {
+  public class GDriveFileManager : IFileManager {
     public GDriveFileManager(Credentials credentials, RefreshToken refreshToken) {
       mService = new GetDriveService().GetService(credentials, refreshToken);
     }
@@ -33,9 +33,8 @@ namespace Goul.Core.ITHelper {
       var request = mService.Files.List().Fetch();
       var result = new List<string>();
 
-      for (var x = 0; x < request.Items.Count; x++) {
+      for (var x = 0; x < request.Items.Count; x++)
         result.Add(request.Items[x].Id);
-      }
 
       return result;
     }
@@ -44,9 +43,8 @@ namespace Goul.Core.ITHelper {
       var request = mService.Files.List().Fetch();
       var result = new List<string>();
 
-      for (var x = 0; x < request.Items.Count; x++) {
+      for (var x = 0; x < request.Items.Count; x++)
         result.Add(request.Items[x].Title);
-      }
 
       return result;
     }

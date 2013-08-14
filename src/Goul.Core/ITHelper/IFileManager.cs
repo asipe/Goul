@@ -9,6 +9,5 @@ namespace Goul.Core.ITHelper {
     string GetFileAtTheLastDirectory(string rootFolder);
     List<string> ListAllFilesOnRootById();
     List<string> ListAllFilesOnRootByTitle();
-
   }
 }

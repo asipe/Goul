@@ -1,5 +1,4 @@
-﻿using System;
-using DocumentUploader.Core.App;
+﻿using DocumentUploader.Core.App;
 using DocumentUploader.Core.Factory;
 using DocumentUploader.Core.Factory.Module;
 using DocumentUploader.Core.Models;
@@ -18,7 +17,7 @@ namespace DocumentUploader.IntegrationTests.CommandFunctionality {
     public void TestUploadingASingleFileTwiceOntoRootsDoesnotUploadTwice() {
       mApp.Execute("upload", "file.txt", "myFile");
       mApp.Execute("upload", "file.txt", "myFile");
-      
+
       Assert.That(mManager.ListAllFilesOnRootById().Count, Is.EqualTo(1));
     }
 
@@ -30,7 +29,7 @@ namespace DocumentUploader.IntegrationTests.CommandFunctionality {
       mFile = new DotNetFile();
       mRefreshToken = new RefreshTokenStore(mFile, "refreshToken.txt");
       mCredentials = new CredentialStore(mFile, "credentials.txt");
-      
+
       var provider = new TestConfigurationProvider();
       provider.SetupCredentialsFile();
       provider.SetupRefreshTokenFile();

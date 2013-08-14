@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using Google.Apis.Drive.v2;
 using Google.Apis.Drive.v2.Data;
@@ -14,9 +13,9 @@ namespace Goul.Core.Functionality {
     }
 
     public void UploadFile(string fileToUpload, string fileTitle) {
-      if (mUpdater.IsUpdateRequired(fileTitle)) {
+      if (mUpdater.IsUpdateRequired(fileTitle))
         mUpdater.Update();
-      }  else {
+      else {
         var file = new File {Title = fileTitle, Description = "123"};
         var stream = new MemoryStream(System.IO.File.ReadAllBytes(fileToUpload));
         var request = mService.Files.Insert(file, stream, "text/plain");
@@ -53,8 +52,6 @@ namespace Goul.Core.Functionality {
       UploadFileUsingGoogleBase(myFile, file);
     }
 
-    private readonly Credentials mCredentials;
-    private readonly RefreshToken mRefreshToken;
     private readonly DriveService mService;
     private readonly Updater mUpdater;
   }

@@ -13,11 +13,8 @@ namespace Goul.Core.Functionality {
       return mManager.ListAllFilesOnRootByTitle().Contains(fileTitleToCheckAgaisnt);
     }
 
-    public void Update() {
-      
-    }
-
+    public void Update() {}
+    private readonly IFileManager mManager;
     private DriveService mService;
-    private IFileManager mManager;
   }
 }
