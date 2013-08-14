@@ -50,6 +50,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Functionality\Updater.cs" />
     <Compile Include="ITHelper\GDriveFileManager.cs" />
     <Compile Include="Functionality\GetAuthorizationState.cs" />
     <Compile Include="ITHelper\IFileManager.cs" />
