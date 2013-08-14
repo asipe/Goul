@@ -1,4 +1,6 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
+using Google.Apis.Drive.v2.Data;
 using File = Google.Apis.Drive.v2.Data.File;
 
 namespace Goul.Core {
@@ -14,11 +16,11 @@ namespace Goul.Core {
 
     public void UploadFolderSetWithParents(string[] folders, Credentials credentials, RefreshToken refreshToken) {
       var service = new GetDriveService().GetService(credentials, refreshToken);
-      var parent = "root";
+      var parent = new ParentReference {Id = "root"};
       for (var x =0; x< folders.Length; x++) {
-        var file = new File { Title = folders[x], MimeType = "application/vnd.google-apps.folder" };
-        service.Files.Insert(file).Fetch();
-        //file.Id = parent;
+        var file = new File {Title = folders[x], MimeType = "application/vnd.google-apps.folder", Parents = new List<ParentReference> {parent}};
+        var result = service.Files.Insert(file).Fetch();
+        parent = new ParentReference {Id = result.Id};
       }
     }
   }

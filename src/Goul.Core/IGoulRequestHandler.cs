@@ -9,5 +9,7 @@ namespace Goul.Core {
     void UploadFileWithFolder(string file, string fileTitle,string[] foldersToUpload, Credentials credentials, RefreshToken refreshToken);
     void DeleteAllFiles(Credentials credentials, RefreshToken refreshToken);
     string GetFolderFromRoot(string folderToGet, Credentials credentials, RefreshToken refreshToken);
+    string GetChildOfFolderOnRoot(string folderOnRoot, Credentials credentials, RefreshToken refreshToken);
+    string GetFileAtTheLastDirectory(string rootFolder, Credentials credentials, RefreshToken refreshToken);
   }
 }

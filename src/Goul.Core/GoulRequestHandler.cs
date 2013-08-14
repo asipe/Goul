@@ -34,5 +34,15 @@ namespace Goul.Core {
       var manager = new GDriveFileManager(credentials, refreshToken);
       return manager.GetFolderIdFromRoot(folderToGet);
     }
+
+    public string GetChildOfFolderOnRoot(string folderOnRoot, Credentials credentials, RefreshToken refreshToken) {
+      var manager = new GDriveFileManager(credentials, refreshToken);
+      return manager.GetChildOfFolderOnRoot(folderOnRoot);
+    }
+
+    public string GetFileAtTheLastDirectory(string rootFolder, Credentials credentials, RefreshToken refreshToken) {
+      var manager = new GDriveFileManager(credentials, refreshToken);
+      return manager.GetFileAtTheLastDirectory(rootFolder);
+    }
   }
 }
