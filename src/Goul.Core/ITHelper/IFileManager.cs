@@ -7,6 +7,8 @@ namespace Goul.Core.ITHelper {
     string GetFolderIdFromRoot(string folderTitleToLookFor);
     string GetChildOfFolderOnRoot(string folderOnRootToRetrieve);
     string GetFileAtTheLastDirectory(string rootFolder);
-    List<string> ListAllFilesOnRoot();
+    List<string> ListAllFilesOnRootById();
+    List<string> ListAllFilesOnRootByTitle();
+
   }
 }

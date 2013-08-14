@@ -1,4 +1,5 @@
-﻿using DocumentUploader.Core.App;
+﻿using System;
+using DocumentUploader.Core.App;
 using DocumentUploader.Core.Factory;
 using DocumentUploader.Core.Factory.Module;
 using DocumentUploader.Core.Models;
@@ -14,11 +15,11 @@ namespace DocumentUploader.IntegrationTests.CommandFunctionality {
   [TestFixture]
   public class UpdateTest : BaseTestCase {
     [Test]
-    public void TestUploadWith3ArgsUploadsAFileOnly() {
+    public void TestUploadingASingleFileTwiceOntoRootsDoesnotUploadTwice() {
       mApp.Execute("upload", "file.txt", "myFile");
       mApp.Execute("upload", "file.txt", "myFile");
       
-    //  Assert.That(mManager.ListAllFilesOnRoot().Count, Is.EqualTo(1));
+      Assert.That(mManager.ListAllFilesOnRootById().Count, Is.EqualTo(1));
     }
 
     [SetUp]

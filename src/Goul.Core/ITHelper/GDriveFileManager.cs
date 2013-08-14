@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using Google.Apis.Drive.v2;
-using Google.Apis.Drive.v2.Data;
 using Goul.Core.Functionality;
 using Goul.Core.Tokens;
 
@@ -30,12 +29,23 @@ namespace Goul.Core.ITHelper {
       return request.Fetch().Items[0].Id;
     }
 
-    public List<string> ListAllFilesOnRoot() {
+    public List<string> ListAllFilesOnRootById() {
       var request = mService.Files.List().Fetch();
       var result = new List<string>();
 
       for (var x = 0; x < request.Items.Count; x++) {
         result.Add(request.Items[x].Id);
+      }
+
+      return result;
+    }
+
+    public List<string> ListAllFilesOnRootByTitle() {
+      var request = mService.Files.List().Fetch();
+      var result = new List<string>();
+
+      for (var x = 0; x < request.Items.Count; x++) {
+        result.Add(request.Items[x].Title);
       }
 
       return result;
