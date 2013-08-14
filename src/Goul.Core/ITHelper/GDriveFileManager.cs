@@ -30,9 +30,15 @@ namespace Goul.Core.ITHelper {
       return request.Fetch().Items[0].Id;
     }
 
-    public IList<File> ListAllFilesOnRoot() {
-      var request = mService.Files.List();
-      return request.Fetch().Items;
+    public List<string> ListAllFilesOnRoot() {
+      var request = mService.Files.List().Fetch();
+      var result = new List<string>();
+
+      for (var x = 0; x < request.Items.Count; x++) {
+        result.Add(request.Items[x].Id);
+      }
+
+      return result;
     }
 
     public string GetChildOfFolderOnRoot(string folderOnRootToRetrieve) {
