@@ -2,6 +2,7 @@
 using System.IO;
 using Google.Apis.Drive.v2;
 using Google.Apis.Drive.v2.Data;
+using Goul.Core.ITHelper;
 using Goul.Core.Tokens;
 using File = Google.Apis.Drive.v2.Data.File;
 
@@ -10,11 +11,12 @@ namespace Goul.Core.Functionality {
     public Uploader(Credentials credentials, RefreshToken refreshToken) {
       mService = new GetDriveService().GetService(credentials, refreshToken);
       mUpdater = new Updater(credentials, refreshToken);
+      mManager = new GDriveFileManager(credentials, refreshToken);
     }
 
     public void UploadFile(string fileToUpload, string fileTitle) {
       if (mUpdater.IsUpdateRequired(fileTitle))
-        mUpdater.Update();
+        mUpdater.Update(fileToUpload, mManager.ListAllFilesOnRootById()[0]);
       else {
         var file = new File {Title = fileTitle, Description = "123"};
         var stream = new MemoryStream(System.IO.File.ReadAllBytes(fileToUpload));
@@ -45,5 +47,6 @@ namespace Goul.Core.Functionality {
 
     private readonly DriveService mService;
     private readonly Updater mUpdater;
+    private readonly IFileManager mManager;
   }
 }

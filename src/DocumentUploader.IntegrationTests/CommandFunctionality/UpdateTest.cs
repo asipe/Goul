@@ -19,6 +19,7 @@ namespace DocumentUploader.IntegrationTests.CommandFunctionality {
       mApp.Execute("upload", "file.txt", "myFile");
 
       Assert.That(mManager.ListAllFilesOnRootById().Count, Is.EqualTo(1));
+      Assert.That(mObserver.GetMessages(), Is.EqualTo(BA("File uploaded")));
     }
 
     [SetUp]
