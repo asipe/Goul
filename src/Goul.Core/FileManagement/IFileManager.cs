@@ -2,7 +2,6 @@
 
 namespace Goul.Core.FileManagement {
   public interface IFileManager {
-    List<string> GetFilesByTitle();
     void CleanGDriveAcct();
     string GetFolderIdFromRoot(string folderTitleToLookFor);
     string GetChildOfFolderOnRoot(string folderOnRootToRetrieve);

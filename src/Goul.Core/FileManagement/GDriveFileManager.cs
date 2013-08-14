@@ -11,11 +11,6 @@ namespace Goul.Core.FileManagement {
       mService = new GetDriveService().GetService(credentials, refreshToken);
     }
 
-    public List<string> GetFilesByTitle() {
-      var files = mService.Files.List().Fetch().Items;
-      return files.Select(t => t.Title).ToList();
-    }
-
     public void CleanGDriveAcct() {
       var files = mService.Files.List().Fetch().Items;
 
@@ -30,23 +25,15 @@ namespace Goul.Core.FileManagement {
     }
 
     public List<string> ListAllFilesOnRootById() {
-      var request = mService.Files.List().Fetch();
-      var result = new List<string>();
-
-      for (var x = 0; x < request.Items.Count; x++)
-        result.Add(request.Items[x].Id);
-
-      return result;
+      var request = mService.Files.List();
+      request.Q = "'root' in parents";
+      return request.Fetch().Items.Select(t => t.Id).ToList();
     }
 
     public List<string> ListAllFilesOnRootByTitle() {
-      var request = mService.Files.List().Fetch();
-      var result = new List<string>();
-
-      for (var x = 0; x < request.Items.Count; x++)
-        result.Add(request.Items[x].Title);
-
-      return result;
+      var request = mService.Files.List();
+      request.Q = "'root' in parents";
+      return request.Fetch().Items.Select(t => t.Id).ToList();
     }
 
     public string GetChildOfFolderOnRoot(string folderOnRootToRetrieve) {

@@ -16,7 +16,7 @@ namespace DocumentUploader.IntegrationTests.CommandFunctionality {
     [Test]
     public void TestUploadWith3ArgsUploadsAFileOnly() {
       mApp.Execute("upload", "file.txt", "myFile");
-      var files = mFileManager.GetFilesByTitle();
+      var files = mFileManager.ListAllFilesOnRootById();
 
       Assert.That(mObserver.GetMessages(), Is.EqualTo(BA("File uploaded")));
       Assert.That(files.Count, Is.EqualTo(1));

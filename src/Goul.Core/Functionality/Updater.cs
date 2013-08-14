@@ -10,7 +10,7 @@ namespace Goul.Core.Functionality {
     }
 
     public bool IsUpdateRequired(string fileTitleToCheckAgaisnt) {
-      return mManager.ListAllFilesOnRootByTitle().Contains(fileTitleToCheckAgaisnt);
+      return mManager.ListAllFilesOnRootByTitle().Contains(fileTitleToCheckAgaisnt) || mManager.ListAllFilesOnRootById().Count != 0;
     }
 
     public void Update(string filePath, string fileUpdateId) {
