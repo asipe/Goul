@@ -11,12 +11,8 @@ namespace Goul.Core.Functionality {
     public DriveService GetService(Credentials credentials, RefreshToken refreshToken) {
       var provider = GetAppClient(credentials);
       var auth = new OAuth2Authenticator<NativeApplicationClient>(provider, GetAuthorization);
-      var service = new DriveService(new BaseClientService.Initializer {
-                                                                         Authenticator = auth
-                                                                       });
-
+      var service = new DriveService(new BaseClientService.Initializer {Authenticator = auth});
       mRefreshToken = refreshToken;
-
       return service;
     }
 

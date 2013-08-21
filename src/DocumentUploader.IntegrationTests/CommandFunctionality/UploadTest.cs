@@ -5,7 +5,7 @@ using DocumentUploader.Core.Models;
 using DocumentUploader.Core.Observer;
 using DocumentUploader.IntegrationTests.Infrastructure;
 using DocumentUploader.IntegrationTests.Infrastructure.Modules;
-using Goul.Core.Adapter;
+using Goul.Core.FileManagement;
 using NUnit.Framework;
 using SupaCharge.Core.IOAbstractions;
 using SupaCharge.Testing;
@@ -16,7 +16,7 @@ namespace DocumentUploader.IntegrationTests.CommandFunctionality {
     [Test]
     public void TestUploadWith3ArgsUploadsAFileOnly() {
       mApp.Execute("upload", "file.txt", "myFile");
-      var files = mHandler.GetFilesByTitle(mCredentials.Get(), mRefreshToken.Get());
+      var files = mFileManager.ListAllFilesOnRootById();
 
       Assert.That(mObserver.GetMessages(), Is.EqualTo(BA("File uploaded")));
       Assert.That(files.Count, Is.EqualTo(1));
@@ -26,34 +26,28 @@ namespace DocumentUploader.IntegrationTests.CommandFunctionality {
     public void TestUploadWith1ArgsUploadsAFolder() {
       mApp.Execute("upload", "file.txt", "file", "folder3");
       Assert.That(mObserver.GetMessages(), Is.EqualTo(BA("Files uploaded")));
-      mHandler.GetFolderFromRoot("folder3", mCredentials.Get(), mRefreshToken.Get());
+      mFileManager.GetFolderIdFromRoot("folder3");
     }
 
     [Test]
     public void TestUploadWith4ArgsUploadsAFolderSetWithAFileAtTheEnd() {
       mApp.Execute("upload", "file.txt", "file", @"folder3\folder2\folder3");
       Assert.That(mObserver.GetMessages(), Is.EqualTo(BA("Files uploaded")));
-      mHandler.GetFolderFromRoot("folder3", mCredentials.Get(), mRefreshToken.Get());
-      mHandler.GetChildOfFolderOnRoot("folder3", mCredentials.Get(), mRefreshToken.Get());
-      mHandler.GetFileAtTheLastDirectory("folder3", mCredentials.Get(), mRefreshToken.Get());
+      CheckThatGivenFilesExist("folder3");
     }
 
     [Test]
     public void TestUploadingAFolderSetWithOnly2Folders() {
       mApp.Execute("upload", "file.txt", "file", @"folder3\folder2");
       Assert.That(mObserver.GetMessages(), Is.EqualTo(BA("Files uploaded")));
-      mHandler.GetFolderFromRoot("folder3", mCredentials.Get(), mRefreshToken.Get());
-      mHandler.GetChildOfFolderOnRoot("folder3", mCredentials.Get(), mRefreshToken.Get());
-      mHandler.GetFileAtTheLastDirectory("folder3", mCredentials.Get(), mRefreshToken.Get());
+      CheckThatGivenFilesExist("folder3");
     }
 
     [Test]
     public void TestUploadingAFolderSetWithOnly1Folder() {
       mApp.Execute("upload", "file.txt", "file", @"folder3");
       Assert.That(mObserver.GetMessages(), Is.EqualTo(BA("Files uploaded")));
-      mHandler.GetFolderFromRoot("folder3", mCredentials.Get(), mRefreshToken.Get());
-      mHandler.GetChildOfFolderOnRoot("folder3", mCredentials.Get(), mRefreshToken.Get());
-      mHandler.GetFileAtTheLastDirectory("folder3", mCredentials.Get(), mRefreshToken.Get());
+      CheckThatGivenFilesExist("folder3");
     }
 
     [SetUp]
@@ -62,24 +56,30 @@ namespace DocumentUploader.IntegrationTests.CommandFunctionality {
       mObserver = (RecordingObserver)mFactory.Build<IMessageObserver>();
       mApp = mFactory.Build<IApp>();
       mFile = new DotNetFile();
-      mRefreshToken = new RefreshTokenStore(mFile, "refreshToken.txt");
-      mCredentials = new CredentialStore(mFile, "credentials.txt");
-      mHandler = new GoulRequestHandler();
+      mRefreshTokenStore = new RefreshTokenStore(mFile, "refreshToken.txt");
+      mCredentialStore = new CredentialStore(mFile, "credentials.txt");
 
       var provider = new TestConfigurationProvider();
       provider.SetupCredentialsFile();
       provider.SetupRefreshTokenFile();
       provider.SetupDummyFile();
 
-      mHandler.DeleteAllFiles(mCredentials.Get(), mRefreshToken.Get());
+      mFileManager = new GDriveFileManager(mCredentialStore.Get(), mRefreshTokenStore.Get());
+      mFileManager.CleanGDriveAcct();
+    }
+
+    private void CheckThatGivenFilesExist(string folderToLookFor) {
+      mFileManager.GetFolderIdFromRoot(folderToLookFor);
+      mFileManager.GetChildOfFolderOnRoot(folderToLookFor);
+      mFileManager.GetFileAtTheLastDirectory(folderToLookFor);
     }
 
     private DotNetFile mFile;
     private Factory mFactory;
     private RecordingObserver mObserver;
     private IApp mApp;
-    private ICredentialStore mCredentials;
-    private IRefreshTokenStore mRefreshToken;
-    private IGoulRequestHandler mHandler;
+    private ICredentialStore mCredentialStore;
+    private IRefreshTokenStore mRefreshTokenStore;
+    private IFileManager mFileManager;
   }
 }
