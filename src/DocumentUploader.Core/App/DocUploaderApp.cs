@@ -7,10 +7,10 @@ namespace DocumentUploader.Core.App {
       mIndex = index;
     }
 
-    public void Execute(params string[] commands) {
+    public void Execute(params string[] args) {
       ICommand command;
-      if (mIndex.TryGetValue(commands[0], out command))
-        command.Execute(commands);
+      if (mIndex.TryGetValue(args[0], out command))
+        command.Execute(args);
     }
 
     private readonly IIndex<string, ICommand> mIndex;

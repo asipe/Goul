@@ -11,10 +11,11 @@ namespace DocumentUploader.UnitTests.Command {
   public class GetAuthorizationUrlCommandTest : DocumentUploaderBaseTestCase {
     [Test]
     public void TestGetAuthUrlCommandWorks() {
-      mStore.Setup(o => o.Get()).Returns(new Credentials {ClientID = "1", ClientSecret = "2"});
+      var credentials = CA<Credentials>();
+      mStore.Setup(o => o.Get()).Returns(credentials);
       mObserver.Setup(o => o.AddMessages("authorization url"));
-      mHandler.Setup(o => o.GetAuthUrl(It.Is<Credentials>(c => AreEqual(c, new Credentials {ClientID = "1", ClientSecret = "2"})))).Returns("authorization url");
-      mCommand.Execute("authorization url");
+      mHandler.Setup(o => o.GetAuthUrl(It.Is<Credentials>(c => AreEqual(c, credentials)))).Returns("authorization url");
+      mCommand.Execute();
     }
 
     [SetUp]
