@@ -30,6 +30,14 @@ namespace DocumentUploader.IntegrationTests.CommandFunctionality {
     }
 
     [Test]
+    public void TestUploadWithACSVFileWorks() {
+      mApp.Execute("upload", "file.csv", "file");
+      Assert.That(mObserver.GetMessages(), Is.EqualTo(BA("File uploaded")));
+      Assert.That(mFileManager.ListAllFilesOnRootByTitle()[0], Is.EqualTo("file"));
+    //  Assert.That(mFileManager.GetFileMimeType(mFileManager.ListAllFilesOnRootById()[0]), Is.EqualTo("text/csv"));
+    }
+
+    [Test]
     public void TestUploadWith4ArgsUploadsAFolderSetWithAFileAtTheEnd() {
       mApp.Execute("upload", "file.txt", "file", @"folder3\folder2\folder3");
       Assert.That(mObserver.GetMessages(), Is.EqualTo(BA("Files uploaded")));
@@ -60,9 +68,7 @@ namespace DocumentUploader.IntegrationTests.CommandFunctionality {
       mCredentialStore = new CredentialStore(mFile, "credentials.txt");
 
       var provider = new TestConfigurationProvider();
-      provider.SetupCredentialsFile();
-      provider.SetupRefreshTokenFile();
-      provider.SetupDummyFile();
+      provider.CreateFileBatch();
 
       mFileManager = new GDriveFileManager(mCredentialStore.Get(), mRefreshTokenStore.Get());
       mFileManager.CleanGDriveAcct();

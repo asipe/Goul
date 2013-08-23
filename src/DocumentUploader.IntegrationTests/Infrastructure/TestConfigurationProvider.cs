@@ -30,6 +30,17 @@ namespace DocumentUploader.IntegrationTests.Infrastructure {
       File.WriteAllText("file.txt", "");
     }
 
+    public void SetupDummyCSVFile() {
+      File.WriteAllText("file.csv", "");
+    }
+
+    public void CreateFileBatch() {
+      SetupCredentialsFile();
+      SetupRefreshTokenFile();
+      SetupDummyFile();
+      SetupDummyCSVFile();
+    }
+
     public void SetupAuthTokenFile() {
       if (!File.Exists("authToken.txt")) {
         File.Create("authToken.txt");
