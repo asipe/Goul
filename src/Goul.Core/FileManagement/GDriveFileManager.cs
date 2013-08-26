@@ -30,6 +30,10 @@ namespace Goul.Core.FileManagement {
       return mFileEnum.EnumerateFilesWithQuery(new[] {"'root' in parents"}).Select(t => t.Title).ToList();
     }
 
+    public List<string> ListAllFoldersOnRootById() {
+      return mFileEnum.EnumerateFilesWithQuery(new[] { "'root' in parents", "mimeType = 'application/vnd.google-apps.folder'" }).Select(t => t.Title).ToList();
+    }
+
     public string GetChildOfFolderOnRoot(string folderOnRootToRetrieve) {
       var request = mService.Children.List(GetFolderIdFromRoot(folderOnRootToRetrieve));
       return request.Fetch().Items[0].Id;

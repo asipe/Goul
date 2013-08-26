@@ -1,5 +1,6 @@
 ﻿using DocumentUploader.Core.Models;
 using DocumentUploader.Core.Observer;
+using System.Linq;
 using Goul.Core.Adapter;
 
 namespace DocumentUploader.Core.Command {
@@ -12,17 +13,15 @@ namespace DocumentUploader.Core.Command {
     }
 
     public void Execute(params string[] args) {
-      switch (args.Length) {
-        case 3:
-          mHandler.UploadFile(args[1], args[2], mCredStore.Get(), mRefreshStore.Get());
-          mObserver.AddMessages("File uploaded");
-          break;
-        case 4:
-          var folders = args[3].Split(new[] {'\\'});
-          mHandler.UploadFileWithFolder(args[1], args[2], folders, mCredStore.Get(), mRefreshStore.Get());
-          mObserver.AddMessages("Files uploaded");
-          break;
+      var folders = args[2].Split(new[] {'\\'});
+      var fileTitle = folders.Last();
+
+      if (folders.Length == 1) {
+        folders = new string[] {};
       }
+
+      mHandler.UploadFileWithFolder(args[1], fileTitle, folders, mCredStore.Get(), mRefreshStore.Get());
+      mObserver.AddMessages("Files uploaded");
     }
 
     private readonly ICredentialStore mCredStore;

@@ -1,4 +1,5 @@
-﻿using DocumentUploader.Core.Command;
+﻿using System;
+using DocumentUploader.Core.Command;
 using DocumentUploader.Core.Models;
 using DocumentUploader.Core.Observer;
 using Goul.Core.Adapter;
@@ -11,9 +12,9 @@ namespace DocumentUploader.UnitTests.Command {
   public class UploadCommandTest : DocumentUploaderBaseTestCase {
     [Test]
     public void TestUploadMessageIsSent() {
-      mObserver.Setup(o => o.AddMessages("File uploaded"));
+      mObserver.Setup(o => o.AddMessages("Files uploaded"));
       mRefreshTokenStore.Setup(s => s.Get()).Returns(new RefreshToken {Token = "1"});
-      mHandler.Setup(h => h.UploadFile("file", "fileTitle", It.Is<Credentials>(c => AreEqual(c, new Credentials {ClientID = "1", ClientSecret = "2"})), It.Is<RefreshToken>(t => AreEqual(t, new RefreshToken {Token = "1"}))));
+      mHandler.Setup(h => h.UploadFileWithFolder("file", "fileTitle", It.Is<string[]>(a => AreEqual(a, new string[] {})), It.Is<Credentials>(c => AreEqual(c, new Credentials {ClientID = "1", ClientSecret = "2"})), It.Is<RefreshToken>(t => AreEqual(t, new RefreshToken {Token = "1"}))));
       mCredentialStore.Setup(r => r.Get()).Returns(new Credentials {ClientID = "1", ClientSecret = "2"});
       mCommand.Execute("upload", "file", "fileTitle");
     }
