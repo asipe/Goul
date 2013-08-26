@@ -15,20 +15,20 @@ namespace Goul.Core.Functionality {
     }
 
     public void UploadFile(string fileToUpload, string fileTitle) {
-     // if (mUpdater.IsUpdateRequired(fileTitle))
-     //  mUpdater.Update(fileToUpload, mManager.ListAllFilesOnRootById()[0]);
-   //   else {
-        var file = new File {Title = fileTitle, Description = "123"};
-        var stream = new MemoryStream(System.IO.File.ReadAllBytes(fileToUpload));
-        var request = mService.Files.Insert(file, stream, DetermineContentType(fileToUpload));
-        request.Convert = true;
-        request.Upload();
-  //    }
+      // if (mUpdater.IsUpdateRequired(fileTitle))
+      //  mUpdater.Update(fileToUpload, mManager.ListAllFilesOnRootById()[0]);
+      //   else {
+      var file = new File {Title = fileTitle, Description = "123"};
+      var stream = new MemoryStream(System.IO.File.ReadAllBytes(fileToUpload));
+      var request = mService.Files.Insert(file, stream, DetermineContentType(fileToUpload));
+      request.Convert = true;
+      request.Upload();
+      //    }
     }
 
     public void UploadFileUsingGoogleBase(File file, string filePath) {
       var stream = new MemoryStream(System.IO.File.ReadAllBytes(filePath));
-      var request = mService.Files.Insert(file, stream, "text/plain");
+      var request = mService.Files.Insert(file, stream, DetermineContentType(filePath));
       request.Convert = true;
       request.Upload();
     }
@@ -36,9 +36,11 @@ namespace Goul.Core.Functionality {
     public void UploadFileWithFolderSet(string file, string fileTitle, string[] foldersToUpload) {
       var parent = new ParentReference {Id = "root"};
       foreach (var f in foldersToUpload) {
-        var fileToUpload = new File {Title = f,
-                                     MimeType = "application/vnd.google-apps.folder",
-                                     Parents = new List<ParentReference> {parent}};
+        var fileToUpload = new File {
+                                      Title = f,
+                                      MimeType = "application/vnd.google-apps.folder",
+                                      Parents = new List<ParentReference> {parent}
+                                    };
         var result = mService.Files.Insert(fileToUpload).Fetch();
         parent = new ParentReference {Id = result.Id};
       }
@@ -51,8 +53,8 @@ namespace Goul.Core.Functionality {
       return Path.GetExtension(filePathToCheck) == ".csv" ? "text/csv" : "text/plain";
     }
 
+    private readonly IFileManager mManager;
     private readonly DriveService mService;
     private readonly Updater mUpdater;
-    private readonly IFileManager mManager;
   }
 }

@@ -19,7 +19,7 @@ namespace Goul.Core.FileManagement {
     }
 
     public string GetFolderIdFromRoot(string folderTitleToLookFor) {
-      return mFileEnum.EnumerateFilesWithQuery(new[] {"mimeType = 'application/vnd.google-apps.folder'",string.Format("title='{0}'", folderTitleToLookFor)})[0].Id;
+      return mFileEnum.EnumerateFilesWithQuery(new[] {"mimeType = 'application/vnd.google-apps.folder'", string.Format("title='{0}'", folderTitleToLookFor)})[0].Id;
     }
 
     public List<string> ListAllFilesOnRootById() {
@@ -31,7 +31,7 @@ namespace Goul.Core.FileManagement {
     }
 
     public List<string> ListAllFoldersOnRootById() {
-      return mFileEnum.EnumerateFilesWithQuery(new[] { "'root' in parents", "mimeType = 'application/vnd.google-apps.folder'" }).Select(t => t.Title).ToList();
+      return mFileEnum.EnumerateFilesWithQuery(new[] {"'root' in parents", "mimeType = 'application/vnd.google-apps.folder'"}).Select(t => t.Title).ToList();
     }
 
     public string GetChildOfFolderOnRoot(string folderOnRootToRetrieve) {

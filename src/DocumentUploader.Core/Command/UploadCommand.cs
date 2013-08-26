@@ -1,14 +1,14 @@
-﻿using DocumentUploader.Core.Models;
+﻿using System.Linq;
+using DocumentUploader.Core.Models;
 using DocumentUploader.Core.Observer;
-using System.Linq;
 using Goul.Core.Adapter;
 
 namespace DocumentUploader.Core.Command {
   public class UploadCommand : ICommand {
-    public UploadCommand(IMessageObserver observer, IGoulRequestHandler gRequestHandler, ICredentialStore credStore, IRefreshTokenStore refreshStore) {
+    public UploadCommand(IMessageObserver observer, IGoulRequestHandler gRequestHandler, ICredentialStore credentialStore, IRefreshTokenStore refreshStore) {
       mObserver = observer;
       mHandler = gRequestHandler;
-      mCredStore = credStore;
+      mCredentialStore = credentialStore;
       mRefreshStore = refreshStore;
     }
 
@@ -16,15 +16,14 @@ namespace DocumentUploader.Core.Command {
       var folders = args[2].Split(new[] {'\\'});
       var fileTitle = folders.Last();
 
-      if (folders.Length == 1) {
+      if (folders.Length == 1)
         folders = new string[] {};
-      }
 
-      mHandler.UploadFileWithFolder(args[1], fileTitle, folders, mCredStore.Get(), mRefreshStore.Get());
-      mObserver.AddMessages("Files uploaded");
+      mHandler.UploadFileWithFolder(args[1], fileTitle, folders, mCredentialStore.Get(), mRefreshStore.Get());
+      mObserver.AddMessages("File uploaded");
     }
 
-    private readonly ICredentialStore mCredStore;
+    private readonly ICredentialStore mCredentialStore;
     private readonly IGoulRequestHandler mHandler;
     private readonly IMessageObserver mObserver;
     private readonly IRefreshTokenStore mRefreshStore;

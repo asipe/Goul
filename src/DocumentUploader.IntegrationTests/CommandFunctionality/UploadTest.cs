@@ -16,7 +16,7 @@ namespace DocumentUploader.IntegrationTests.CommandFunctionality {
     [Test]
     public void TestUploadWithOnlyAFileUploadsAFileOnly() {
       mApp.Execute("upload", "file.txt", "myFile");
-      Assert.That(mObserver.GetMessages(), Is.EqualTo(BA("Files uploaded")));
+      Assert.That(mObserver.GetMessages(), Is.EqualTo(BA("File uploaded")));
       Assert.That(mFileManager.ListAllFilesOnRootById().Count, Is.EqualTo(1));
       Assert.That(mFileManager.ListAllFilesOnRootByTitle()[0], Is.EqualTo("myFile"));
       Assert.That(mFileManager.ListAllFoldersOnRootById().Count, Is.EqualTo(0));
@@ -25,18 +25,17 @@ namespace DocumentUploader.IntegrationTests.CommandFunctionality {
     [Test]
     public void TestUploadWithAFolderAndAFileUploadsBoth() {
       mApp.Execute("upload", "file.txt", @"folder3\file");
-      Assert.That(mObserver.GetMessages(), Is.EqualTo(BA("Files uploaded")));
+      Assert.That(mObserver.GetMessages(), Is.EqualTo(BA("File uploaded")));
       CheckThatGivenFilesExist("folder3");
       Assert.That(mFileManager.ListAllFilesOnRootById().Count, Is.EqualTo(1));
       Assert.That(mFileManager.ListAllFilesOnRootByTitle()[0], Is.EqualTo("folder3"));
       Assert.That(mFileManager.ListAllFoldersOnRootById().Count, Is.EqualTo(1));
-
     }
 
     [Test]
     public void TestUploadWithACSVFileWorks() {
       mApp.Execute("upload", "file.csv", "file");
-      Assert.That(mObserver.GetMessages(), Is.EqualTo(BA("Files uploaded")));
+      Assert.That(mObserver.GetMessages(), Is.EqualTo(BA("File uploaded")));
       Assert.That(mFileManager.ListAllFilesOnRootById().Count, Is.EqualTo(1));
       Assert.That(mFileManager.ListAllFilesOnRootByTitle()[0], Is.EqualTo("file"));
       Assert.That(mFileManager.ListAllFoldersOnRootById().Count, Is.EqualTo(0));
@@ -45,7 +44,7 @@ namespace DocumentUploader.IntegrationTests.CommandFunctionality {
     [Test]
     public void TestUploadWith4ArgsUploadsAFolderSetWithAFileAtTheEnd() {
       mApp.Execute("upload", "file.txt", @"folder3\folder2\folder3\file");
-      Assert.That(mObserver.GetMessages(), Is.EqualTo(BA("Files uploaded")));
+      Assert.That(mObserver.GetMessages(), Is.EqualTo(BA("File uploaded")));
       CheckThatGivenFilesExist("folder3");
       Assert.That(mFileManager.ListAllFilesOnRootById().Count, Is.EqualTo(1));
       Assert.That(mFileManager.ListAllFilesOnRootByTitle()[0], Is.EqualTo("folder3"));
@@ -55,7 +54,7 @@ namespace DocumentUploader.IntegrationTests.CommandFunctionality {
     [Test]
     public void TestUploadingAFolderSetWithOnly2Folders() {
       mApp.Execute("upload", "file.txt", @"folder1\folder2\file");
-      Assert.That(mObserver.GetMessages(), Is.EqualTo(BA("Files uploaded")));
+      Assert.That(mObserver.GetMessages(), Is.EqualTo(BA("File uploaded")));
       CheckThatGivenFilesExist("folder1");
       mFileManager.GetFileAtTheLastDirectory("folder1");
       Assert.That(mFileManager.ListAllFilesOnRootById().Count, Is.EqualTo(1));

@@ -15,11 +15,11 @@ namespace DocumentUploader.IntegrationTests.CommandFunctionality {
   public class UpdateTest : BaseTestCase {
     [Test]
     public void TestUploadingASingleFileTwiceOntoRootsDoesnotUploadTwice() {
-  //    mApp.Execute("upload", "file.txt", "myFile");
-  //    mApp.Execute("upload", "file.txt", "myFile");
+      //    mApp.Execute("upload", "file.txt", "myFile");
+      //    mApp.Execute("upload", "file.txt", "myFile");
 
- //     Assert.That(mManager.ListAllFilesOnRootById().Count, Is.EqualTo(1));
- //     Assert.That(mObserver.GetMessages(), Is.EqualTo(BA("File uploaded")));
+      //     Assert.That(mManager.ListAllFilesOnRootById().Count, Is.EqualTo(1));
+      //     Assert.That(mObserver.GetMessages(), Is.EqualTo(BA("File uploaded")));
     }
 
     [SetUp]
