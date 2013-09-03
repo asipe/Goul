@@ -50,8 +50,6 @@
     
 ##Setup Instructions
 
-Go to the "Task_Scheduler\bin\DocumentUploader" folder in a command shell
-
 Run the "setcredentials" command with the credentials (clientId/clientSecret) => Retrieve this from the Google Apis Console
 
 Run the "listcredentials" command to make sure that it worked
