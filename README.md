@@ -27,6 +27,8 @@
   
   Commands:
     - "help"   
+    
+      => Shows the help message.
     - "setcredentials *ClientID ClientSecret*" 
     
       => Sets the credentials to the specified values, 
