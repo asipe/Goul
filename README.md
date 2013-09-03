@@ -27,12 +27,12 @@
   
   Commands:
     - "help"   
-    - "setcredentials *ClientID ClientSecret*" 
-    - "listcredentials"
-    - "clearcredentials"
-    - "getauthorizationurl" (requires credentials)
-    - "authorize *AuthorizationCode*"
-    - "upload *PathOfTheFileToUpload* *TitleOfTheFileOnGoogle*"
+    - "setcredentials *ClientID ClientSecret*" => Sets the credentials to the specified values, 
+    - "listcredentials" => Lists the credentials
+    - "clearcredentials" => Clears the credentials file
+    - "getauthorizationurl" => Retrieves a url to the Google authorization process, based on the given credentials
+    - "authorize *AuthorizationCode*" => Creates a refresh token based on the auth code retrieved from the 'getauthorizationurl" command
+    - "upload *PathOfTheFileToUpload* *TitleOfTheFileOnGoogle*" => Uploads a file from the given path, to the bound Google Account, with the given title
     
 ##Setup Instructions
 
