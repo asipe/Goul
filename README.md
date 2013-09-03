@@ -37,6 +37,7 @@
     
       => Clears the credentials file
     - "getauthorizationurl" 
+      
       => Retrieves a url to the Google authorization process, based on the given credentials
     - "authorize *AuthorizationCode*" 
       
