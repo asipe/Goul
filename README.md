@@ -27,12 +27,12 @@
   
   Commands:
     - "help"   
-    - "setcredentials xClient_IDx xClient_Secretx" 
+    - "setcredentials *ClientID ClientSecret*" 
     - "listcredentials"
     - "clearcredentials"
     - "getauthorizationurl" (requires credentials)
-    - "authorize xAuthorizationCodex"
-    - "upload xPathOfTheFileToUploadx xTitleOfTheFileOnGooglex"
+    - "authorize *AuthorizationCode*"
+    - "upload *PathOfTheFileToUpload* *TitleOfTheFileOnGoogle*"
     
 ##Setup Instructions
 
