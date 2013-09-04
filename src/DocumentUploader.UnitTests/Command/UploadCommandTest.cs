@@ -22,7 +22,7 @@ namespace DocumentUploader.UnitTests.Command {
     public void TestCommandWithFoldersAdded() {
       mObserver.Setup(o => o.AddMessages("File uploaded"));
       mRefreshTokenStore.Setup(s => s.Get()).Returns(new RefreshToken {Token = "1"});
-      mHandler.Setup(h => h.UploadFileWithFolder("file", "fileTitle", It.Is<string[]>(a => AreEqual(a, new[] {"folder", "fileTitle"})), It.Is<Credentials>(c => AreEqual(c, new Credentials {ClientID = "1", ClientSecret = "2"})), It.Is<RefreshToken>(t => AreEqual(t, new RefreshToken {Token = "1"}))));
+      mHandler.Setup(h => h.UploadFileWithFolder("file", "fileTitle", It.Is<string[]>(a => AreEqual(a, new[] {"folder"})), It.Is<Credentials>(c => AreEqual(c, new Credentials {ClientID = "1", ClientSecret = "2"})), It.Is<RefreshToken>(t => AreEqual(t, new RefreshToken {Token = "1"}))));
       mCredentialStore.Setup(c => c.Get()).Returns(new Credentials {ClientID = "1", ClientSecret = "2"});
       mCommand.Execute("upload", "file", @"folder\fileTitle");
     }

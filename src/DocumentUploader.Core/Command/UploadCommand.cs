@@ -13,11 +13,9 @@ namespace DocumentUploader.Core.Command {
     }
 
     public void Execute(params string[] args) {
-      var folders = args[2].Split(new[] {'\\'});
-      var fileTitle = folders.Last();
-
-      if (folders.Length == 1)
-        folders = new string[] {};
+      var foldersAndFile = args[2].Split(new[] {'\\'});
+      var fileTitle = foldersAndFile.Last();
+      var folders = foldersAndFile.Where(f => f != fileTitle).ToArray();
 
       mHandler.UploadFileWithFolder(args[1], fileTitle, folders, mCredentialStore.Get(), mRefreshStore.Get());
       mObserver.AddMessages("File uploaded");

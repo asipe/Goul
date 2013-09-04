@@ -34,6 +34,10 @@ namespace Goul.Core.FileManagement {
       return mFileEnum.EnumerateFilesWithQuery(new[] {"'root' in parents", "mimeType = 'application/vnd.google-apps.folder'"}).Select(t => t.Title).ToList();
     }
 
+    public int NumberOfFiles() {
+      return mFileEnum.EnumerateAllFiles().Count;
+    }
+
     public string GetChildOfFolderOnRoot(string folderOnRootToRetrieve) {
       var request = mService.Children.List(GetFolderIdFromRoot(folderOnRootToRetrieve));
       return request.Fetch().Items[0].Id;

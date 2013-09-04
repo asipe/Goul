@@ -9,6 +9,7 @@ namespace Goul.Core.FileManagement {
     List<string> ListAllFilesOnRootById();
     List<string> ListAllFilesOnRootByTitle();
     List<string> ListAllFoldersOnRootById();
+    int NumberOfFiles();
     string GetFileMimeType(string id);
   }
 }

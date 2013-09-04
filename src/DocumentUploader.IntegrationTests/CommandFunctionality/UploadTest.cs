@@ -20,6 +20,7 @@ namespace DocumentUploader.IntegrationTests.CommandFunctionality {
       Assert.That(mFileManager.ListAllFilesOnRootById().Count, Is.EqualTo(1));
       Assert.That(mFileManager.ListAllFilesOnRootByTitle()[0], Is.EqualTo("myFile"));
       Assert.That(mFileManager.ListAllFoldersOnRootById().Count, Is.EqualTo(0));
+      Assert.That(mFileManager.NumberOfFiles(), Is.EqualTo(1));
     }
 
     [Test]
@@ -30,6 +31,7 @@ namespace DocumentUploader.IntegrationTests.CommandFunctionality {
       Assert.That(mFileManager.ListAllFilesOnRootById().Count, Is.EqualTo(1));
       Assert.That(mFileManager.ListAllFilesOnRootByTitle()[0], Is.EqualTo("folder3"));
       Assert.That(mFileManager.ListAllFoldersOnRootById().Count, Is.EqualTo(1));
+      Assert.That(mFileManager.NumberOfFiles(), Is.EqualTo(2));
     }
 
     [Test]
@@ -39,6 +41,7 @@ namespace DocumentUploader.IntegrationTests.CommandFunctionality {
       Assert.That(mFileManager.ListAllFilesOnRootById().Count, Is.EqualTo(1));
       Assert.That(mFileManager.ListAllFilesOnRootByTitle()[0], Is.EqualTo("file"));
       Assert.That(mFileManager.ListAllFoldersOnRootById().Count, Is.EqualTo(0));
+      Assert.That(mFileManager.NumberOfFiles(), Is.EqualTo(1));
     }
 
     [Test]
@@ -49,6 +52,7 @@ namespace DocumentUploader.IntegrationTests.CommandFunctionality {
       Assert.That(mFileManager.ListAllFilesOnRootById().Count, Is.EqualTo(1));
       Assert.That(mFileManager.ListAllFilesOnRootByTitle()[0], Is.EqualTo("folder3"));
       Assert.That(mFileManager.ListAllFoldersOnRootById().Count, Is.EqualTo(1));
+      Assert.That(mFileManager.NumberOfFiles(), Is.EqualTo(4));
     }
 
     [Test]
@@ -60,6 +64,7 @@ namespace DocumentUploader.IntegrationTests.CommandFunctionality {
       Assert.That(mFileManager.ListAllFilesOnRootById().Count, Is.EqualTo(1));
       Assert.That(mFileManager.ListAllFilesOnRootByTitle()[0], Is.EqualTo("folder1"));
       Assert.That(mFileManager.ListAllFoldersOnRootById().Count, Is.EqualTo(1));
+      Assert.That(mFileManager.NumberOfFiles(), Is.EqualTo(3));
     }
 
     [SetUp]
