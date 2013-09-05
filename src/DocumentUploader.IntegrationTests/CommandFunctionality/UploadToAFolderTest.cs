@@ -14,17 +14,14 @@ namespace DocumentUploader.IntegrationTests.CommandFunctionality {
   [TestFixture]
   public class UploadToAFolderTest : BaseTestCase {
     [Test] 
-    public void TestUploadingAFileWithAParent() {
+    public void TestUploadingAFileWithAnAlreadyExistantParent() {
       mFolderManager.SetupFolders(1);
       mApp.Execute("upload", "file.txt", @"TestingFolder0\file");
       Assert.That(mFileManager.NumberOfFiles(), Is.EqualTo(2));
-
-      //Assert.That(mFileManager.ListAllFilesOnRootByTitle(), Is.EqualTo(BA("TestingFolder0")));
-      Assert.That(mFileManager.ListAllFilesOnRootByTitle()[0], Is.EqualTo("TestingFolder0"));
+      Assert.That(mFileManager.ListAllFilesOnRootByTitle(), Is.EqualTo(BA("TestingFolder0")));
       Assert.That(mFileManager.ListAllFoldersOnRootById().Count, Is.EqualTo(1));
-
-
       Assert.That(mObserver.GetMessages(), Is.EqualTo(BA("File uploaded")));
+      mFileManager.GetFileAtTheLastDirectory("TestingFolder0");
     }
 
     [Test]
@@ -35,6 +32,7 @@ namespace DocumentUploader.IntegrationTests.CommandFunctionality {
       Assert.That(mFileManager.ListAllFilesOnRootByTitle()[0], Is.EqualTo("TestingFolder0"));
       Assert.That(mFileManager.ListAllFoldersOnRootById().Count, Is.EqualTo(1));
       Assert.That(mObserver.GetMessages(), Is.EqualTo(BA("File uploaded")));
+      mFileManager.GetFileAtTheLastDirectory("TestingFolder0");
     }
 
     [Test]
@@ -46,6 +44,7 @@ namespace DocumentUploader.IntegrationTests.CommandFunctionality {
       Assert.That(mFileManager.ListAllFilesOnRootByTitle()[0], Is.EqualTo("TestingFolder0"));
       Assert.That(mFileManager.ListAllFoldersOnRootById().Count, Is.EqualTo(1));
       Assert.That(mObserver.GetMessages(), Is.EqualTo(BA("File uploaded")));
+      mFileManager.GetFileAtTheLastDirectory("TestingFolder0");
     }
 
     [Test]
@@ -60,6 +59,8 @@ namespace DocumentUploader.IntegrationTests.CommandFunctionality {
       Assert.That(mFileManager.ListAllFilesOnRootByTitle()[2], Is.EqualTo("TestingFolder0"));
       Assert.That(mFileManager.ListAllFoldersOnRootById().Count, Is.EqualTo(3));
       Assert.That(mObserver.GetMessages(), Is.EqualTo(BA("File uploaded")));
+      mFileManager.GetFileAtTheLastDirectory("MyFolder");
+      mFileManager.GetFileAtTheLastDirectory("OtherFolder");
     }
 
     [SetUp]
