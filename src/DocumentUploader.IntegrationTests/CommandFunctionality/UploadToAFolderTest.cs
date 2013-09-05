@@ -13,7 +13,7 @@ using SupaCharge.Testing;
 namespace DocumentUploader.IntegrationTests.CommandFunctionality {
   [TestFixture]
   public class UploadToAFolderTest : BaseTestCase {
-    [Test] 
+    [Test]
     public void TestUploadingAFileWithAnAlreadyExistantParent() {
       mFolderManager.SetupFolders(1);
       mApp.Execute("upload", "file.txt", @"TestingFolder0\file");

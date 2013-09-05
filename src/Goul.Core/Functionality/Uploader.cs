@@ -10,7 +10,7 @@ namespace Goul.Core.Functionality {
   public class Uploader {
     private class FolderQuery {
       public bool Exists{get;set;}
-      public int Index { get; set; }
+      public int Index{get;set;}
     }
 
     public Uploader(Credentials credentials, RefreshToken refreshToken) {
@@ -36,7 +36,7 @@ namespace Goul.Core.Functionality {
       foreach (var f in foldersToUpload) {
         var folderQueryResult = SearchForFolder(f, parent.Id);
         if (folderQueryResult.Exists) {
-          var parentFolder = new ParentReference { Id = ReturnMatchingFolder(folderQueryResult.Index, parent.Id).Id };
+          var parentFolder = new ParentReference {Id = ReturnMatchingFolder(folderQueryResult.Index, parent.Id).Id};
           parent = new ParentReference {Id = parentFolder.Id};
         } else {
           var lastFolderUploaded = UploadFolderWithParent(parent, f);
@@ -51,11 +51,10 @@ namespace Goul.Core.Functionality {
       for (var x = 0; x < children.Count; x++) {
         var fileToCheck = mService.Files.Get(children[x].Id).Fetch();
 
-        if (fileToCheck.Title == folderTitleToCheckFor && fileToCheck.MimeType == "application/vnd.google-apps.folder") {
+        if (fileToCheck.Title == folderTitleToCheckFor && fileToCheck.MimeType == "application/vnd.google-apps.folder")
           return new FolderQuery {Exists = true, Index = x};
-        }
       }
-      return new FolderQuery { Exists = false, Index = 0 };
+      return new FolderQuery {Exists = false, Index = 0};
     }
 
     public File ReturnMatchingFolder(int indexToGet, string parentId) {
@@ -64,7 +63,7 @@ namespace Goul.Core.Functionality {
     }
 
     public string UploadFolderWithParent(ParentReference parentId, string title) {
-      var folder = new File { Title = title, Parents = new List<ParentReference> { parentId }, MimeType = "application/vnd.google-apps.folder" };
+      var folder = new File {Title = title, Parents = new List<ParentReference> {parentId}, MimeType = "application/vnd.google-apps.folder"};
       var request = mService.Files.Insert(folder);
       request.Convert = true;
       var result = request.Fetch();
@@ -73,7 +72,7 @@ namespace Goul.Core.Functionality {
     }
 
     public void UploadFileWithParent(ParentReference parentId, string path, string title) {
-      var file = new File { Title = title, Parents = new List<ParentReference> { parentId }, MimeType = DetermineContentType(path) };
+      var file = new File {Title = title, Parents = new List<ParentReference> {parentId}, MimeType = DetermineContentType(path)};
       var request = mService.Files.Insert(file);
       request.Convert = true;
       request.Fetch();
@@ -86,6 +85,5 @@ namespace Goul.Core.Functionality {
     private readonly IFileManager mManager;
     private readonly DriveService mService;
     private readonly Updater mUpdater;
-
   }
 }

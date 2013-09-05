@@ -7,7 +7,6 @@ namespace DocumentUploader.IntegrationTests.Infrastructure {
   public sealed class GlobalSetup {
     [SetUp]
     public void DoSetup() {
-
       if (!CheckForTestingFiles()) {
         Console.WriteLine("");
         Console.WriteLine("===========================");
