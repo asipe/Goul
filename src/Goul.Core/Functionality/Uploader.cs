@@ -8,6 +8,11 @@ using File = Google.Apis.Drive.v2.Data.File;
 
 namespace Goul.Core.Functionality {
   public class Uploader {
+    private class FolderQuery {
+      public bool Exists{get;set;}
+      public int Index { get; set; }
+    }
+
     public Uploader(Credentials credentials, RefreshToken refreshToken) {
       mService = new GetDriveService().GetService(credentials, refreshToken);
       mUpdater = new Updater(credentials, refreshToken);
@@ -29,9 +34,9 @@ namespace Goul.Core.Functionality {
     public void UploadFileWithFolderSet(string file, string fileTitle, string[] foldersToUpload) {
       var parent = new ParentReference {Id = "root"};
       foreach (var f in foldersToUpload) {
-        int indexThatMatches;
-        if (CheckIfFolderExists(f, parent.Id, out indexThatMatches)) {
-          var parentFolder = new ParentReference {Id = ReturnMatchingFolder(indexThatMatches, parent.Id).Id};
+        var folderQueryResult = SearchForFolder(f, parent.Id);
+        if (folderQueryResult.Exists) {
+          var parentFolder = new ParentReference { Id = ReturnMatchingFolder(folderQueryResult.Index, parent.Id).Id };
           parent = new ParentReference {Id = parentFolder.Id};
         } else {
           var lastFolderUploaded = UploadFolderWithParent(parent, f);
@@ -41,18 +46,16 @@ namespace Goul.Core.Functionality {
       UploadFileWithParent(parent, file, fileTitle);
     }
 
-    public bool CheckIfFolderExists(string folderTitleToCheckFor, string parentId, out int indexToChange) {
+    private FolderQuery SearchForFolder(string folderTitleToCheckFor, string parentId) {
       var children = mService.Children.List(parentId).Fetch().Items;
       for (var x = 0; x < children.Count; x++) {
         var fileToCheck = mService.Files.Get(children[x].Id).Fetch();
 
         if (fileToCheck.Title == folderTitleToCheckFor && fileToCheck.MimeType == "application/vnd.google-apps.folder") {
-          indexToChange = x;
-          return true;
+          return new FolderQuery {Exists = true, Index = x};
         }
       }
-      indexToChange = 0;
-      return false;
+      return new FolderQuery { Exists = false, Index = 0 };
     }
 
     public File ReturnMatchingFolder(int indexToGet, string parentId) {

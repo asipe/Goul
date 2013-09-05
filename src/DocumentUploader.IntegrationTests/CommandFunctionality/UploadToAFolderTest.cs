@@ -18,8 +18,13 @@ namespace DocumentUploader.IntegrationTests.CommandFunctionality {
       mFolderManager.SetupFolders(1);
       mApp.Execute("upload", "file.txt", @"TestingFolder0\file");
       Assert.That(mFileManager.NumberOfFiles(), Is.EqualTo(2));
+
+      //Assert.That(mFileManager.ListAllFilesOnRootByTitle(), Is.EqualTo(BA("TestingFolder0")));
       Assert.That(mFileManager.ListAllFilesOnRootByTitle()[0], Is.EqualTo("TestingFolder0"));
       Assert.That(mFileManager.ListAllFoldersOnRootById().Count, Is.EqualTo(1));
+
+
+      Assert.That(mObserver.GetMessages(), Is.EqualTo(BA("File uploaded")));
     }
 
     [Test]
@@ -29,6 +34,7 @@ namespace DocumentUploader.IntegrationTests.CommandFunctionality {
       Assert.That(mFileManager.NumberOfFiles(), Is.EqualTo(4));
       Assert.That(mFileManager.ListAllFilesOnRootByTitle()[0], Is.EqualTo("TestingFolder0"));
       Assert.That(mFileManager.ListAllFoldersOnRootById().Count, Is.EqualTo(1));
+      Assert.That(mObserver.GetMessages(), Is.EqualTo(BA("File uploaded")));
     }
 
     [Test]
@@ -39,6 +45,21 @@ namespace DocumentUploader.IntegrationTests.CommandFunctionality {
       Assert.That(mFileManager.NumberOfFiles(), Is.EqualTo(3));
       Assert.That(mFileManager.ListAllFilesOnRootByTitle()[0], Is.EqualTo("TestingFolder0"));
       Assert.That(mFileManager.ListAllFoldersOnRootById().Count, Is.EqualTo(1));
+      Assert.That(mObserver.GetMessages(), Is.EqualTo(BA("File uploaded")));
+    }
+
+    [Test]
+    public void TestUploadingFilesToADifferentSetOfFoldersWorksCorrectly() {
+      mFolderManager.SetupFolders(3);
+      mApp.Execute("upload", "file.txt", @"MyFolder\file");
+      mApp.Execute("upload", "file.txt", @"MyFolder\otherFile");
+      mApp.Execute("upload", "file.txt", @"OtherFolder\myFile");
+      Assert.That(mFileManager.NumberOfFiles(), Is.EqualTo(8));
+      Assert.That(mFileManager.ListAllFilesOnRootByTitle()[0], Is.EqualTo("OtherFolder"));
+      Assert.That(mFileManager.ListAllFilesOnRootByTitle()[1], Is.EqualTo("MyFolder"));
+      Assert.That(mFileManager.ListAllFilesOnRootByTitle()[2], Is.EqualTo("TestingFolder0"));
+      Assert.That(mFileManager.ListAllFoldersOnRootById().Count, Is.EqualTo(3));
+      Assert.That(mObserver.GetMessages(), Is.EqualTo(BA("File uploaded")));
     }
 
     [SetUp]
