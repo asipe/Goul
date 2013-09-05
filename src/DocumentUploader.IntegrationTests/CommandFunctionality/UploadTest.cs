@@ -18,7 +18,7 @@ namespace DocumentUploader.IntegrationTests.CommandFunctionality {
       mApp.Execute("upload", "file.txt", "myFile");
       Assert.That(mObserver.GetMessages(), Is.EqualTo(BA("File uploaded")));
       Assert.That(mManager.ListAllFilesOnRootById().Count, Is.EqualTo(1));
-      Assert.That(mManager.ListAllFilesOnRootByTitle()[0], Is.EqualTo("myFile"));
+      Assert.That(mManager.ListAllFilesOnRootByTitle(), Is.EqualTo(BA("myFile")));
       Assert.That(mManager.ListAllFoldersOnRootById().Count, Is.EqualTo(0));
       Assert.That(mManager.NumberOfFiles(), Is.EqualTo(1));
     }
@@ -29,7 +29,7 @@ namespace DocumentUploader.IntegrationTests.CommandFunctionality {
       Assert.That(mObserver.GetMessages(), Is.EqualTo(BA("File uploaded")));
       CheckThatGivenFilesExist("folder3");
       Assert.That(mManager.ListAllFilesOnRootById().Count, Is.EqualTo(1));
-      Assert.That(mManager.ListAllFilesOnRootByTitle()[0], Is.EqualTo("folder3"));
+      Assert.That(mManager.ListAllFilesOnRootByTitle(), Is.EqualTo(BA("folder3")));
       Assert.That(mManager.ListAllFoldersOnRootById().Count, Is.EqualTo(1));
       Assert.That(mManager.NumberOfFiles(), Is.EqualTo(2));
     }
@@ -39,7 +39,7 @@ namespace DocumentUploader.IntegrationTests.CommandFunctionality {
       mApp.Execute("upload", "file.csv", "file");
       Assert.That(mObserver.GetMessages(), Is.EqualTo(BA("File uploaded")));
       Assert.That(mManager.ListAllFilesOnRootById().Count, Is.EqualTo(1));
-      Assert.That(mManager.ListAllFilesOnRootByTitle()[0], Is.EqualTo("file"));
+      Assert.That(mManager.ListAllFilesOnRootByTitle(), Is.EqualTo(BA("file")));
       Assert.That(mManager.ListAllFoldersOnRootById().Count, Is.EqualTo(0));
       Assert.That(mManager.NumberOfFiles(), Is.EqualTo(1));
     }
@@ -50,7 +50,7 @@ namespace DocumentUploader.IntegrationTests.CommandFunctionality {
       Assert.That(mObserver.GetMessages(), Is.EqualTo(BA("File uploaded")));
       CheckThatGivenFilesExist("folder3");
       Assert.That(mManager.ListAllFilesOnRootById().Count, Is.EqualTo(1));
-      Assert.That(mManager.ListAllFilesOnRootByTitle()[0], Is.EqualTo("folder3"));
+      Assert.That(mManager.ListAllFilesOnRootByTitle(), Is.EqualTo(BA("folder3")));
       Assert.That(mManager.ListAllFoldersOnRootById().Count, Is.EqualTo(1));
       Assert.That(mManager.NumberOfFiles(), Is.EqualTo(4));
     }
@@ -60,11 +60,23 @@ namespace DocumentUploader.IntegrationTests.CommandFunctionality {
       mApp.Execute("upload", "file.txt", @"folder1\folder2\file");
       Assert.That(mObserver.GetMessages(), Is.EqualTo(BA("File uploaded")));
       CheckThatGivenFilesExist("folder1");
-      mManager.GetFileAtTheLastDirectory("folder1");
       Assert.That(mManager.ListAllFilesOnRootById().Count, Is.EqualTo(1));
-      Assert.That(mManager.ListAllFilesOnRootByTitle()[0], Is.EqualTo("folder1"));
+      Assert.That(mManager.ListAllFilesOnRootByTitle(), Is.EqualTo(BA("folder1")));
       Assert.That(mManager.ListAllFoldersOnRootById().Count, Is.EqualTo(1));
       Assert.That(mManager.NumberOfFiles(), Is.EqualTo(3));
+    }
+
+    [Test]
+    public void TestUploadingTwoFolderSets() {
+      mApp.Execute("upload", "file.txt", @"folder1\folder2\file");
+      mApp.Execute("upload", "file.txt", @"myFolder\thisFolder\someFile");
+      Assert.That(mObserver.GetMessages(), Is.EqualTo(BA("File uploaded")));
+      CheckThatGivenFilesExist("folder1");
+      CheckThatGivenFilesExist("myFolder");
+      Assert.That(mManager.ListAllFilesOnRootById().Count, Is.EqualTo(2));
+      Assert.That(mManager.ListAllFilesOnRootByTitle(), Is.EqualTo(BA("myFolder", "folder1")));
+      Assert.That(mManager.ListAllFoldersOnRootById().Count, Is.EqualTo(2));
+      Assert.That(mManager.NumberOfFiles(), Is.EqualTo(6));
     }
 
     [SetUp]
@@ -86,7 +98,8 @@ namespace DocumentUploader.IntegrationTests.CommandFunctionality {
     private void CheckThatGivenFilesExist(string folderToLookFor) {
       mManager.GetFolderIdFromRoot(folderToLookFor);
       mManager.GetChildOfFolderOnRoot(folderToLookFor);
-      mManager.GetFileAtTheLastDirectory(folderToLookFor);
+      var file = mManager.GetFileAtTheLastDirectory(folderToLookFor);
+      Assert.That(mManager.GetFileMimeType(file), Is.EqualTo("application/vnd.google-apps.document"));
     }
 
     private DotNetFile mFile;

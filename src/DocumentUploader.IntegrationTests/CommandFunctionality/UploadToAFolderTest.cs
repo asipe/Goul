@@ -21,7 +21,8 @@ namespace DocumentUploader.IntegrationTests.CommandFunctionality {
       Assert.That(mFileManager.ListAllFilesOnRootByTitle(), Is.EqualTo(BA("TestingFolder0")));
       Assert.That(mFileManager.ListAllFoldersOnRootById().Count, Is.EqualTo(1));
       Assert.That(mObserver.GetMessages(), Is.EqualTo(BA("File uploaded")));
-      mFileManager.GetFileAtTheLastDirectory("TestingFolder0");
+      var file = mFileManager.GetFileAtTheLastDirectory("TestingFolder0");
+      Assert.That(mFileManager.GetFileMimeType(file), Is.EqualTo("application/vnd.google-apps.document"));
     }
 
     [Test]
@@ -32,7 +33,8 @@ namespace DocumentUploader.IntegrationTests.CommandFunctionality {
       Assert.That(mFileManager.ListAllFilesOnRootByTitle()[0], Is.EqualTo("TestingFolder0"));
       Assert.That(mFileManager.ListAllFoldersOnRootById().Count, Is.EqualTo(1));
       Assert.That(mObserver.GetMessages(), Is.EqualTo(BA("File uploaded")));
-      mFileManager.GetFileAtTheLastDirectory("TestingFolder0");
+      var file = mFileManager.GetFileAtTheLastDirectory("TestingFolder0");
+      Assert.That(mFileManager.GetFileMimeType(file), Is.EqualTo("application/vnd.google-apps.document"));
     }
 
     [Test]
@@ -44,7 +46,8 @@ namespace DocumentUploader.IntegrationTests.CommandFunctionality {
       Assert.That(mFileManager.ListAllFilesOnRootByTitle()[0], Is.EqualTo("TestingFolder0"));
       Assert.That(mFileManager.ListAllFoldersOnRootById().Count, Is.EqualTo(1));
       Assert.That(mObserver.GetMessages(), Is.EqualTo(BA("File uploaded")));
-      mFileManager.GetFileAtTheLastDirectory("TestingFolder0");
+      var file = mFileManager.GetFileAtTheLastDirectory("TestingFolder0");
+      Assert.That(mFileManager.GetFileMimeType(file), Is.EqualTo("application/vnd.google-apps.document"));
     }
 
     [Test]
@@ -59,8 +62,11 @@ namespace DocumentUploader.IntegrationTests.CommandFunctionality {
       Assert.That(mFileManager.ListAllFilesOnRootByTitle()[2], Is.EqualTo("TestingFolder0"));
       Assert.That(mFileManager.ListAllFoldersOnRootById().Count, Is.EqualTo(3));
       Assert.That(mObserver.GetMessages(), Is.EqualTo(BA("File uploaded")));
-      mFileManager.GetFileAtTheLastDirectory("MyFolder");
-      mFileManager.GetFileAtTheLastDirectory("OtherFolder");
+
+      var file = mFileManager.GetFileAtTheLastDirectory("MyFolder");
+      var otherFile = mFileManager.GetFileAtTheLastDirectory("OtherFolder");
+      Assert.That(mFileManager.GetFileMimeType(file), Is.EqualTo("application/vnd.google-apps.document"));
+      Assert.That(mFileManager.GetFileMimeType(otherFile), Is.EqualTo("application/vnd.google-apps.document"));
     }
 
     [SetUp]
