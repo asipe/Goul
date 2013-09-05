@@ -53,6 +53,8 @@
     <Compile Include="..\Common.Properties\AssemblyInfo.cs">
       <Link>AssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="FileManagement\GDriveFolderManager.cs" />
+    <Compile Include="FileManagement\IFolderManager.cs" />
     <Compile Include="Functionality\FileEnumerator.cs" />
     <Compile Include="Functionality\Updater.cs" />
     <Compile Include="FileManagement\GDriveFileManager.cs" />
