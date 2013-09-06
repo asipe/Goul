@@ -35,56 +35,77 @@ namespace DocumentUploader.IntegrationTests.CommandFunctionality {
     public void TestUploadWithAFolderAndAFileUploadsBoth() {
       mApp.Execute("upload", "file.txt", @"folder3\file");
       Assert.That(mObserver.GetMessages(), Is.EqualTo(BA("File uploaded")));
-      CheckThatGivenFilesExist("folder3");
-      Assert.That(mManager.ListAllFilesOnRootById().Count, Is.EqualTo(1));
-      Assert.That(mManager.ListAllFilesOnRootByTitle(), Is.EqualTo(BA("folder3")));
-      Assert.That(mManager.ListAllFoldersOnRootById().Count, Is.EqualTo(1));
-      Assert.That(mManager.NumberOfFiles(), Is.EqualTo(2));
+      new Retry(30, 125)
+        .WithWork(x => {
+          CheckThatGivenFilesExist("folder3");
+          Assert.That(mManager.ListAllFilesOnRootById().Count, Is.EqualTo(1));
+          Assert.That(mManager.ListAllFilesOnRootByTitle(), Is.EqualTo(BA("folder3")));
+          Assert.That(mManager.ListAllFoldersOnRootById().Count, Is.EqualTo(1));
+          Assert.That(mManager.NumberOfFiles(), Is.EqualTo(2));
+        })
+        .Start();
     }
 
     [Test]
     public void TestUploadWithACSVFileWorks() {
       mApp.Execute("upload", "file.csv", "file");
       Assert.That(mObserver.GetMessages(), Is.EqualTo(BA("File uploaded")));
-      Assert.That(mManager.ListAllFilesOnRootById().Count, Is.EqualTo(1));
-      Assert.That(mManager.ListAllFilesOnRootByTitle(), Is.EqualTo(BA("file")));
-      Assert.That(mManager.ListAllFoldersOnRootById().Count, Is.EqualTo(0));
-      Assert.That(mManager.NumberOfFiles(), Is.EqualTo(1));
+      new Retry(30, 125)
+        .WithWork(x => {
+          Assert.That(mManager.ListAllFilesOnRootById().Count, Is.EqualTo(1));
+          Assert.That(mManager.ListAllFilesOnRootByTitle(), Is.EqualTo(BA("file")));
+          Assert.That(mManager.ListAllFoldersOnRootById().Count, Is.EqualTo(0));
+          Assert.That(mManager.NumberOfFiles(), Is.EqualTo(1));
+        })
+        .Start();
+
     }
 
     [Test]
     public void TestUploadWith4ArgsUploadsAFolderSetWithAFileAtTheEnd() {
       mApp.Execute("upload", "file.txt", @"folder3\folder2\folder3\file");
       Assert.That(mObserver.GetMessages(), Is.EqualTo(BA("File uploaded")));
-      CheckThatGivenFilesExist("folder3");
-      Assert.That(mManager.ListAllFilesOnRootById().Count, Is.EqualTo(1));
-      Assert.That(mManager.ListAllFilesOnRootByTitle(), Is.EqualTo(BA("folder3")));
-      Assert.That(mManager.ListAllFoldersOnRootById().Count, Is.EqualTo(1));
-      Assert.That(mManager.NumberOfFiles(), Is.EqualTo(4));
+      new Retry(30, 125)
+        .WithWork(x => {
+          CheckThatGivenFilesExist("folder3");
+          Assert.That(mManager.ListAllFilesOnRootById().Count, Is.EqualTo(1));
+          Assert.That(mManager.ListAllFilesOnRootByTitle(), Is.EqualTo(BA("folder3")));
+          Assert.That(mManager.ListAllFoldersOnRootById().Count, Is.EqualTo(1));
+          Assert.That(mManager.NumberOfFiles(), Is.EqualTo(4));
+        })
+        .Start();
     }
 
     [Test]
     public void TestUploadingAFolderSetWithOnly2Folders() {
       mApp.Execute("upload", "file.txt", @"folder1\folder2\file");
       Assert.That(mObserver.GetMessages(), Is.EqualTo(BA("File uploaded")));
-      CheckThatGivenFilesExist("folder1");
-      Assert.That(mManager.ListAllFilesOnRootById().Count, Is.EqualTo(1));
-      Assert.That(mManager.ListAllFilesOnRootByTitle(), Is.EqualTo(BA("folder1")));
-      Assert.That(mManager.ListAllFoldersOnRootById().Count, Is.EqualTo(1));
-      Assert.That(mManager.NumberOfFiles(), Is.EqualTo(3));
+      new Retry(30, 125)
+        .WithWork(x => {
+          CheckThatGivenFilesExist("folder1");
+          Assert.That(mManager.ListAllFilesOnRootById().Count, Is.EqualTo(1));
+          Assert.That(mManager.ListAllFilesOnRootByTitle(), Is.EqualTo(BA("folder1")));
+          Assert.That(mManager.ListAllFoldersOnRootById().Count, Is.EqualTo(1));
+          Assert.That(mManager.NumberOfFiles(), Is.EqualTo(3));
+        })
+        .Start();
     }
 
     [Test]
     public void TestUploadingTwoFolderSets() {
       mApp.Execute("upload", "file.txt", @"folder1\folder2\file");
       mApp.Execute("upload", "file.txt", @"myFolder\thisFolder\someFile");
-      Assert.That(mObserver.GetMessages(), Is.EqualTo(BA("File uploaded")));
-      CheckThatGivenFilesExist("folder1");
-      CheckThatGivenFilesExist("myFolder");
-      Assert.That(mManager.ListAllFilesOnRootById().Count, Is.EqualTo(2));
-      Assert.That(mManager.ListAllFilesOnRootByTitle(), Is.EqualTo(BA("myFolder", "folder1")));
-      Assert.That(mManager.ListAllFoldersOnRootById().Count, Is.EqualTo(2));
-      Assert.That(mManager.NumberOfFiles(), Is.EqualTo(6));
+      new Retry(30, 125)
+        .WithWork(x => {
+          Assert.That(mObserver.GetMessages(), Is.EqualTo(BA("File uploaded")));
+          CheckThatGivenFilesExist("folder1");
+          CheckThatGivenFilesExist("myFolder");
+          Assert.That(mManager.ListAllFilesOnRootById().Count, Is.EqualTo(2));
+          Assert.That(mManager.ListAllFilesOnRootByTitle(), Is.EqualTo(BA("myFolder", "folder1")));
+          Assert.That(mManager.ListAllFoldersOnRootById().Count, Is.EqualTo(2));
+          Assert.That(mManager.NumberOfFiles(), Is.EqualTo(6));
+        })
+        .Start();
     }
 
     [SetUp]
