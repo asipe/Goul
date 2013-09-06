@@ -60,7 +60,7 @@ namespace DocumentUploader.IntegrationTests.Infrastructure {
       return IsThisRootFolder(dir) ? dir : Execute(Path.GetDirectoryName(dir));
     }
 
-    private bool IsThisRootFolder(string path) {
+    private static bool IsThisRootFolder(string path) {
       return File.Exists(Path.Combine(path, "readme.md")) &&
              Directory.Exists(Path.Combine(path, "src")) &&
              Directory.Exists(Path.Combine(path, "scripts"));

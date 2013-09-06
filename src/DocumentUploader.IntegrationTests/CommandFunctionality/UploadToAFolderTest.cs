@@ -86,7 +86,7 @@ namespace DocumentUploader.IntegrationTests.CommandFunctionality {
       mFileManager = new GDriveFileManager(mCredentials.Get(), mRefreshToken.Get());
       mFileManager.CleanGDriveAcct();
 
-      mFolderManager = new GDriveFolderManager(mCredentials.Get(), mRefreshToken.Get());
+      mFolderManager = new FolderManager(mCredentials.Get(), mRefreshToken.Get());
     }
 
     private DotNetFile mFile;

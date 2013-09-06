@@ -4,8 +4,8 @@ using Goul.Core.Functionality;
 using Goul.Core.Tokens;
 
 namespace Goul.Core.FileManagement {
-  public class GDriveFolderManager : IFolderManager {
-    public GDriveFolderManager(Credentials credentials, RefreshToken refreshToken) {
+  public class FolderManager : IFolderManager {
+    public FolderManager(Credentials credentials, RefreshToken refreshToken) {
       mService = new GetDriveService().GetService(credentials, refreshToken);
     }
 

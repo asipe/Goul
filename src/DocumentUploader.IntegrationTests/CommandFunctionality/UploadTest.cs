@@ -1,4 +1,5 @@
-﻿using DocumentUploader.Core.App;
+﻿using System;
+using DocumentUploader.Core.App;
 using DocumentUploader.Core.Factory;
 using DocumentUploader.Core.Factory.Module;
 using DocumentUploader.Core.Models;
@@ -8,19 +9,26 @@ using DocumentUploader.IntegrationTests.Infrastructure.Modules;
 using Goul.Core.FileManagement;
 using NUnit.Framework;
 using SupaCharge.Core.IOAbstractions;
+using SupaCharge.Core.ThreadingAbstractions;
 using SupaCharge.Testing;
 
 namespace DocumentUploader.IntegrationTests.CommandFunctionality {
   [TestFixture]
   public class UploadTest : BaseTestCase {
     [Test]
-    public void TestUploadWithOnlyAFileUploadsAFileOnly() {
-      mApp.Execute("upload", "file.txt", "myFile");
+    public void TestUploadingAFileOnly() {
+      var name = Guid.NewGuid().ToString("N");
+      mApp.Execute("upload", "file.txt", name);
       Assert.That(mObserver.GetMessages(), Is.EqualTo(BA("File uploaded")));
-      Assert.That(mManager.ListAllFilesOnRootById().Count, Is.EqualTo(1));
-      Assert.That(mManager.ListAllFilesOnRootByTitle(), Is.EqualTo(BA("myFile")));
-      Assert.That(mManager.ListAllFoldersOnRootById().Count, Is.EqualTo(0));
-      Assert.That(mManager.NumberOfFiles(), Is.EqualTo(1));
+
+      new Retry(30, 125)
+        .WithWork(x => {
+          Assert.That(mManager.ListAllFilesOnRootById().Count, Is.EqualTo(1));
+          Assert.That(mManager.ListAllFilesOnRootByTitle(), Is.EqualTo(BA(name)));
+          Assert.That(mManager.ListAllFoldersOnRootById().Count, Is.EqualTo(0));
+          Assert.That(mManager.NumberOfFiles(), Is.EqualTo(1));
+        })
+        .Start();
     }
 
     [Test]
