@@ -1,5 +1,5 @@
 ﻿namespace DocumentUploader.Core.App {
   public interface IApp {
-    void Execute(params string[] commands);
+    void Execute(params string[] args);
   }
 }

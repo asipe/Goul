@@ -8,5 +8,8 @@ namespace Goul.Core.FileManagement {
     string GetFileAtTheLastDirectory(string rootFolder);
     List<string> ListAllFilesOnRootById();
     List<string> ListAllFilesOnRootByTitle();
+    List<string> ListAllFoldersOnRootById();
+    int NumberOfFiles();
+    string GetFileMimeType(string id);
   }
 }

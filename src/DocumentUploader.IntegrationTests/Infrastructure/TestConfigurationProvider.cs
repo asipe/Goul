@@ -30,6 +30,17 @@ namespace DocumentUploader.IntegrationTests.Infrastructure {
       File.WriteAllText("file.txt", "");
     }
 
+    public void SetupDummyCSVFile() {
+      File.WriteAllText("file.csv", "");
+    }
+
+    public void CreateFileBatch() {
+      SetupCredentialsFile();
+      SetupRefreshTokenFile();
+      SetupDummyFile();
+      SetupDummyCSVFile();
+    }
+
     public void SetupAuthTokenFile() {
       if (!File.Exists("authToken.txt")) {
         File.Create("authToken.txt");
@@ -49,7 +60,7 @@ namespace DocumentUploader.IntegrationTests.Infrastructure {
       return IsThisRootFolder(dir) ? dir : Execute(Path.GetDirectoryName(dir));
     }
 
-    private bool IsThisRootFolder(string path) {
+    private static bool IsThisRootFolder(string path) {
       return File.Exists(Path.Combine(path, "readme.md")) &&
              Directory.Exists(Path.Combine(path, "src")) &&
              Directory.Exists(Path.Combine(path, "scripts"));

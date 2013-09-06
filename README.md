@@ -27,9 +27,49 @@
   
   Commands:
     - "help"   
-    - "setcredentials xClient_IDx xClient_Secretx" 
-    - "listcredentials"
-    - "clearcredentials"
+    
+      => Shows the help message.
+    - "setcredentials *ClientID ClientSecret*" 
+    
+      => Sets the credentials to the specified values, 
+    - "listcredentials" 
+    
+      => Lists the credentials
+    - "clearcredentials" 
+    
+      => Clears the credentials file
+    - "getauthorizationurl" 
+      
+      => Retrieves a url to the Google authorization process, based on the given credentials
+    - "authorize *AuthorizationCode*" 
+      
+      => Creates a refresh token based on the auth code retrieved from the 'getauthorizationurl" command
+    - "upload *PathOfTheFileToUpload* *TitleOfTheFileOnGoogle*" 
+      
+      => Uploads a file from the given path, to the bound Google Account, with the given title
+    
+##Setup Instructions
+
+Run the "setcredentials" command with the credentials (clientId/clientSecret) => Retrieve this from the Google Apis Console
+
+Run the "listcredentials" command to make sure that it worked
+
+Run the "getauthorizationurl" command 
+
+Copy the url which is printed out and open the link in a browser
+
+If you aren't logged into your Google account, Google will ask you to log in before you can continue. Log into the account you want to bind to the DocUploader
+
+If you are already logged in, make sure you're in the Google Account you want to bind to the DocumentUploader
+
+Accept the permissions request.
+
+Copy the code given on the next page
+
+Go back to your shell and run the "authorize" command with the code you just copied
+
+You should now be able to upload files to the bound Google Account, using the "upload" command.
+
   
 
 

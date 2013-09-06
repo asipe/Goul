@@ -8,6 +8,11 @@ using File = Google.Apis.Drive.v2.Data.File;
 
 namespace Goul.Core.Functionality {
   public class Uploader {
+    private class FolderQuery {
+      public bool Exists{get;set;}
+      public int Index{get;set;}
+    }
+
     public Uploader(Credentials credentials, RefreshToken refreshToken) {
       mService = new GetDriveService().GetService(credentials, refreshToken);
       mUpdater = new Updater(credentials, refreshToken);
@@ -15,38 +20,70 @@ namespace Goul.Core.Functionality {
     }
 
     public void UploadFile(string fileToUpload, string fileTitle) {
-      if (mUpdater.IsUpdateRequired(fileTitle))
-        mUpdater.Update(fileToUpload, mManager.ListAllFilesOnRootById()[0]);
-      else {
-        var file = new File {Title = fileTitle, Description = "123"};
-        var stream = new MemoryStream(System.IO.File.ReadAllBytes(fileToUpload));
-        var request = mService.Files.Insert(file, stream, "text/plain");
-        request.Convert = true;
-        request.Upload();
-      }
-    }
-
-    public void UploadFileUsingGoogleBase(File file, string filePath) {
-      var stream = new MemoryStream(System.IO.File.ReadAllBytes(filePath));
-      var request = mService.Files.Insert(file, stream, "text/plain");
+      // if (mUpdater.IsUpdateRequired(fileTitle))
+      //  mUpdater.Update(fileToUpload, mManager.ListAllFilesOnRootById()[0]);
+      //   else {
+      var file = new File {Title = fileTitle, Description = "123"};
+      var stream = new MemoryStream(System.IO.File.ReadAllBytes(fileToUpload));
+      var request = mService.Files.Insert(file, stream, DetermineContentType(fileToUpload));
       request.Convert = true;
       request.Upload();
+      //    }
     }
 
     public void UploadFileWithFolderSet(string file, string fileTitle, string[] foldersToUpload) {
       var parent = new ParentReference {Id = "root"};
-      for (var x = 0; x < foldersToUpload.Length; x++) {
-        var fileToUpload = new File {Title = foldersToUpload[x], MimeType = "application/vnd.google-apps.folder", Parents = new List<ParentReference> {parent}};
-        var result = mService.Files.Insert(fileToUpload).Fetch();
-        parent = new ParentReference {Id = result.Id};
+      foreach (var f in foldersToUpload) {
+        var folderQueryResult = SearchForFolder(f, parent.Id);
+        if (folderQueryResult.Exists) {
+          var parentFolder = new ParentReference {Id = ReturnMatchingFolder(folderQueryResult.Index, parent.Id).Id};
+          parent = new ParentReference {Id = parentFolder.Id};
+        } else {
+          var lastFolderUploaded = UploadFolderWithParent(parent, f);
+          parent = new ParentReference {Id = lastFolderUploaded};
+        }
       }
-
-      var myFile = new File {Title = fileTitle, Parents = new List<ParentReference> {parent}};
-      UploadFileUsingGoogleBase(myFile, file);
+      UploadFileWithParent(parent, file, fileTitle);
     }
 
+    private FolderQuery SearchForFolder(string folderTitleToCheckFor, string parentId) {
+      var children = mService.Children.List(parentId).Fetch().Items;
+      for (var x = 0; x < children.Count; x++) {
+        var fileToCheck = mService.Files.Get(children[x].Id).Fetch();
+
+        if (fileToCheck.Title == folderTitleToCheckFor && fileToCheck.MimeType == "application/vnd.google-apps.folder")
+          return new FolderQuery {Exists = true, Index = x};
+      }
+      return new FolderQuery {Exists = false, Index = 0};
+    }
+
+    public File ReturnMatchingFolder(int indexToGet, string parentId) {
+      var children = mService.Children.List(parentId).Fetch().Items;
+      return mService.Files.Get(children[indexToGet].Id).Fetch();
+    }
+
+    public string UploadFolderWithParent(ParentReference parentId, string title) {
+      var folder = new File {Title = title, Parents = new List<ParentReference> {parentId}, MimeType = "application/vnd.google-apps.folder"};
+      var request = mService.Files.Insert(folder);
+      request.Convert = true;
+      var result = request.Fetch();
+
+      return result.Id;
+    }
+
+    public void UploadFileWithParent(ParentReference parentId, string path, string title) {
+      var file = new File {Title = title, Parents = new List<ParentReference> {parentId}, MimeType = DetermineContentType(path)};
+      var request = mService.Files.Insert(file);
+      request.Convert = true;
+      request.Fetch();
+    }
+
+    public string DetermineContentType(string filePathToCheck) {
+      return Path.GetExtension(filePathToCheck) == ".csv" ? "text/csv" : "text/plain";
+    }
+
+    private readonly IFileManager mManager;
     private readonly DriveService mService;
     private readonly Updater mUpdater;
-    private readonly IFileManager mManager;
   }
 }
