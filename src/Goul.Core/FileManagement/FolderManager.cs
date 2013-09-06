@@ -9,11 +9,6 @@ namespace Goul.Core.FileManagement {
       mService = new GetDriveService().GetService(credentials, refreshToken);
     }
 
-    public void SetupSingleFolder() {
-      var folder = new File {MimeType = "application/vnd.google-apps.folder", Title = "TestingFolder"};
-      mService.Files.Insert(folder).Fetch();
-    }
-
     public void SetupFolders(int numberOfFolders) {
       var parent = new ParentReference {Id = "root"};
       for (var x = 0; x < numberOfFolders; x++) {

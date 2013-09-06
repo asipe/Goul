@@ -58,7 +58,6 @@ namespace DocumentUploader.IntegrationTests.CommandFunctionality {
           Assert.That(mManager.NumberOfFiles(), Is.EqualTo(1));
         })
         .Start();
-
     }
 
     [Test]
@@ -95,17 +94,15 @@ namespace DocumentUploader.IntegrationTests.CommandFunctionality {
     public void TestUploadingTwoFolderSets() {
       mApp.Execute("upload", "file.txt", @"folder1\folder2\file");
       mApp.Execute("upload", "file.txt", @"myFolder\thisFolder\someFile");
-      new Retry(30, 125)
-        .WithWork(x => {
-          Assert.That(mObserver.GetMessages(), Is.EqualTo(BA("File uploaded")));
-          CheckThatGivenFilesExist("folder1");
-          CheckThatGivenFilesExist("myFolder");
-          Assert.That(mManager.ListAllFilesOnRootById().Count, Is.EqualTo(2));
-          Assert.That(mManager.ListAllFilesOnRootByTitle(), Is.EqualTo(BA("myFolder", "folder1")));
-          Assert.That(mManager.ListAllFoldersOnRootById().Count, Is.EqualTo(2));
-          Assert.That(mManager.NumberOfFiles(), Is.EqualTo(6));
-        })
-        .Start();
+
+      Assert.That(mObserver.GetMessages(), Is.EqualTo(BA("File uploaded")));
+
+      CheckThatGivenFilesExist("folder1");
+      CheckThatGivenFilesExist("myFolder");
+      Assert.That(mManager.ListAllFilesOnRootById().Count, Is.EqualTo(2));
+      Assert.That(mManager.ListAllFilesOnRootByTitle(), Is.EqualTo(BA("myFolder", "folder1")));
+      Assert.That(mManager.ListAllFoldersOnRootById().Count, Is.EqualTo(2));
+      Assert.That(mManager.NumberOfFiles(), Is.EqualTo(6));
     }
 
     [SetUp]
@@ -121,7 +118,12 @@ namespace DocumentUploader.IntegrationTests.CommandFunctionality {
       provider.CreateFileBatch();
 
       mManager = new GDriveFileManager(mCredentialStore.Get(), mRefreshTokenStore.Get());
-      mManager.CleanGDriveAcct();
+      new Retry(30, 125)
+        .WithWork(x => {
+          mManager.CleanGDriveAcct();
+          Assert.That(mManager.ListAllFilesOnRootById().ToArray(), Is.Empty);
+        })
+        .Start();
     }
 
     private void CheckThatGivenFilesExist(string folderToLookFor) {

@@ -46,22 +46,6 @@ namespace Goul.Core.Functionality {
       UploadFileWithParent(parent, file, fileTitle);
     }
 
-    private FolderQuery SearchForFolder(string folderTitleToCheckFor, string parentId) {
-      var children = mService.Children.List(parentId).Fetch().Items;
-      for (var x = 0; x < children.Count; x++) {
-        var fileToCheck = mService.Files.Get(children[x].Id).Fetch();
-
-        if (fileToCheck.Title == folderTitleToCheckFor && fileToCheck.MimeType == "application/vnd.google-apps.folder")
-          return new FolderQuery {Exists = true, Index = x};
-      }
-      return new FolderQuery {Exists = false, Index = 0};
-    }
-
-    public File ReturnMatchingFolder(int indexToGet, string parentId) {
-      var children = mService.Children.List(parentId).Fetch().Items;
-      return mService.Files.Get(children[indexToGet].Id).Fetch();
-    }
-
     public string UploadFolderWithParent(ParentReference parentId, string title) {
       var folder = new File {Title = title, Parents = new List<ParentReference> {parentId}, MimeType = "application/vnd.google-apps.folder"};
       var request = mService.Files.Insert(folder);
@@ -73,13 +57,32 @@ namespace Goul.Core.Functionality {
 
     public void UploadFileWithParent(ParentReference parentId, string path, string title) {
       var file = new File {Title = title, Parents = new List<ParentReference> {parentId}, MimeType = DetermineContentType(path)};
-      var request = mService.Files.Insert(file);
+      var byteArray = System.IO.File.ReadAllBytes(path);
+      var stream = new MemoryStream(byteArray);
+
+      var request = mService.Files.Insert(file, stream , DetermineContentType(path));
       request.Convert = true;
-      request.Fetch();
+      request.Upload();
     }
 
     public string DetermineContentType(string filePathToCheck) {
       return Path.GetExtension(filePathToCheck) == ".csv" ? "text/csv" : "text/plain";
+    }
+
+    private FolderQuery SearchForFolder(string folderTitleToCheckFor, string parentId) {
+      var children = mService.Children.List(parentId).Fetch().Items;
+      for (var x = 0; x < children.Count; x++) {
+        var fileToCheck = mService.Files.Get(children[x].Id).Fetch();
+
+        if (fileToCheck.Title == folderTitleToCheckFor && fileToCheck.MimeType == "application/vnd.google-apps.folder")
+          return new FolderQuery { Exists = true, Index = x };
+      }
+      return new FolderQuery { Exists = false, Index = 0 };
+    }
+
+    public File ReturnMatchingFolder(int indexToGet, string parentId) {
+      var children = mService.Children.List(parentId).Fetch().Items;
+      return mService.Files.Get(children[indexToGet].Id).Fetch();
     }
 
     private readonly IFileManager mManager;
