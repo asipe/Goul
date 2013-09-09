@@ -61,7 +61,6 @@
     <Compile Include="CommandFunctionality\ClearCredentialsTest.cs" />
     <Compile Include="CommandFunctionality\ConsoleHelpTests.cs" />
     <Compile Include="CommandFunctionality\UploadToAFolderTest.cs" />
-    <Compile Include="CommandFunctionality\UpdateTest.cs" />
     <Compile Include="CommandFunctionality\GetAuthorizationUrlTest.cs" />
     <Compile Include="Infrastructure\TestConfigurationProvider.cs" />
     <Compile Include="CommandFunctionality\ListCredentialsTest.cs" />
