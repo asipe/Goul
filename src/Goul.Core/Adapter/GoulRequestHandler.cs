@@ -12,11 +12,6 @@ namespace Goul.Core.Adapter {
       return new GetAuthorizationState().GetAuthorization(credentials, code).RefreshToken;
     }
 
-    public void UploadFile(string fileToUpload, string fileTitle, Credentials credentials, RefreshToken refreshToken) {
-      var uploader = new Uploader(credentials, refreshToken);
-      uploader.UploadFile(fileToUpload, fileTitle);
-    }
-
     public void UploadFileWithFolder(string file, string fileTitle, string[] foldersToUpload, Credentials credentials, RefreshToken refreshToken) {
       var uploader = new Uploader(credentials, refreshToken);
       uploader.UploadFileWithFolderSet(file, fileTitle, foldersToUpload);
